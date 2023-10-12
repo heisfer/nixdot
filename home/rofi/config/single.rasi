@@ -1,0 +1,190 @@
+/* vim:ft=css */
+/************************************************
+ * ROFI Color theme Ayu
+ * User: Heisfer
+ * Copyright: 2022 Heisfer
+ ***********************************************/
+
+* {
+    blue:                        #73B8FF;
+    red:                         #F26D78;
+
+
+    background:                  #0D1017;
+    foreground:                  #BFBDB6;
+    normal-foreground:           @foreground;
+    separatorcolor:              @foreground;
+
+    selected-normal-foreground:  @blue;
+    selected-normal-background:  @background;
+
+    alternate-normal-background: @background;
+    selected-urgent-foreground:  @background;
+    urgent-foreground:           rgba ( 204, 102, 102, 100 % );
+    alternate-urgent-background: rgba ( 75, 81, 96, 90 % );
+    active-foreground:           rgba ( 101, 172, 255, 100 % );
+    lightbg:                     rgba ( 238, 232, 213, 100 % );
+    selected-active-foreground:  rgba ( 249, 249, 249, 100 % );
+    alternate-active-background: rgba ( 52,73,94, 60%);
+    alternate-normal-foreground: @foreground;
+    normal-background:           @background;
+    lightfg:                     rgba ( 88, 104, 117, 100 % );
+    
+    border-color:                @foreground;
+    spacing:                     2;
+    
+    urgent-background:           @background;
+    selected-urgent-background:  @background;
+    alternate-urgent-foreground: @urgent-foreground;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    alternate-active-foreground: @active-foreground;
+    active-background:           @background;
+    selected-active-background:  @background;
+}
+
+configuration {
+    font: "Comic Code Ligatures 14";
+    width: 900;
+    icon-theme: "Papirus";
+    show-icons: true;
+}
+
+/**
+ * Entry box on top. 
+ */
+entry {
+    spacing:    0;
+    text-color: @normal-foreground;
+    cursor: text;
+}
+
+/**
+ * Input bar
+ */
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    0px 0px 12px 0px ;
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+
+
+prompt {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+textbox {
+    text-color: @foreground;
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @normal-foreground;
+}
+
+/**
+ * Buttons in mode switcher.
+ */
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
+    cursor: pointer;
+}
+
+/**
+ * Selected buttons in mode switcher.
+ */
+button selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+
+
+/**
+ * Main window widget
+ */
+window {
+    background-color: @background;
+    border:           4;
+    padding:          20px;
+
+}
+
+/**
+ * Main container in the window.
+ */
+mainbox { 
+    border:  0;
+    padding: 0;
+}
+
+/**
+ * listview that shows entries.
+ */
+listview {
+    /** 4 rows. */
+    /** 6 columns */
+    
+    columns: 1;
+    /** add 1 em spacing between items */
+    spacing: 1em;
+    /** Don't reduce columns if less items are available. */
+    fixed-columns: false;
+    fixed-height: 0;
+    border:       0px 0px 0px ;
+    border-color: @separatorcolor;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+/**
+ * entry in listview.
+ */
+element {
+
+    border: 0px;
+    cursor: pointer;
+    padding:          4px;
+}
+
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+

@@ -1,0 +1,120 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "Comic Code Ligatures", "Font Awesome 6 Free";
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+tooltip {
+  background: #1e1e2e;
+  border-radius: 10px; 
+  border-width: 2px;
+  border-style: solid;
+  border-color: #BFBDB6;
+  border-bottom: solid 2px #BFBDB6;
+  box-shadow: none;
+}
+#tray {
+  border-radius: 0px 0px 20px 0px;
+  border-right: solid 2px #BFBDB6;
+  border-bottom: solid 2px #BFBDB6;
+  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  margin: 0px 0px 5px 0px;
+}
+
+#tray menu {
+  border-radius: 7px;
+  border: solid 2px #BFBDB6;
+}
+
+
+#workspaces {
+  border-radius: 0px 0px 20px 20px;
+  border-right: solid 2px #BFBDB6;
+  border-left: solid 2px #BFBDB6;
+  border-bottom: solid 2px #BFBDB6;
+}
+
+#workspaces button {
+  background-color: transparent;
+
+}
+
+#workspaces button:hover {
+  color: #cdd6f4;
+  text-shadow: none;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+#workspaces button.active {
+  color: #7FD962;
+}
+#workspaces button.persistent {
+
+}
+#workspaces button.special {
+  
+}
+
+#language {
+  margin: 0px 0px 5px 20px;
+  border-radius: 0px 0px 20px 20px;
+  border-right: solid 2px #BFBDB6;
+  border-left: solid 2px #BFBDB6;
+  border-bottom: solid 2px #BFBDB6;
+}
+
+#clock {
+  border-radius: 0px 0px 0px 20px;
+  border-left: solid 2px #BFBDB6;
+  border-bottom: solid 2px #BFBDB6;
+  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  margin: 0px 0px 0px 5px;
+}
+
+#network {
+  border-radius: 0px 0px 0px 20px;
+  border-left: solid 2px #BFBDB6;
+  border-bottom: solid 2px #BFBDB6;
+  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  margin: 0px 0px 0px 5px;
+}
+
+
+#battery {
+  border-radius: 0px 0px 20px 0px;
+  border-right: solid 2px #BFBDB6;
+  margin-right: 20px;
+}
+
+#network,
+#pulseaudio,
+#brightness,
+#backlight,
+#battery {
+  border-bottom: solid 2px #BFBDB6;
+  padding: 0 10px 0 10px;
+}
+
+#window,
+#tray,
+#tray menu,
+#language,
+#network,
+#pulseaudio,
+#workspaces,
+#backlight,
+#battery,
+#clock {
+  padding: 0 14px;
+  margin-bottom: 5px;
+  background: #1e1e2e;
+  color: #cdd6f4;
+}
