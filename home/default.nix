@@ -48,7 +48,7 @@ let
 in
 {
   imports = [
-
+    ./programs
     ./firefox
     ./wezterm
     ./wayland/hyprland
@@ -56,7 +56,6 @@ in
     ./starship
     ./editors/helix
     ./editors/neovim
-    ./xplr.nix
   ];
   home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride;
 
