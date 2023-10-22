@@ -16,6 +16,7 @@ let
 
   apps = with pkgs; [
     chromium
+    webcord-vencord
     telegram-desktop
     transmission-qt
     scrcpy
