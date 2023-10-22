@@ -135,7 +135,8 @@ $mainMod = SUPER
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
 bind = $mainMod, RETURN, exec, wezterm
 bind = $mainMod, Q, killactive,
-bind = $mainMod, W, exec, firefox-developer-edition
+bind = $mainMod, W, exec, firefox-developer-edition -new-tab about:newtab
+bind = $mainMod  SHIFT, W, exec, firefox-developer-edition
 bind = $mainMod, M, exit,
 bind = $mainMod, S, exec,~/.config/rofi/rofi.sh
 bind = $mainMod, E, exec, nautilus
