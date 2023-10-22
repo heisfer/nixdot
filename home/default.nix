@@ -5,7 +5,6 @@ let
 
   customPkgs = with localPkgs; [
     miru
-    webcord-vencord
   ];
 
   dev = with pkgs; [
@@ -66,6 +65,11 @@ in
 
   };
 
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    nix-direnv.enable = true;
+  };
 
   programs.bash = {
     enable = true;

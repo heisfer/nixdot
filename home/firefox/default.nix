@@ -14,6 +14,12 @@ let
     bitwarden
   ];
 
+  extraConfig = ''
+  user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+  user_pref("browser.search.widget.inNavBar", false);
+  user_pref("services.sync.prefs.sync.browser.urlbar.showSearchSuggestionsFirst", false);
+  '';
+
 in
 {
   programs.firefox = {
@@ -22,7 +28,7 @@ in
     profiles = {
       dev-edition-default = {
         id = 0;
-        inherit  extensions;
+        inherit  extensions extraConfig;
       };
     };
   };

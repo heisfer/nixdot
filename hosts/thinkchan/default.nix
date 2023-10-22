@@ -115,20 +115,20 @@
     polkit.enable = true;
     pam.services.gtklock.text = "auth include login";
   };
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     # winetricks (all versions)
-    winetricks
+    pkgs.winetricks
 
-    rpcs3
+    pkgs.rpcs3
 
-    genymotion
+    pkgs.genymotion
     
-    glfw-wayland-minecraft
+    pkgs.glfw-wayland-minecraft
 
     # native wayland support (unstable)
-    wineWowPackages.waylandFull
-  ];
+    pkgs.wineWowPackages.waylandFull
 
+  ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.variables = {
     # VAAPI and VDPAU config for accelerated video.
