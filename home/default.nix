@@ -20,6 +20,7 @@ let
     github-desktop
     transmission-qt
     kitty
+    onagre
     scrcpy
   ];
 

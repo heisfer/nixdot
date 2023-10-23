@@ -15,6 +15,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    helix.url = "github:helix-editor/helix";
+    
     rycee-nurpkgs = {
       url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
       inputs.nixpkgs.follows = "nixpkgs";

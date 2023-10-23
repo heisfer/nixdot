@@ -5,9 +5,9 @@
 }: {
   programs.helix.languages = {
     language-server = {
-        intelephense = {
-            command = "${pkgs.nodePackages_latest.intelephense}/bin/intelephen";
-            args = ["--stdio"];
+        phpactor = {
+            command = "${pkgs.phpactor}/bin/phpactor";
+            args = ["language-server"];
         };
         nil = {
           command = lib.getExe pkgs.nil;
@@ -20,6 +20,7 @@
         auto-format = true;
         file-types = ["php" "inc"];
         shebangs = ["php"];
+        language-servers = [ "phpactor" ];
         roots = ["composer.json" "index.php"];
         
       }
