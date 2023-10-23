@@ -52,7 +52,6 @@ in
   imports = [
     ./programs
     ./firefox
-    ./wezterm
     ./wayland/hyprland
     ./git
     ./starship

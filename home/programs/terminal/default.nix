@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./xplr
-    ./terminal
+    ./kitty
+    ./wezterm
   ];
 }
