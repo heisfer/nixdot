@@ -19,6 +19,7 @@ let
     webcord-vencord
     telegram-desktop
     transmission-qt
+    kitty
     scrcpy
   ];
 
@@ -32,6 +33,7 @@ let
     neofetch
     glxinfo
     grim
+    htop
     slurp
     pamixer
     scrot
