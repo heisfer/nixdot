@@ -59,12 +59,6 @@ in
   ];
   home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride;
 
-  programs = {
-    vscode = {
-      enable = true;
-    };
-
-  };
 
   programs.direnv = {
     enable = true;

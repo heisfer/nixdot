@@ -1,5 +1,5 @@
 
-{inputs, pkgs, config, ...}:{
+{pkgs, ...}:{
 
   imports = [
     ./hyprland.nix
@@ -23,6 +23,7 @@
 
   home = { 
     packages = with pkgs; [
+      swww
       spot
       swayidle
       gnome.nautilus

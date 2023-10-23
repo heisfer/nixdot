@@ -3,6 +3,7 @@
   imports = [
     ./helix
     ./neovim
+    ./vscode
   ];
 
   #lsp

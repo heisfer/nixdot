@@ -24,7 +24,7 @@ exec-once = xrandr --output DP-2 --primary
 
 # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
 device:at-translated-set-2-keyboard {
-    kb_layout=us,us,ee
+    kb_layout=us,ee
     kb_model=pc105
     kb_variant=colemak,
     kb_options=grp:alt_space_toggle

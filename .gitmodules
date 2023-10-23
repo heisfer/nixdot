@@ -1,0 +1,3 @@
+[submodule "home/programs/file-manager/xplr/plugins/zentable.xplr"]
+	path = home/programs/file-manager/xplr/plugins/zentable.xplr
+	url = https://github.com/sayanarijit/zentable.xplr.git
