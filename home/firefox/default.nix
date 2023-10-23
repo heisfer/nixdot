@@ -51,6 +51,14 @@ in
               updateInterval = 24 * 60 * 60 * 1000; # every day
               definedAliases = [ "@nw" ];
             };
+
+            "Home-Manager" = {
+              urls = [{ template = "https://mipmip.github.io/home-manager-option-search/?query={searchTerms}"; }];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@hm" ];
+              
+            };
+
           "Bing".metaData.hidden = true;
           "Google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
           
