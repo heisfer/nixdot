@@ -9,6 +9,10 @@
             command = "${pkgs.nodePackages_latest.intelephense}/bin/intelephen";
             args = ["--stdio"];
         };
+        nil = {
+          command = lib.getExe pkgs.nil;
+          config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+        };
     };
     language = [
       {

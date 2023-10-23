@@ -1,7 +1,8 @@
 { ... }:
 {
   imports = [
-    ./xplr
+    ./file-manager
     ./terminal
+    ./git
   ];
 }

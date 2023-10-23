@@ -8,7 +8,6 @@ let
   ];
 
   dev = with pkgs; [
-    nodePackages_latest.intelephense
     symfony-cli
     python3
     jq    
@@ -18,6 +17,7 @@ let
     chromium
     webcord-vencord
     telegram-desktop
+    github-desktop
     transmission-qt
     kitty
     scrcpy
@@ -51,12 +51,10 @@ in
 {
   imports = [
     ./programs
-    ./firefox
+    ./browser
     ./wayland/hyprland
-    ./git
     ./starship
-    ./editors/helix
-    ./editors/neovim
+    ./editors
   ];
   home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride;
 
