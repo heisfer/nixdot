@@ -13,9 +13,8 @@
     .. home
     .. "/.config/xplr/plugins/?.lua;"
     .. package.path
-    require("zentable").setup()
     require("tree-view").setup()
-
+    require("icons").setup()
 
     xplr.config.modes.builtin.default.key_bindings.on_key["e"] =
     xplr.config.modes.builtin.action.key_bindings.on_key["e"]

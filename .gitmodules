@@ -4,3 +4,6 @@
 [submodule "home/programs/file-manager/xplr/plugins/tree-view"]
 	path = home/programs/file-manager/xplr/plugins/tree-view
 	url = https://github.com/sayanarijit/tree-view.xplr.git
+[submodule "home/programs/file-manager/xplr/plugins/icons"]
+	path = home/programs/file-manager/xplr/plugins/icons
+	url = https://github.com/prncss-xyz/icons.xplr.git

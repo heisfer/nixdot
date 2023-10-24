@@ -31,6 +31,7 @@ let
   ];
 
   utils = with pkgs; [
+    nerd-font-patcher
     neofetch
     glxinfo
     grim
