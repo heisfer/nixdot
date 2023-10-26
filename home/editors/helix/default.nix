@@ -13,7 +13,7 @@
     package = inputs.helix.packages."x86_64-linux".default;
     defaultEditor = true;
     settings = {
-      theme = "ayu_dark";
+      theme = "ayu_evolve";
       
       editor = {
         line-number = "relative";

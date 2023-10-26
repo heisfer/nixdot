@@ -3,7 +3,7 @@
 
   imports = [
     ./hyprland.nix
-    ../hyprpaper
+#    ../hyprpaper
     
   ];
   xdg.configFile."scripts".source = ./scripts;

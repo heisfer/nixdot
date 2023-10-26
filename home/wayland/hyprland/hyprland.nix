@@ -14,10 +14,11 @@ in {
 monitor=eDP-1,1920x1200@60,0x0,1
 
 # Auto start
-exec-once = hyprpaper
+# exec-once = hyprpaper
 exec-once = waybar
 exec-once = keyctl link @u @s
 exec-once = xrandr --output DP-2 --primary
+exec-once = swww init
 #
 
 
@@ -133,7 +134,7 @@ device:epic-mouse-v1 {
 $mainMod = SUPER
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-bind = $mainMod, RETURN, exec, kitty
+bind = $mainMod, RETURN, exec, wezterm
 bind = $mainMod, Q, killactive,
 bind = $mainMod, W, exec, firefox-developer-edition -new-tab about:newtab
 bind = $mainMod  SHIFT, W, exec, firefox-developer-edition

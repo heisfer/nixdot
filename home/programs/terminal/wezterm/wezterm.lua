@@ -3,7 +3,7 @@ local act = wezterm.action
 
 return {
   font = wezterm.font("Comic Code Ligatures", {weight="Regular", stretch="Normal", style="Normal"}),
-  color_scheme = "ayu",
+  color_scheme = "Ayu Dark (Gogh)",
   enable_tab_bar = false,
   default_cursor_style = 'SteadyUnderline',
   window_padding = {
