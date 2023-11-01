@@ -5,6 +5,7 @@ let
 
   customPkgs = with localPkgs; [
     miru
+    station
   ];
 
   dev = with pkgs; [
