@@ -6,6 +6,7 @@ let
   customPkgs = with localPkgs; [
     miru
     station
+    sidekick
   ];
 
   dev = with pkgs; [
