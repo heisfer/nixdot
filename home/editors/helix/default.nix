@@ -11,7 +11,7 @@
     # using master branch of helix instead of nixpkgs
     # https://github.com/helix-editor/helix/discussions/6062
     package = inputs.helix.packages."x86_64-linux".default;
-    defaultEditor = false;
+    defaultEditor = true;
     settings = {
       theme = "ayu_evolve";
       

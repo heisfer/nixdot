@@ -21,6 +21,7 @@
     packages = with pkgs; [
       steam
       pavucontrol
+      pulsar
       unzip
       gamemode
       gamescope

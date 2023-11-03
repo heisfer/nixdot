@@ -46,11 +46,9 @@
         };
       };
       ath11k-resume = {
-	description = "resume: modprobe ath11k_pci";
-	after = [ "suspend.target" ];
-
-        wantedBy = [ "suspend.target" ];
-
+        description = "Resume: modprobe ath11k_pci";
+        after = [ "sleep.target" ];
+        wantedBy = [ "sleep.target" ];
         serviceConfig = {
           ExecStart="/run/current-system/sw/bin/modprobe ath11k_pci";
           Type = "simple";
