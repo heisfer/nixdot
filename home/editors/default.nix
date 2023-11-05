@@ -10,6 +10,13 @@
   home.packages = with pkgs; [
     phpactor
     nodePackages_latest.intelephense
+    nodePackages_latest.typescript-language-server
+    nodePackages_latest.vscode-css-languageserver-bin
+    nodePackages_latest.vscode-html-languageserver-bin
+    nodePackages_latest.vscode-json-languageserver
+    nodePackages_latest.bash-language-server
+    lua-language-server
+    yaml-language-server
     nil
   ];
 }
