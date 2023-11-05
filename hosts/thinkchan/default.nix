@@ -1,25 +1,29 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-
+{pkgs, ...}: {
   imports = [
+    # audio
+    ./audio/bluetooth.nix
+    ./audio/pipewire.nix
+
+    # services
+    ./service/ath11k.nix
+
+    #wayland
+    ./wayland/env.nix
+    ./wayland/portal.nix
+
+    # misc
+    ./misc/android.nix
+    ./misc/nix.nix
+
     ./hardware-configuration.nix
-    ../../modules
-    ../../home/wayland
   ];
 
   nixpkgs = {
     config = {
       allowsUnfree = true;
     };
-
   };
-  
+
   systemd = {
     # sleep.extraConfig = ''
     #   SuspendState=freeze
@@ -36,24 +40,6 @@
         };
         wantedBy = ["multi-user.target"];
       };
-      ath11k-suspend = {
-        description = "Suspend: rmmod ath11k_pci";
-        before = [ "sleep.target" ];
-        wantedBy = [ "sleep.target" ];
-        serviceConfig = {
-          ExecStart="/run/current-system/sw/bin/rmmod ath11k_pci";
-          Type = "simple";
-        };
-      };
-      ath11k-resume = {
-        description = "Resume: modprobe ath11k_pci";
-        after = [ "sleep.target" ];
-        wantedBy = [ "sleep.target" ];
-        serviceConfig = {
-          ExecStart="/run/current-system/sw/bin/modprobe ath11k_pci";
-          Type = "simple";
-        };
-      };
     };
   };
 
@@ -68,27 +54,13 @@
     gnome.gnome-keyring.enable = true;
 
     openssh.enable = true;
-    gvfs.enable = true;    
+    gvfs.enable = true;
     xserver = {
       layout = "us";
-      videoDrivers = [ "amdgpu" ];
-      extraLayouts.programmer-colemak = {
-        description = "Programmer Colemak";
-        languages = [ "eng" ];
-        symbolsFile = ../../xkb/prog_ck_symbols.xkb;
-      };
+      videoDrivers = ["amdgpu"];
       # xkbModel = "pc105";
       # xkbVariant = "colemak";
-
     };
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      jack.enable = true;
-      pulse.enable = true;
-    };
-
   };
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -111,7 +83,6 @@
   };
 
   security = {
-    rtkit.enable = true;
     polkit.enable = true;
     pam.services.gtklock.text = "auth include login";
   };
@@ -122,12 +93,11 @@
     pkgs.rpcs3
 
     pkgs.genymotion
-    
+
     pkgs.glfw-wayland-minecraft
 
     # native wayland support (unstable)
     pkgs.wineWowPackages.waylandFull
-
   ];
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.variables = {
@@ -137,9 +107,7 @@
     "LIBVA_DRIVER_NAME" = "radeonsi";
   };
 
-
   time.timeZone = "Europe/Tallinn";
-
 
   fonts = {
     packages = with pkgs; [
@@ -172,23 +140,16 @@
     };
   };
   environment.etc."pkcs11/modules/opensc-pkcs11".text = ''
-      module: ${pkgs.opensc}/lib/opensc-pkcs11.so
-    '';
+    module: ${pkgs.opensc}/lib/opensc-pkcs11.so
+  '';
   users.users = {
     heisfer = {
       isNormalUser = true;
       description = "Heisfer Light";
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" "adbusers" ];
+      extraGroups = ["wheel" "networkmanager" "audio" "video" "adbusers"];
     };
   };
 
-  #programs.hyprland.enable = true;
-  programs.adb.enable = true;
-
-  users.extraGroups.heisfer.members = [ "user-with-access-to-virtualbox" ];
-  virtualisation.virtualbox.host.enable = true;
-
   console.useXkbConfig = true;
   system.stateVersion = "23.05";
-  
 }
