@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, imports, lib, ... }:
+{ pkgs, ... }:
 
 let
   localPkgs = import ../pkgs/default.nix { pkgs = pkgs; };
@@ -13,7 +13,12 @@ let
     jq    
   ];
 
+  libs = with pkgs; [
+    libdigidocpp
+  ];
+
   apps = with pkgs; [
+    qdigidoc
     chromium
     webcord-vencord
     telegram-desktop
@@ -58,7 +63,7 @@ in
     ./starship
     ./editors
   ];
-  home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride;
+  home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride ++ libs;
 
 
   programs.direnv = {
