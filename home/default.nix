@@ -65,7 +65,6 @@
     htop
     unzip
     p7zip
-    unrar
     rar
     scrcpy
     zip
