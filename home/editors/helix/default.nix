@@ -1,11 +1,6 @@
-{
-  inputs,
-  ...
-}: {
-
+{inputs, ...}: {
   imports = [./languages.nix];
 
-  
   programs.helix = {
     enable = true;
     # using master branch of helix instead of nixpkgs
@@ -14,10 +9,16 @@
     defaultEditor = true;
     settings = {
       theme = "ayu_evolve";
-      
+
       editor = {
         line-number = "relative";
-        lsp.display-messages = true;
+        cursorline = true;
+        auto-format = true;
+        mouse = false;
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
         cursor-shape = {
           insert = "bar";
           normal = "bar";
@@ -48,13 +49,12 @@
         space.space = "file_picker";
         space.w = ":w";
         space.q = ":q";
-        esc = [ "collapse_selection" "keep_primary_selection" ];
+        esc = ["collapse_selection" "keep_primary_selection"];
       };
 
       keys.normal.space.u = {
         f = ":format";
       };
-
     };
   };
 }
