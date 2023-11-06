@@ -58,8 +58,8 @@
     xserver = {
       layout = "us";
       videoDrivers = ["amdgpu"];
-      # xkbModel = "pc105";
-      # xkbVariant = "colemak";
+      xkbModel = "pc105";
+      xkbVariant = "colemak";
     };
   };
   i18n.defaultLocale = "en_US.UTF-8";
