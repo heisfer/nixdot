@@ -128,7 +128,8 @@ device:epic-mouse-v1 {
 # Example windowrule v2
 # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
 # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-
+windowrulev2 = float,class:(eu.web-eid.),title:(Web eID)
+windowrulev2 = size 677 429, class:(eu.web-eid.),title:(Web eID)
 
 # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 $mainMod = SUPER
