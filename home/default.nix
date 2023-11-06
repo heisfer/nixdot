@@ -5,6 +5,11 @@
     miru
   ];
 
+  games = with pkgs; [
+    steam
+    runelite 
+  ];
+  
   dev = with pkgs; [
     jq
     python3
@@ -13,6 +18,7 @@
 
   libs = with pkgs; [
     libdigidocpp
+    glfw-wayland
   ];
 
   apps = with pkgs; [
@@ -22,6 +28,7 @@
     onagre
     qdigidoc
     scrcpy
+    youtube-music
     telegram-desktop
     transmission-qt
     webcord-vencord
@@ -31,6 +38,24 @@
     (discord.override {
       withVencord = true;
     })
+    (prismlauncher.override {
+      glfw = let
+        mcWaylandPatchRepo = fetchFromGitHub {
+          owner = "Admicos";
+          repo = "minecraft-wayland";
+          rev = "370ce5b95e3ae9bc4618fb45113bc641fbb13867";
+          sha256 = "sha256-RPRg6Gd7N8yyb305V607NTC1kUzvyKiWsh6QlfHW+JE=";
+        };
+        mcWaylandPatches =
+          map (name: "${mcWaylandPatchRepo}/${name}")
+          (lib.naturalSort (builtins.attrNames (lib.filterAttrs
+            (name: type: type == "regular" && lib.hasSuffix ".patch" name)
+            (builtins.readDir mcWaylandPatchRepo))));
+      in
+        glfw-wayland.overrideAttrs (previousAttrs: {
+          patches = previousAttrs.patches ++ mcWaylandPatches;
+        });
+    })
   ];
 
   utils = with pkgs; [
@@ -38,6 +63,13 @@
     glxinfo
     grim
     htop
+    unzip
+    p7zip
+    unrar
+    rar
+    scrcpy
+    zip
+    pavucontrol
     libnotify
     libva-utils
     neofetch
@@ -59,7 +91,7 @@ in {
     ./starship
     ./wayland/hyprland
   ];
-  home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride ++ libs;
+  home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride ++ libs ++ games;
 
   programs.direnv = {
     enable = true;
