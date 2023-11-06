@@ -1,16 +1,14 @@
-{ pkgs, ... }:
-
-let
-  localPkgs = import ../pkgs/default.nix { pkgs = pkgs; };
+{pkgs, ...}: let
+  localPkgs = import ../pkgs/default.nix {pkgs = pkgs;};
 
   customPkgs = with localPkgs; [
     miru
   ];
 
   dev = with pkgs; [
-    symfony-cli
+    jq
     python3
-    jq    
+    symfony-cli
   ];
 
   libs = with pkgs; [
@@ -18,15 +16,15 @@ let
   ];
 
   apps = with pkgs; [
-    qdigidoc
     chromium
-    webcord-vencord
-    telegram-desktop
     github-desktop
-    transmission-qt
     kitty
     onagre
+    qdigidoc
     scrcpy
+    telegram-desktop
+    transmission-qt
+    webcord-vencord
   ];
 
   appsOverride = with pkgs; [
@@ -36,35 +34,32 @@ let
   ];
 
   utils = with pkgs; [
-    nerd-font-patcher
-    neofetch
+    dconf
     glxinfo
     grim
     htop
-    slurp
-    pamixer
-    scrot
-    pavucontrol
+    libnotify
     libva-utils
+    neofetch
+    nerd-font-patcher
+    pamixer
+    pavucontrol
+    scrot
+    slurp
     wf-recorder
     wl-clipboard
-    dconf
     xorg.xeyes
     xorg.xrandr
-    libnotify
   ];
-  
-in
-{
+in {
   imports = [
-    ./programs
     ./browser
-    ./wayland/hyprland
-    ./starship
     ./editors
+    ./programs
+    ./starship
+    ./wayland/hyprland
   ];
   home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride ++ libs;
-
 
   programs.direnv = {
     enable = true;
@@ -75,8 +70,8 @@ in
   programs.bash = {
     enable = true;
   };
-  
-  programs.nushell ={
+
+  programs.nushell = {
     enable = true;
   };
 }
