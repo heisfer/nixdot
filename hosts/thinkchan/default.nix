@@ -6,7 +6,7 @@
 
     # services
     ./service/ath11k.nix
-
+    ./service/greetd.nix
     #wayland
     ./wayland/env.nix
     ./wayland/portal.nix
