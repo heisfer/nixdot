@@ -84,7 +84,7 @@
   ];
 in {
   imports = [
-    ./browser
+    ./internet
     ./editors
     ./programs
     ./starship
