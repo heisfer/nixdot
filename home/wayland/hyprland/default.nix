@@ -9,7 +9,7 @@
   xdg.configFile."scripts".source = ./scripts;
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
   };
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
