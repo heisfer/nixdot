@@ -1,9 +1,13 @@
-{ inputs, system, extraArgs, ... }:
+{
+  inputs,
+  system,
+  extraArgs,
+  ...
+}:
 with inputs; let
-  hmModule = inputs.home-manager.nixosModules.home-manager;
-  hyprlandModule = inputs.hyprland.homeManagerModules.default;
-  inherit (inputs.nixpkgs.lib) nixosSystem;
-  kmonadModule = inputs.kmonad.nixosModules.default;
+  hmModule = home-manager.nixosModules.home-manager;
+  hyprlandModule = hyprland.homeManagerModules.default;
+  inherit (nixpkgs.lib) nixosSystem;
 in {
   thinkchan = nixosSystem {
     inherit system;
@@ -16,7 +20,7 @@ in {
         home-manager = {
           useGlobalPkgs = true;
           useUserPackages = true;
-          extraSpecialArgs = {inherit inputs extraArgs ;};
+          extraSpecialArgs = {inherit inputs extraArgs;};
           users.heisfer = {
             imports = [
               ../home/profiles/thinkchan.nix
