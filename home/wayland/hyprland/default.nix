@@ -3,6 +3,7 @@
 
   imports = [
     ./hyprland.nix
+    ../gbar
 #    ../hyprpaper
     
   ];

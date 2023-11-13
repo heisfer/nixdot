@@ -2,6 +2,7 @@
   localPkgs = import ../pkgs/default.nix {pkgs = pkgs;};
 
   customPkgs = with localPkgs; [
+    wavebox
     miru
   ];
 
@@ -17,6 +18,7 @@
   ];
 
   libs = with pkgs; [
+    glibc
     libdigidocpp
     glfw-wayland
   ];

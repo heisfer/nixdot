@@ -46,7 +46,7 @@
     general {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        resize_on_border = true
+        # resize_on_border = true
 
         gaps_in = 5
         gaps_out = 20
