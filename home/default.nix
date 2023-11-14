@@ -62,6 +62,7 @@
 
   utils = with pkgs; [
     dconf
+	gtop
     glxinfo
     grim
     htop

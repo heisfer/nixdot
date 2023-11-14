@@ -8,6 +8,8 @@
 
   #lsp
   home.packages = with pkgs; [
+    luajitPackages.lua-lsp
+    rnix-lsp
     phpactor
     nodePackages_latest.intelephense
     nodePackages_latest.typescript-language-server
