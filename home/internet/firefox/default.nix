@@ -72,14 +72,4 @@ in {
       };
     };
   };
-  home = {
-    sessionVariables.BROWSER = "firefox";
-  };
-
-  xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox-developer-edition.desktop"];
-    "text/xml" = ["firefox-developer-edition.desktop"];
-    "x-scheme-handler/http" = ["firefox-developer-edition.desktop"];
-    "x-scheme-handler/https" = ["firefox-developer-edition.desktop"];
-  };
 }
