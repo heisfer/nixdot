@@ -10,19 +10,23 @@ in {
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
-	  nvim-treesitter.withAllGrammars
+	  {
+	    plugin = nvim-treesitter.withAllGrammars;
+		config = toLuaFile ./lua/plugins/treesitter.lua;
+	  }
+
       phpactor
       cmp_luasnip
       cmp-nvim-lsp
 
       {
         plugin = wilder-nvim;
-	config = toLuaFile ./lua/plugins/wilder.lua;
+		config = toLuaFile ./lua/plugins/wilder.lua;
       }
 
       {
         plugin = gitsigns-nvim;
-	config = toLuaFile ./lua/plugins/gitsigns.lua;
+		config = toLuaFile ./lua/plugins/gitsigns.lua;
       }
       luasnip
       friendly-snippets
