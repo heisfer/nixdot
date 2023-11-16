@@ -90,7 +90,6 @@ in {
     ./internet
     ./editors
     ./programs
-    ./starship
     ./wayland/hyprland
   ];
   home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride ++ libs ++ games;
@@ -101,11 +100,4 @@ in {
     nix-direnv.enable = true;
   };
 
-  programs.bash = {
-    enable = true;
-  };
-
-  programs.nushell = {
-    enable = true;
-  };
 }

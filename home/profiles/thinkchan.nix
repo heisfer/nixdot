@@ -7,6 +7,11 @@
     ../mako
     ../rofi
     ../gtk
+
+	#shell stuff
+	../shell/bash.nix
+	../shell/nushell.nix
+	../shell/starship.nix
   ];
 
   systemd.user.startServices = "sd-switch";
