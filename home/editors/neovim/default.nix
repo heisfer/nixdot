@@ -10,6 +10,7 @@ in {
     vimdiffAlias = true;
 
     plugins = with pkgs.vimPlugins; [
+	  nvim-treesitter.withAllGrammars
       phpactor
       cmp_luasnip
       cmp-nvim-lsp
