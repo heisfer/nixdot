@@ -61,6 +61,7 @@
   ];
 
   utils = with pkgs; [
+    xdg-utils
     dconf
 	gtop
     glxinfo
