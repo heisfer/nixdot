@@ -12,6 +12,7 @@
 	../shell/bash.nix
 	../shell/nushell.nix
 	../shell/starship.nix
+	../shell/carapace.nix
   ];
 
   systemd.user.startServices = "sd-switch";
