@@ -145,6 +145,7 @@
   users.users = {
     heisfer = {
       isNormalUser = true;
+	  shell = pkgs.nushell;
       description = "Heisfer Light";
       extraGroups = ["wheel" "networkmanager" "audio" "video" "adbusers"];
     };
