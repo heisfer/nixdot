@@ -92,6 +92,7 @@
 
     pkgs.rpcs3
 
+    pkgs.renpy
     pkgs.genymotion
 
     pkgs.glfw-wayland-minecraft
