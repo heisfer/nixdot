@@ -8,9 +8,9 @@
 
   games = with pkgs; [
     steam
-    runelite 
+    runelite
   ];
-  
+
   dev = with pkgs; [
     jq
     python3
@@ -61,9 +61,10 @@
   ];
 
   utils = with pkgs; [
+    jellyfin-ffmpeg
     xdg-utils
     dconf
-	gtop
+    gtop
     glxinfo
     grim
     htop
@@ -100,5 +101,4 @@ in {
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-
 }
