@@ -9,12 +9,29 @@
 
   gtk = {
     enable = true;
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
     theme = {
-      name = "Catppuccin-Mocha-Standard-Pink-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
-        variant = "mocha";
-      };
+      name = "Ayu-Dark";
+      package = pkgs.ayu-theme-gtk;
+    };
+
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
     };
   };
+
+  home.sessionVariables.GTK_THEME = "ayu-dark";
 }
