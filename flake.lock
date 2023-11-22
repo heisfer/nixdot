@@ -87,11 +87,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1700564820,
+        "lastModified": 1700636428,
         "narHash": "sha256-Z5ue+vrIBf3PX6Rb4ZiCMXEjWyQORmLTfBiomro9K/0=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "47b6c4bc78d449e3586f28d26507bfc8fb8608e2",
+        "rev": "811d62d3b3699efb7b7ceb362f537979e5911871",
         "type": "github"
       },
       "original": {
@@ -131,11 +131,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1700592218,
-        "narHash": "sha256-vHzDbBrZ5EsfVUMLgjuugf6OqB+iOLjKLO9O5n2occ4=",
+        "lastModified": 1700650956,
+        "narHash": "sha256-G6wte9cV8CH8x55ZdqpidSwGjuUE0l02+PdYikavmTE=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "472926528428cd714c90f157e639fc0466611c8b",
+        "rev": "d417370bb725eb58f385b0cbfc924090462164f4",
         "type": "github"
       },
       "original": {
@@ -225,11 +225,11 @@
     },
     "nurpkgs": {
       "locked": {
-        "lastModified": 1700599128,
-        "narHash": "sha256-kZQlqx3UZ53dCfSQG5RUUPJtwvnXQBZPmoeCyaHrnUM=",
+        "lastModified": 1700649906,
+        "narHash": "sha256-xckq5YgckXTgToEn5biO/Rl167OOknG4ndturr1iUaY=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "0c23fa83248598ff38b4590d3191d7d55af8225e",
+        "rev": "9ee4563cf0b4c9b6dd78bce8c45fa32103be97d4",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
       },
       "locked": {
         "dir": "pkgs/firefox-addons",
-        "lastModified": 1700553443,
-        "narHash": "sha256-ssMfZ+WjOP9McDo8oyo4WPQ2AHigxKHC5W2mH/EzBIs=",
+        "lastModified": 1700625759,
+        "narHash": "sha256-aKKnrOpAUnLILxuC1WdazwpvamJg5vPSDxE/HnTsGQU=",
         "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "21c48821a1e90fce0cb700f1cf0547402daf0abd",
+        "rev": "e1f726b4a477e5fde7e95dc939a738c0af949a7a",
         "type": "gitlab"
       },
       "original": {
