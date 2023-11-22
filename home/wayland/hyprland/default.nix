@@ -4,6 +4,7 @@
   imports = [
     ./hyprland.nix
 	./xdg.nix
+	../ags
 #    ../hyprpaper
     
   ];

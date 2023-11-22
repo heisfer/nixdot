@@ -28,6 +28,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nurpkgs.url = github:nix-community/NUR;
+
+
+	ags.url = "github:Aylur/ags";
   };
   outputs = inputs: let
     system = "x86_64-linux";
