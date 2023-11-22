@@ -21,7 +21,7 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-devedition.override {
-      extraNativeMessagingHosts = [ pkgs.web-eid-app ];
+      nativeMessagingHosts = [ pkgs.web-eid-app ];
       extraPolicies.SecurityDevices.p11-kit-proxy = "${pkgs.p11-kit}/lib/p11-kit-proxy.so";
     };
     profiles = {
