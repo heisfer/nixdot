@@ -24,6 +24,7 @@
   ];
 
   apps = with pkgs; [
+    cinny-desktop
     chromium
     github-desktop
     kitty
