@@ -115,6 +115,7 @@
       # icon fonts
       font-awesome
       material-symbols
+	  nerdfonts
       # normal fonts
       jost
       lexend
@@ -124,7 +125,7 @@
       roboto
 
       # nerdfonts
-      (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+      # (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
     ];
 
     # use fonts specified by user rather than default ones

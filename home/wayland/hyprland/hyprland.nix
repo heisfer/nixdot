@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   wayland.windowManager.hyprland.extraConfig = ''
@@ -132,20 +133,19 @@
     $mainMod = SUPER
 
     # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-    bind = $mainMod, RETURN, exec, wezterm
+    bind = $mainMod, RETURN, exec, ${lib.getExe config.programs.wezterm.package}
     bind = $mainMod, Q, killactive,
-    bind = $mainMod, W, exec, firefox -new-tab about:newtab
-    bind = $mainMod  SHIFT, W, exec, firefox-developer-edition
+    bind = $mainMod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab
+    bind = $mainMod  SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}
     bind = $mainMod, M, exit,
-    bind = $mainMod, S, exec, ${config.programs.rofi.package}/bin/rofi -show drun -modi drun,run -display-drun " Search"
-    bind = $mainMod, B, exec, ${pkgs.rofi-bluetooth}/bin/rofi-bluetooth
-    bind = $mainMod, E, exec, nautilus
+    bind = $mainMod, S, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun " Search"
+    bind = $mainMod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}
+    bind = $mainMod, E, exec, ${lib.getExe pkgs.deepin.dde-file-manager}
     bind = $mainMod, V, togglefloating,
     bind=  $mainMod, F,fullscreen,
-    bind = $mainMod, R, exec, wofi --show drun
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
-    bind=  ,PRINT,exec,grim -g "$(slurp)" - | wl-copy -t image/png
+    bind=  ,PRINT,exec,${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png
     bind=  $mainMod,PRINT,exec,grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png && notify-send 'Screenshot Copied to Clipboard'
 
     # Move focus with mainMod + arrow keys
