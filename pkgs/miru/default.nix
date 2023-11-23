@@ -9,7 +9,8 @@ let
     sha256 = "sha256-/2R19+jjAfAjfbG4IqzdulV55tzB3QoT/LAw1a2bE38=";
   };
   appimageContents = appimageTools.extractType2 { inherit name src; };
-in appimageTools.wrapType2 {
+in
+appimageTools.wrapType2 {
   inherit name src;
 
   extraInstallCommands = ''
@@ -20,5 +21,5 @@ in appimageTools.wrapType2 {
     substituteInPlace $out/share/applications/${name}.desktop \
       --replace 'Exec=AppRun --no-sandbox %U' 'Exec=${name}'
   '';
-  
+
 }

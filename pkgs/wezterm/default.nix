@@ -19,12 +19,12 @@
 , xcbutilwm
 , wayland
 , zlib
-# , CoreGraphics
-# , Cocoa
-# , Foundation
-# , System
-# , libiconv
-# , UserNotifications
+  # , CoreGraphics
+  # , Cocoa
+  # , Foundation
+  # , System
+  # , libiconv
+  # , UserNotifications
 , nixosTests
 , runCommand
 , vulkan-loader
