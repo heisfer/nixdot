@@ -4,6 +4,7 @@
   customPkgs = with localPkgs; [
     wavebox
     miru
+    spacedrive
   ];
 
   games = with pkgs; [
