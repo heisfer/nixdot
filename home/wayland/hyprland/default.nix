@@ -1,14 +1,12 @@
-
-{pkgs, ...}:{
-
+{pkgs, ...}: {
   imports = [
     ./hyprland.nix
-	./xdg.nix
-	../ags
-#    ../hyprpaper
-    
+    ./xdg.nix
+    ../waybar
+    ../rofi
+    ../ags
+    #    ../hyprpaper
   ];
-  xdg.configFile."scripts".source = ./scripts;
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -18,12 +16,12 @@
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
   };
-  programs.obs-studio.enable  = true;
+  programs.obs-studio.enable = true;
   programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [wlrobs];
-  
+
   ##################################
 
-  home = { 
+  home = {
     packages = with pkgs; [
       swww
       spot
@@ -33,6 +31,4 @@
       brightnessctl
     ];
   };
-
-
-}   
+}

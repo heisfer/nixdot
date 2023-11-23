@@ -1,6 +1,6 @@
 {pkgs,  ... }:
 let
-localPkgs = import ../../../../pkgs/default.nix { pkgs = pkgs; };
+localPkgs = import ../../../pkgs/default.nix { pkgs = pkgs; };
   
 in
 {

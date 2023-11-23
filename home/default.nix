@@ -90,9 +90,6 @@
   ];
 in {
   imports = [
-    ./internet
-    ./editors
-    ./programs
     ./wayland/hyprland
   ];
   home.packages = customPkgs ++ dev ++ apps ++ utils ++ appsOverride ++ libs ++ games;

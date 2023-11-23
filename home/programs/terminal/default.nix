@@ -1,7 +1,0 @@
-{ ... }:
-{
-  imports = [
-    ./kitty
-    ./wezterm
-  ];
-}

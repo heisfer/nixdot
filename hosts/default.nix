@@ -23,7 +23,7 @@ in {
           extraSpecialArgs = {inherit inputs extraArgs;};
           users.heisfer = {
             imports = [
-              ../home/profiles/thinkchan.nix
+              ../home/profiles/thinkchan/default.nix
               hyprlandModule
             ];
           };
