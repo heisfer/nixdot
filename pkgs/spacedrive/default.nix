@@ -4,10 +4,10 @@
 }:
 let
   name = "spacedrive";
-  version = "0.1.2";
+  version = "0.1.4";
   src = fetchurl {
     url = "https://github.com/spacedriveapp/spacedrive/releases/download/${version}/Spacedrive-linux-x86_64.AppImage";
-    sha256 = "387a0e11f301383d450067093c6a95f803f385b561542da4bca62c02946cd554";
+    sha256 = "sha256-iBdW8iPuvztP0L5xLyVs7/K8yFe7kD7QwdTuKJLhB+c=";
   };
   appimageContents = appimageTools.extractType2 { inherit name src; };
 in
