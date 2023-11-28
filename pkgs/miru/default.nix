@@ -1,12 +1,12 @@
 { fetchurl
 , appimageTools
-, lib
 }:
 let
   name = "miru";
+  version = "4.5.5";
   src = fetchurl {
-    url = "https://github.com/ThaUnknown/miru/releases/download/v4.4.11/linux-Miru-4.4.11.AppImage";
-    sha256 = "sha256-/2R19+jjAfAjfbG4IqzdulV55tzB3QoT/LAw1a2bE38=";
+    url = "https://github.com/ThaUnknown/miru/releases/download/v${version}/linux-Miru-${version}.AppImage";
+    hash = "sha256-117OlW1VbaxGJBQNsaDok1cUE/MS+8+y/XA68kpRkSc=";
   };
   appimageContents = appimageTools.extractType2 { inherit name src; };
 in
