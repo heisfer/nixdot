@@ -25,6 +25,7 @@
   ];
 
   apps = with pkgs; [
+    xplorer
     cinny-desktop
     chromium
     github-desktop
