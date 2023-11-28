@@ -10,6 +10,11 @@
   gtk = {
     enable = true;
 
+    font = {
+      name = "Cantarell";
+      package = pkgs.cantarell-fonts;
+    };
+
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
