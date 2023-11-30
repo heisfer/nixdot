@@ -1,7 +1,5 @@
 {
   pkgs,
-  lib,
-  inputs,
   extraArgs,
   ...
 }: let
@@ -28,6 +26,9 @@ in {
       dev-edition-default = {
         id = 0;
         inherit extensions extraConfig;
+        settings = {
+          "browser.fullscreen.autohide" = false;
+        };
         search = {
           force = true;
           engines = {
