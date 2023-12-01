@@ -7,9 +7,9 @@
   wayland.windowManager.hyprland.extraConfig = ''
 
     # Monitors
-    # monitor=DP-2,1920x1080@75,0x0,1
-    # monitor=eDP-1,1920x1200@60,0x1080,1
-    monitor=eDP-1,1920x1200@60,0x0,1
+    monitor=DP-2,1920x1080@75,0x0,1
+    monitor=eDP-1,1920x1200@60,0x1080,1
+#    monitor=eDP-1,1920x1200@60,0x0,1
 
     # Auto start
     # exec-once = hyprpaper
