@@ -28,6 +28,12 @@
         kb_variant=colemak,
         kb_options=grp:alt_space_toggle
     }
+    device:xremap {
+        kb_layout=us,ee
+        kb_model=pc105
+        kb_variant=colemak,
+        kb_options=grep:alt_space_toggle
+    }
     input {
         kb_layout = us
         kb_variant =

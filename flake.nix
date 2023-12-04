@@ -19,7 +19,7 @@
     helix.url = "github:helix-editor/helix";
 
     rycee-nurpkgs = {
-      url = gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons;
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -27,8 +27,10 @@
       url = "github:kmonad/kmonad?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nurpkgs.url = github:nix-community/NUR;
+    nurpkgs.url = "github:nix-community/NUR";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
+    xremap-flake.url = "github:xremap/nix-flake";
 
 	ags.url = "github:Aylur/ags";
   };
@@ -41,6 +43,7 @@
     extraArgs = {
       inherit (inputs.rycee-nurpkgs.lib.${system}) buildFirefoxXpiAddon;
       addons = pkgs.nur.repos.rycee.firefox-addons;
+      vscode-extensions = inputs.nix-vscode-extensions.extensions.${system};
     };
   in {
     nixosConfigurations =

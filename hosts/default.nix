@@ -15,6 +15,7 @@ in {
     modules = [
       ./thinkchan
       inputs.kmonad.nixosModules.default
+      inputs.xremap-flake.nixosModules.default
       hmModule
       {
         home-manager = {
