@@ -6,6 +6,7 @@
 
     # services
     ./service/ath11k.nix
+    ./service/xremap.nix
 #    ./service/greetd.nix
     #wayland
     ./wayland/env.nix
