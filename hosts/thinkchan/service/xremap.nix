@@ -5,23 +5,24 @@
     serviceMode = "user";
     deviceName = "AT Translated Set 2 keyboard";
     yamlConfig = ''
-      virtual_modifiers:
-        - CapsLock
+
       keymap:
         - name: Global
           remap:            
 
             # Programmer-colemak layout for third layer
-            CAPSLOCK-A: LEFTBRACE
-            CAPSLOCK-S: SHIFT-LEFTBRACE
-            CAPSLOCK-D: EQUAL
-            CAPSLOCK-F: SHIFT-9
-            CAPSLOCK-G: SHIFT-8
-            CAPSLOCK-H: MINUS
-            CAPSLOCK-J: SHIFT-0
-            CAPSLOCK-K: SHIFT-MINUS
-            CAPSLOCK-L: SHIFT-RIGHTBRACE
-            CAPSLOCK-SEMICOLON: RIGHTBRACE
+            KEY_RIGHTALT-E: SHIFT-4
+            KEY_RIGHTALT-A: LEFTBRACE
+            KEY_RIGHTALT-S: SHIFT-LEFTBRACE
+            KEY_RIGHTALT-D: EQUAL
+            KEY_RIGHTALT-F: SHIFT-9
+            KEY_RIGHTALT-G: SHIFT-8
+            KEY_RIGHTALT-H: MINUS
+            KEY_RIGHTALT-J: SHIFT-0
+            KEY_RIGHTALT-K: SHIFT-MINUS
+            KEY_RIGHTALT-L: SHIFT-RIGHTBRACE
+            KEY_RIGHTALT-SEMICOLON: RIGHTBRACE
+            
             
     '';
   };
