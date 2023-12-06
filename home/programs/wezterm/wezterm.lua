@@ -7,7 +7,7 @@ return {
     "Noto Sans Symbols 2"
   }),
   enable_wayland = true,
-  color_scheme = "Ayu Dark (Gogh)",
+  color_scheme = "Everblush (Gogh)",
   enable_tab_bar = false,
   default_cursor_style = 'SteadyUnderline',
   window_padding = {
