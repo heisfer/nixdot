@@ -2,14 +2,16 @@
   imports = [
     ./hyprland.nix
     ./xdg.nix
-    ../waybar
+    # ../waybar
     ../rofi
     ../ags
+    ../swaylock
     #    ../hyprpaper
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    systemdIntegration = true;
+    recommendedEnvironment = true;
   };
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
@@ -24,10 +26,7 @@
   home = {
     packages = with pkgs; [
       swww
-      spot
-      swayidle
       gnome.nautilus
-      hyprpaper
       brightnessctl
     ];
   };
