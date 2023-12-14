@@ -14,12 +14,12 @@
       gulajavaministudio.mayukaithemevsc
       #php
       devsense.phptools-vscode
-
+      bmewburn.vscode-intelephense-client
       #nix
       jnoortheen.nix-ide
       arrterian.nix-env-selector
       mkhl.direnv
-
+      
       #dart
       dart-code.flutter
       dart-code.dart-code
