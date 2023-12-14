@@ -32,7 +32,7 @@
 
     xremap-flake.url = "github:xremap/nix-flake";
 
-	ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags";
   };
   outputs = inputs: let
     system = "x86_64-linux";
