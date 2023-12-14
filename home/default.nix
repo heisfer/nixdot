@@ -2,6 +2,7 @@
   localPkgs = import ../pkgs/default.nix {pkgs = pkgs;};
 
   customPkgs = with localPkgs; [
+    sigmafm
     wavebox
     miru
     spacedrive
@@ -25,6 +26,9 @@
   ];
 
   apps = with pkgs; [
+    minecraft
+    signal-desktop
+    planify
     xplorer
     cinny-desktop
     chromium
@@ -64,6 +68,8 @@
   ];
 
   utils = with pkgs; [
+    inotify-tools
+    v4l-utils
     jellyfin-ffmpeg
     xdg-utils
     dconf
