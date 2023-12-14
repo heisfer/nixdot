@@ -9,9 +9,16 @@
         command = "${pkgs.phpactor}/bin/phpactor";
         args = ["language-server"];
       };
+      intelephense = {
+        command = "${lib.getExe pkgs.nodePackages_latest.intelephense}";
+        args = ["--stdio"];
+      };
       nil = {
         command = lib.getExe pkgs.nil;
         config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
+      };
+      nixd = {
+        command = lib.getExe pkgs.nixd;
       };
       vscode-css-language-server = {
         command = "${pkgs.nodePackages_latest.vscode-css-languageserver-bin}/bin/css-languageserver";
@@ -36,6 +43,12 @@
         roots = ["composer.json" "index.php"];
       }
       {
+        name = "nix";
+        language-servers = ["nixd"];
+        auto-format = true;
+        formatter.command = "${pkgs.alejandra}/bin/alejandra";
+      }
+      {
         name = "css";
         auto-format = true;
         file-types = ["css" "scss"];
@@ -44,5 +57,5 @@
         language-servers = ["vscode-css-language-server"];
       }
     ];
-  };
+ };
 }

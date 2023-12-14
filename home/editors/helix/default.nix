@@ -8,7 +8,7 @@
     package = inputs.helix.packages."x86_64-linux".default;
     defaultEditor = true;
     settings = {
-      theme = "ayu_evolve";
+      theme = "everblush";
 
       editor = {
         line-number = "relative";
@@ -16,18 +16,19 @@
         auto-format = true;
         mouse = false;
         lsp = {
+          enable = true;
           display-messages = true;
           display-inlay-hints = true;
         };
         cursor-shape = {
           insert = "bar";
-          normal = "bar";
           select = "underline";
         };
       };
 
       keys.normal = {
         #colemak stuff
+        y = ["yank" "yank_main_selection_to_clipboard"];
         n = "move_char_left";
         e = "move_line_down";
         i = "move_line_up";
