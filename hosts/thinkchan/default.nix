@@ -7,7 +7,7 @@
     # services
     ./service/ath11k.nix
     ./service/xremap.nix
-#    ./service/greetd.nix
+    #    ./service/greetd.nix
     #wayland
     ./wayland/env.nix
     ./wayland/portal.nix
@@ -85,7 +85,7 @@
 
   security = {
     polkit.enable = true;
-    pam.services.gtklock.text = "auth include login";
+    pam.services.swaylock.text = "auth include login";
   };
   environment.systemPackages = [
     # winetricks (all versions)
@@ -116,7 +116,7 @@
       # icon fonts
       font-awesome
       material-symbols
-	  nerdfonts
+      nerdfonts
       # normal fonts
       jost
       lexend
@@ -148,7 +148,7 @@
   users.users = {
     heisfer = {
       isNormalUser = true;
-	  shell = pkgs.nushell;
+      shell = pkgs.nushell;
       description = "Heisfer Light";
       extraGroups = ["wheel" "networkmanager" "audio" "video" "adbusers"];
     };
