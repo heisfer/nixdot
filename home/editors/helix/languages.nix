@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }: {
   programs.helix.languages = {
@@ -10,7 +11,7 @@
         args = ["language-server"];
       };
       intelephense = {
-        command = "${lib.getExe pkgs.nodePackages_latest.intelephense}";
+        command = "${pkgs.nodePackages_latest.intelephense}/bin/intelephense";
         args = ["--stdio"];
       };
       nil = {
@@ -18,7 +19,7 @@
         config.nil.formatting.command = ["${lib.getExe pkgs.alejandra}" "-q"];
       };
       nixd = {
-        command = lib.getExe pkgs.nixd;
+        command = "${inputs.nixd.packages.${pkgs.system}.default}/bin/nixd";
       };
       vscode-css-language-server = {
         command = "${pkgs.nodePackages_latest.vscode-css-languageserver-bin}/bin/css-languageserver";
@@ -41,12 +42,21 @@
         shebangs = ["php"];
         language-servers = ["phpactor"];
         roots = ["composer.json" "index.php"];
+        indent = {
+          tab-width = 4;
+          unit = "    ";
+        };
       }
       {
         name = "nix";
         language-servers = ["nixd"];
         auto-format = true;
+        roots = [".nixd.json" "flake.nix" ".git"];
         formatter.command = "${pkgs.alejandra}/bin/alejandra";
+        indent = {
+          tab-width = 2;
+          unit = " ";
+        };
       }
       {
         name = "css";
@@ -57,5 +67,5 @@
         language-servers = ["vscode-css-language-server"];
       }
     ];
- };
+  };
 }
