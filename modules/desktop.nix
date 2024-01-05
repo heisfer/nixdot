@@ -169,7 +169,10 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland];
-    configPackages = [pkgs.xdg-desktop-portal-hyprland]; # needed from 23.11
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+    };
   };
 }
