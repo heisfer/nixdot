@@ -14,6 +14,7 @@
 
   dev = with pkgs; [
     phpactor
+    go
     jq
     python3
     symfony-cli
@@ -68,6 +69,12 @@
           patches = previousAttrs.patches ++ mcWaylandPatches;
         });
     })
+    (
+      floorp.override {
+        nativeMessagingHosts = [pkgs.web-eid-app];
+        # extraPolicies.SecurityDevices.p11-kit-proxy = "${pkgs.p11-kit}/lib/p11-kit-proxy.so";
+      }
+    )
   ];
 
   utils = with pkgs; [
@@ -90,6 +97,7 @@
     libnotify
     libva-utils
     neofetch
+    nitch
     nerd-font-patcher
     pamixer
     pavucontrol
