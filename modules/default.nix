@@ -27,6 +27,7 @@ in {
           inputs.home-manager.nixosModule
           inputs.hyprland.nixosModules.default
           inputs.kmonad.nixosModules.default
+          inputs.lanzaboote.nixosModules.lanzaboote
           module_args
           self.nixosModules.desktop
         ];
@@ -36,6 +37,7 @@ in {
 
   flake.nixosModules = {
     greetd = import ./greetd.nix;
+    lanzaboote = import ./lanzaboote.nix;
 
     desktop = import ./desktop.nix;
     bluetooth = import ./bluetooth.nix;
