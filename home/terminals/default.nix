@@ -1,5 +1,5 @@
 {
   imports = [
-    ./wezterm.nix
+    ./wezterm
   ];
 }
