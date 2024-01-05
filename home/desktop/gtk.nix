@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
@@ -21,8 +25,8 @@
     };
 
     theme = {
-      name = "rose-pine";
-      package = pkgs.rose-pine-gtk-theme;
+      name = "RosePine-Main-B-LB";
+      package = inputs.self.packages.${pkgs.system}.rose-pine-gtk;
     };
 
     gtk3.extraConfig = {
@@ -37,5 +41,5 @@
       '';
     };
   };
-  home.sessionVariables.GTK_THEME = "rose-pine";
+  home.sessionVariables.GTK_THEME = "RosePine-Main-B-LB";
 }
