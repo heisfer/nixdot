@@ -1,52 +1,64 @@
 {
-  description = "thinkchan";
+  description = "Description for the project";
 
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./home/profiles
+        ./nixos
+        ./pkgs
+        ./modules
+        inputs.devenv.flakeModule
+      ];
+      systems = ["x86_64-linux"];
+      perSystem = {
+        config,
+        self',
+        inputs',
+        pkgs,
+        system,
+        ...
+      }: {
+        packages.default = pkgs.hello;
+
+        devenv.shells.default = {
+          # https://devenv.sh/reference/options/
+          packages = [config.packages.default];
+
+          enterShell = ''
+            hello
+          '';
+        };
+        formatter = pkgs.alejandra;
+      };
+      flake = {
+        # The usual flake attributes can be defined here, including system-
+        # agnostic ones like nixosModule and system-enumerating ones, although
+        # those are more easily expressed in perSystem.
+      };
+    };
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    devenv.url = "github:cachix/devenv";
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixd.url = "github:nix-community/nixd";
+    nixd.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    helix.url = "github:helix-editor/helix";
-
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.url = "github:hyprwm/Hyprland";
+    # helix.url = "github:helix-editor/helix";
+    helix.url = "github:SoraTenshi/helix/new-daily-driver";
+    ags.url = "github:Aylur/ags";
     rycee-nurpkgs = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nurpkgs.url = "github:nix-community/NUR";
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-
-    xremap-flake.url = "github:xremap/nix-flake";
-
-    ags.url = "github:Aylur/ags";
-  };
-  outputs = inputs: let
-    system = "x86_64-linux";
-    pkgs = import inputs.nixpkgs {
-      inherit system;
-      overlays = import ./overlays {inherit inputs system;};
-    };
-    extraArgs = {
-      inherit (inputs.rycee-nurpkgs.lib.${system}) buildFirefoxXpiAddon;
-      addons = pkgs.nur.repos.rycee.firefox-addons;
-      vscode-extensions = inputs.nix-vscode-extensions.extensions.${system};
-    };
-  in {
-    nixosConfigurations =
-      import ./hosts {inherit inputs system pkgs extraArgs;};
+    lanzaboote.url = "github:nix-community/lanzaboote";
   };
 }

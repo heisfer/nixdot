@@ -1,15 +1,17 @@
 {
   pkgs,
-  extraArgs,
+  inputs,
   ...
 }: let
-  inherit (extraArgs) addons;
-
-  extensions = with addons; [
+  extensions = with inputs.rycee-nurpkgs.packages.${pkgs.system}; [
     ublock-origin
+    sidebery
     bitwarden
+    darkreader
+    privacy-badger
+    sponsorblock
+    translate-web-pages
   ];
-
   extraConfig = ''
     user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
     user_pref("browser.search.widget.inNavBar", false);
@@ -19,7 +21,7 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-devedition.override {
-      nativeMessagingHosts = [ pkgs.web-eid-app ];
+      nativeMessagingHosts = [pkgs.web-eid-app];
       extraPolicies.SecurityDevices.p11-kit-proxy = "${pkgs.p11-kit}/lib/p11-kit-proxy.so";
     };
     profiles = {

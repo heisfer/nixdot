@@ -1,0 +1,74 @@
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  del  
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc                
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    
+  caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
+  lsft 102d z    x    c    v    b    n    m    ,    .    /         rsft 
+  wkup lctl lmet lalt           spc            ralt cmp rctl pgup up   pgdn
+                                                              left down rght
+)
+
+(defalias
+  spc (tap-hold-next-release 200 spc lsft)
+)
+(deflayer  colemak
+  caps _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    q    w    f    p    b    [    j    l    u    y    ;    #
+  esc  a    r    s    t    g    @snv m    n    e    i    o    '    ret
+  lalt z    x    c    d    v    @snv    @tnv k    h    ,    .         @qwe
+  _    _    lmet @sym          @spc            rsft cmp rctl pgup up   pgdn
+                                                              left down rght
+)
+
+
+
+
+(deflayer symbols
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    '    "    ;    ?    `    _    [    <    =    >    ]    _
+  _    !    @    #    $    %    _    {    \(   :    \)   }    _    _    
+  _    \    ~    |    &    ^    _    _    /    *    -    +         \_
+  _    _    _    _              _              _    _    _    _    _    _
+                                                              _    _    _
+)
+
+(deflayer nav
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    1    2    3    4    5    _    _    _    _    _    _    _    _    
+  _    6    7    8    9    0    _    @cmk    _    _    _    _         _
+  _    _    _    _              _              _    _    _    _    _    _
+                                                              _    _    _
+)
+
+(deflayer empty
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _    
+  _    _    _    _    _    _    _    _    _    _    _    _         _
+  _    _    _    _              _              _    _    _    _    _    _
+                                                              _    _    _
+)
+
+(deflayer qwerty
+  caps f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12  home end  ins  del  
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc                
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    
+  esc a    s    d    f    g    h    j    k    l    ;    '    \    ret
+  lsft @cmk z    x    c    v    b    n    m    ,    .    /         rsft 
+  wkup lctl lmet lalt           spc            ralt cmp rctl pgup up   pgdn
+                                                              left down rght
+)
+
+(defalias
+  cmk (layer-switch colemak)
+  tnv (layer-toggle nav)
+  snv (layer-switch nav)
+  sym (layer-toggle symbols) ;; Bind 'sym' to Symbols Layer
+  
+  qwe (layer-switch qwerty)
+)
