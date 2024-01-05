@@ -72,6 +72,7 @@
 
         C-f = [":new" ":insert-output lf" ":theme default" "select_all" "split_selection_on_newline" "goto_file" "goto_last_modified_file" ":buffer-close!" ":theme tokyonight_storm"];
         space.space = "file_picker";
+        space.t = ":sh wezterm cli split-pane --bottom --percent 30 --cwd $(pwd)";
         space.w = ":w";
         space.q = ":q";
         esc = ["collapse_selection" "keep_primary_selection"];
