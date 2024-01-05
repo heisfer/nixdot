@@ -11,10 +11,17 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
+  };
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
   networking.hostName = "voyage"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -55,6 +62,7 @@
     xkbVariant = "colemak_dh_wide_iso";
   };
   services = {
+    pcscd.enable = true;
     kmonad.keyboards = {
       voyage = {
         name = "voyage";
@@ -85,12 +93,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  programs = {
+    hyprland.enable = true;
+    adb.enable = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.heisfer = {
     isNormalUser = true;
     description = "Heisfer Light";
     shell = pkgs.nushell;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "adbusers"];
     packages = with pkgs; [
       vscode
       #  thunderbird
