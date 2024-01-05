@@ -59,5 +59,6 @@
       url = "github:kmonad/kmonad?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote.url = "github:nix-community/lanzaboote";
   };
 }

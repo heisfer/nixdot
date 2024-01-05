@@ -21,6 +21,7 @@
           ./voyage
           self.nixosModules.greetd
           self.nixosModules.bluetooth
+          self.nixosModules.lanzaboote
           {home-manager.users.heisfer.imports = homeImports."heisfer@voyage";}
         ]
         ++ sharedModules;
