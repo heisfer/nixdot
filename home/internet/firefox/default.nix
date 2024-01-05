@@ -5,6 +5,7 @@
 }: let
   extensions = with inputs.rycee-nurpkgs.packages.${pkgs.system}; [
     ublock-origin
+    sidebery
     bitwarden
     darkreader
     privacy-badger
