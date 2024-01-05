@@ -8,14 +8,16 @@
                                                               left down rght
 )
 
-
+(defalias
+  spc (tap-hold-next-release 200 spc lsft)
+)
 (deflayer  colemak
   caps _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    _    _    _    _    _    _    _    _    _    _    _    _    _    
   _    q    w    f    p    b    [    j    l    u    y    ;    #
   esc  a    r    s    t    g    @snv m    n    e    i    o    '    ret
   lalt z    x    c    d    v    @snv    @tnv k    h    ,    .         @qwe
-  _    _    lmet @sym          spc            rsft cmp rctl pgup up   pgdn
+  _    _    lmet @sym          @spc            rsft cmp rctl pgup up   pgdn
                                                               left down rght
 )
 
