@@ -5,7 +5,9 @@
   ...
 }: {
   imports = [
+    ./rose-pine.nix
     ./config.nix
+    ./binds.nix
   ];
 
   # enable hyprland
