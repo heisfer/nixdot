@@ -63,18 +63,18 @@
   };
   services = {
     pcscd.enable = true;
-    kmonad.keyboards = {
-      voyage = {
-        name = "voyage";
-        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
-        defcfg = {
-          enable = true;
-          fallthrough = true;
-          allowCommands = false;
-        };
-        config = builtins.readFile "${self}/modules/main.kbd";
-      };
-    };
+    # kmonad.keyboards = {
+    #   voyage = {
+    #     name = "voyage";
+    #     device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+    #     defcfg = {
+    #       enable = true;
+    #       fallthrough = true;
+    #       allowCommands = false;
+    #     };
+    #     config = builtins.readFile "${self}/modules/main.kbd";
+    #   };
+    # };
   };
 
   # Enable fingerprint

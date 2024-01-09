@@ -26,7 +26,7 @@ in {
 
           inputs.home-manager.nixosModule
           inputs.hyprland.nixosModules.default
-          inputs.kmonad.nixosModules.default
+          # inputs.kmonad.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
           module_args
           self.nixosModules.desktop

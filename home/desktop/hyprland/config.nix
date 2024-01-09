@@ -16,6 +16,11 @@
       "${lib.getExe pkgs.swww} init"
     ];
 
+    input = {
+      kb_layout = "us";
+      kb_variant = "colemak_dh_wide_iso";
+      kb_options = "caps:swapescape";
+    };
     general = {
       "col.active_border" = "$rose";
       "col.inactive_border" = "$muted";
