@@ -80,6 +80,7 @@
   # Enable fingerprint
 
   services.fprintd.enable = true;
+  services.fwupd.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
