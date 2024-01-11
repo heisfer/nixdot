@@ -25,7 +25,7 @@ in {
         "$mod, F, fullscreen,"
         "$mod, T, togglefloating,"
 
-        ",PRINT,exec,${lib.getExe pkgs.grim} -g $(${lib.getExe pkgs.slurp}) - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png $$ notify-send 'Screenshot Copied to Clipboard'"
+        ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png && notify-send 'Screenshot Copied to Clipboard'"
         "$mod ,PRINT,exec,grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png && notify-send 'Screenshot Copied to Clipboard'"
 
         "$mod, RETURN, exec, ${lib.getExe config.programs.wezterm.package}"
