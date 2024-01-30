@@ -5,6 +5,9 @@
   ...
 }: {
   wayland.windowManager.hyprland.settings = {
+    env = [
+      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+    ];
     monitor = [
       "DP-2,1920x1080@75,0x0,1" # external monitor
       "eDP-1,1920x1200@60,0x1080,1" # laptop monitor
@@ -75,6 +78,11 @@
       force_default_wallpaper = 0;
       vrr = 1;
     };
+
+    windowrulev2 = [
+      "float,class:(eu.web-eid.),title:(Web eID)"
+      "size 677 429, class:(eu.web-eid.),title:(Web eID)"
+    ];
 
     "$mod" = "SUPER";
   };
