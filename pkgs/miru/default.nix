@@ -3,10 +3,10 @@
   appimageTools,
 }: let
   name = "miru";
-  version = "4.5.5";
+  version = "4.5.10";
   src = fetchurl {
     url = "https://github.com/ThaUnknown/miru/releases/download/v${version}/linux-Miru-${version}.AppImage";
-    hash = "sha256-117OlW1VbaxGJBQNsaDok1cUE/MS+8+y/XA68kpRkSc=";
+    hash = "sha256-ptaviLwr0X/MuF517YLW7i9+rtnktcpgHVqMHn+tXWg=";
   };
   appimageContents = appimageTools.extractType2 {inherit name src;};
 in
