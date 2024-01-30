@@ -25,14 +25,14 @@ in {
         "$mod, F, fullscreen,"
         "$mod, T, togglefloating,"
 
-        ",PRINT,exec,${lib.getExe pkgs.grim} -g $(${lib.getExe pkgs.slurp}) - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png $$ notify-send 'Screenshot Copied to Clipboard'"
+        ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${pkgs.wl-clipboard}/bin/wl-copy -t image/png && notify-send 'Screenshot Copied to Clipboard'"
         "$mod ,PRINT,exec,grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') - | wl-copy -t image/png && notify-send 'Screenshot Copied to Clipboard'"
 
         "$mod, RETURN, exec, ${lib.getExe config.programs.wezterm.package}"
-        "$mod, W, exec, floorp -new-tab about:newtab"
+        "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
         "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
         "$mod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
-        "$mod SHIFT, W, exec, floorp"
+        "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
 
         #keep it same with helix
         "$mod, N, movefocus, l"

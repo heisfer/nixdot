@@ -54,6 +54,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    firefox-cascade = {
+      url = "github:andreasgrafen/cascade/main";
+      flake = false;
+    };
+
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";

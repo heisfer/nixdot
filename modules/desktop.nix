@@ -55,16 +55,9 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        libva
-        libva-utils
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-      extraPackages32 = with pkgs.pkgsi686Linux; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
+
+      extraPackages = with pkgs; [libva vaapiVdpau libvdpau-va-gl];
+      extraPackages32 = with pkgs.pkgsi686Linux; [vaapiVdpau libvdpau-va-gl];
     };
 
     pulseaudio.enable = lib.mkForce false;
@@ -120,21 +113,21 @@
     logind.extraConfig = ''
       HandlePowerKey=suspend
     '';
-    kmonad = {
-      enable = true;
-      package = inputs.kmonad.packages.${pkgs.system}.default;
-      keyboards = {
-        one2mini = {
-          device = "/dev/input/by-id/usb-Ducky_Ducky_One2_Mini_RGB_DK-V1.17-190813-event-kbd";
-          defcfg = {
-            enable = true;
-            fallthrough = true;
-            allowCommands = false;
-          };
-          config = builtins.readFile "${self}/modules/main.kbd";
-        };
-      };
-    };
+    # kmonad = {
+    #   enable = true;
+    #   package = inputs.kmonad.packages.${pkgs.system}.default;
+    #   keyboards = {
+    #     one2mini = {
+    #       device = "/dev/input/by-id/usb-Ducky_Ducky_One2_Mini_RGB_DK-V1.17-190813-event-kbd";
+    #       defcfg = {
+    #         enable = true;
+    #         fallthrough = true;
+    #         allowCommands = false;
+    #       };
+    #       config = builtins.readFile "${self}/modules/main.kbd";
+    #     };
+    #   };
+    # };
 
     pipewire = {
       enable = true;

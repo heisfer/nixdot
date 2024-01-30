@@ -13,6 +13,8 @@
   ];
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = ["amdgpu" "v4l2loopback"];
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
 
     kernelParams = [
       "quiet"
@@ -63,23 +65,24 @@
   };
   services = {
     pcscd.enable = true;
-    kmonad.keyboards = {
-      voyage = {
-        name = "voyage";
-        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
-        defcfg = {
-          enable = true;
-          fallthrough = true;
-          allowCommands = false;
-        };
-        config = builtins.readFile "${self}/modules/main.kbd";
-      };
-    };
+    # kmonad.keyboards = {
+    #   voyage = {
+    #     name = "voyage";
+    #     device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+    #     defcfg = {
+    #       enable = true;
+    #       fallthrough = true;
+    #       allowCommands = false;
+    #     };
+    #     config = builtins.readFile "${self}/modules/main.kbd";
+    #   };
+    # };
   };
 
   # Enable fingerprint
 
   services.fprintd.enable = true;
+  services.fwupd.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
