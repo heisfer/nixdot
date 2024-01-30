@@ -1,5 +1,5 @@
 {config, ...}: let
-  browser = ["floorp.desktop"];
+  browser = ["firefox-devedition.desktop"];
   video = ["mpv.desktop"];
   image = ["imv.desktop"];
 
