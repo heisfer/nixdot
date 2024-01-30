@@ -27,24 +27,27 @@
   ];
 
   apps = with pkgs; [
-    devdocs-desktop
-    themix-gui
-    minecraft
-    signal-desktop
-    planify
-    gnome.nautilus
-    xplorer
-    cinny-desktop
     chromium
+    cinny-desktop
+    devdocs-desktop
+    tutanota-desktop
+    vesktop
     github-desktop
+    gnome.nautilus
     kitty
+    minecraft
     onagre
+    onlyoffice-bin
+    planify
     qdigidoc
     scrcpy
-    youtube-music
+    signal-desktop
     telegram-desktop
+    themix-gui
     transmission-qt
     webcord-vencord
+    xplorer
+    youtube-music
   ];
 
   appsOverride = with pkgs; [
@@ -80,22 +83,20 @@
   utils = with pkgs; [
     swww
     inotify-tools
-    v4l-utils
     jellyfin-ffmpeg
     xdg-utils
     dconf
     gtop
-    glxinfo
     grim
     htop
     unzip
+    ripgrep
     p7zip
     rar
     scrcpy
     zip
     pavucontrol
     libnotify
-    libva-utils
     neofetch
     nitch
     nerd-font-patcher
@@ -104,9 +105,8 @@
     scrot
     slurp
     wf-recorder
+    wl-screenrec
     wl-clipboard
-    xorg.xeyes
-    xorg.xrandr
   ];
 in {
   home.packages = local ++ dev ++ apps ++ utils ++ appsOverride ++ libs ++ games;
@@ -115,5 +115,14 @@ in {
     enable = true;
     enableBashIntegration = true;
     nix-direnv.enable = true;
+  };
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-gstreamer
+      obs-pipewire-audio-capture
+      obs-vkcapture
+      wlrobs
+    ];
   };
 }
