@@ -5,5 +5,6 @@
     ../../terminals
     ../../desktop
     ../../programs.nix
+    ../../security
   ];
 }
