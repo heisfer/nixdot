@@ -17,6 +17,7 @@
     "text/html" = browser;
     "x-scheme-handler/about" = browser;
     "x-scheme-handler/chrome" = ["chromium-browser.desktop"];
+    "x-scheme-handler/tg" = ["org.telegram.desktop.desktop"];
     "x-scheme-handler/ftp" = browser;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;

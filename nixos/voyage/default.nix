@@ -83,6 +83,9 @@
 
   services.fprintd.enable = true;
   services.fwupd.enable = true;
+  environment.etc."pkcs11/modules/opensc-pkcs11".text = ''
+    module: ${pkgs.opensc}/lib/opensc-pkcs11.so
+  '';
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -126,10 +129,11 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+  programs.seahorse.enable = true;
 
   # List services that you want to enable:
 

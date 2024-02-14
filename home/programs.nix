@@ -28,6 +28,9 @@
 
   apps = with pkgs; [
     chromium
+
+    helvum
+    nuclear
     cinny-desktop
     devdocs-desktop
     tutanota-desktop
@@ -51,9 +54,6 @@
   ];
 
   appsOverride = with pkgs; [
-    (discord.override {
-      withVencord = true;
-    })
     (prismlauncher.override {
       jdks = with pkgs; [
         temurin-jre-bin-8
@@ -65,6 +65,7 @@
 
   utils = with pkgs; [
     swww
+    mpv
     inotify-tools
     jellyfin-ffmpeg
     xdg-utils

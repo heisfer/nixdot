@@ -20,8 +20,8 @@
     ];
 
     input = {
-      kb_layout = "us";
-      kb_variant = "colemak_dh_wide_iso";
+      kb_layout = "ee";
+      #   kb_variant = "colemak_dh_wide_iso";
       kb_options = "caps:swapescape";
     };
     general = {

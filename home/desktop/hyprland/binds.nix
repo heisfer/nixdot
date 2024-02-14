@@ -31,7 +31,8 @@ in {
         "$mod, RETURN, exec, ${lib.getExe config.programs.wezterm.package}"
         "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
         "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
-        "$mod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
+        "$mod, B, exec, ${lib.getExe pkgs.rofi-rbw-wayland}"
+        "$mod SHIFT, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
         "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
 
         #keep it same with helix

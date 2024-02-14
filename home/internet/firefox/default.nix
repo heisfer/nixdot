@@ -10,18 +10,11 @@
     privacy-badger
     sponsorblock
     tabcenter-reborn
+    tree-style-tab
     tabliss
     translate-web-pages
     ublock-origin
-
-    (buildFirefoxXpiAddon {
-      pname = "web-eid";
-      version = "2.2.1";
-      addonId = "{e68418bc-f2b0-4459-a9ea-3e72b6751b07}";
-      url = "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-2.2.1.xpi";
-      sha256 = "sha256-OSZmWBo+cRMDB+uU+QELTKhDgp9ZLbmgk61o/ADKWbo=";
-      meta = {};
-    })
+    web-eid
   ];
 in {
   home.file = {

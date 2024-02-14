@@ -49,15 +49,15 @@
 
   # use Wayland where possible (electron)
   environment.variables.NIXOS_OZONE_WL = "1";
-
+  environment.variables.AMD_VULKAN_ICD = "RADV";
   hardware = {
     opengl = {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
 
-      extraPackages = with pkgs; [libva vaapiVdpau libvdpau-va-gl];
-      extraPackages32 = with pkgs.pkgsi686Linux; [vaapiVdpau libvdpau-va-gl];
+      extraPackages = with pkgs; [libva amdvlk];
+      extraPackages32 = with pkgs.pkgsi686Linux; [amdvlk];
     };
 
     pulseaudio.enable = lib.mkForce false;
