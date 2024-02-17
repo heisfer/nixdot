@@ -69,5 +69,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote.url = "github:nix-community/lanzaboote";
+
+
+		#minecreaft experement
+		nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 }
