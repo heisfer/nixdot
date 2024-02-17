@@ -4,6 +4,7 @@
   config,
   ...
 }: let
+  swayosd = lib.getExe' pkgs.swayosd "swayosd-client";
   workspaces = builtins.concatLists (builtins.genList (
       x: let
         ws = let
@@ -51,6 +52,11 @@ in {
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+				#function keys
+				", XF86AudioRaiseVolume, exec, ${swayosd} --output-volume raise"
+        ", XF86AudioLowerVolume, exec, ${swayosd} --output-volume lower"
+        ", XF86AudioMute, exec, ${swayosd} --output-volume mute-toggle"
       ]
       ++ workspaces;
     bindm = [

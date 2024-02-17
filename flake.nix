@@ -41,6 +41,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     devenv.url = "github:cachix/devenv";
 
+    heisfer-nixvim.url = "github:heisfer/nixvim";
     nixd.url = "github:nix-community/nixd";
     nixd.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -49,7 +50,6 @@
     hyprland.url = "github:hyprwm/Hyprland";
     # helix.url = "github:helix-editor/helix";
     helix.url = "github:SoraTenshi/helix/new-daily-driver";
-    ags.url = "github:Aylur/ags";
     rycee-nurpkgs = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +58,10 @@
       url = "github:andreasgrafen/cascade/main";
       flake = false;
     };
+		waybar-rose-pine = {
+		  url = "github:rose-pine/waybar";
+			flake = false;
+		};
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     kmonad = {

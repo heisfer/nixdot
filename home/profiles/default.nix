@@ -10,7 +10,6 @@
     ../shell
     module_args
     inputs.hyprland.homeManagerModules.default
-    inputs.ags.homeManagerModules.default
   ];
   homeImports = {
     "heisfer@voyage" = [./voyage] ++ sharedModules;

@@ -1,7 +1,8 @@
 {...}: {
   imports = [
     ./hyprland
-    ./ags
+		./sway
+		./waybar
     ./rofi
     ./gtk.nix
     ./xdg.nix

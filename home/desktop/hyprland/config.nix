@@ -14,15 +14,14 @@
     ];
 
     exec-once = [
-      "${lib.getExe' config.programs.ags.package "ags"} -b hypr" #might replace this in the future
       "${lib.getExe pkgs.xorg.xrandr} --output DP-2 --primary" #just for games
       "${lib.getExe pkgs.swww} init"
     ];
 
     input = {
-      kb_layout = "ee";
+      kb_layout = "us,ee";
       #   kb_variant = "colemak_dh_wide_iso";
-      kb_options = "caps:swapescape";
+      kb_options = "caps:swapescape,grp:alt_space_toggle";
     };
     general = {
       "col.active_border" = "$rose";

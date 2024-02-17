@@ -59,12 +59,9 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "colemak_dh_wide_iso";
-  };
   services = {
     pcscd.enable = true;
+		tailscale.enable = true;
     # kmonad.keyboards = {
     #   voyage = {
     #     name = "voyage";
