@@ -1166,6 +1166,7 @@
         "nixd": "nixd",
         "nixpkgs": "nixpkgs_9",
         "rycee-nurpkgs": "rycee-nurpkgs",
+        "swaync-rose-pine": "swaync-rose-pine",
         "waybar-rose-pine": "waybar-rose-pine"
       }
     },
@@ -1240,6 +1241,22 @@
         "owner": "rycee",
         "repo": "nur-expressions",
         "type": "gitlab"
+      }
+    },
+    "swaync-rose-pine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701338501,
+        "narHash": "sha256-vgtr76lLyqwep0g46ShSJYxwLu9T6W/lKnhf/YP+RGY=",
+        "owner": "rose-pine",
+        "repo": "swaync",
+        "rev": "897aae46acad407685f2847f1e2baec7a14563c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "swaync",
+        "type": "github"
       }
     },
     "systems": {

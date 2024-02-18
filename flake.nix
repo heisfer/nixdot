@@ -63,6 +63,11 @@
 			flake = false;
 		};
 
+		swaync-rose-pine = {
+		  url = "github:rose-pine/swaync";
+			flake = false;
+		};
+
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     kmonad = {
       url = "github:kmonad/kmonad?dir=nix";

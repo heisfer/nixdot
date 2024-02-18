@@ -13,6 +13,7 @@
   ];
 
   dev = with pkgs; [
+	  jetbrains.idea-community
     phpactor
     go
     jq
@@ -28,7 +29,7 @@
 
   apps = with pkgs; [
     chromium
-
+		notesnook
     helvum
     nuclear
     cinny-desktop
