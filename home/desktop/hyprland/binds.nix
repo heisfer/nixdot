@@ -37,15 +37,15 @@ in {
         "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
 
         #keep it same with helix
-        "$mod, N, movefocus, l"
-        "$mod, I, movefocus, r"
-        "$mod, U, movefocus, u"
-        "$mod, E, movefocus, d"
+        "$mod, H, movefocus, l"
+        "$mod, L, movefocus, r"
+        "$mod, J, movefocus, u"
+        "$mod, K, movefocus, d"
 
-        "$mod SHIFT, N, movewindow, l"
-        "$mod SHIFT, I, movewindow, r"
-        "$mod SHIFT, U, movewindow, u"
-        "$mod SHIFT, E, movewindow, d"
+        "$mod SHIFT, H, movewindow, l"
+        "$mod SHIFT, L, movewindow, r"
+        "$mod SHIFT, J, movewindow, u"
+        "$mod SHIFT, K, movewindow, d"
 
         "$mod, TAB, cyclenext,"
         "$mod, TAB, bringactivetotop,"
