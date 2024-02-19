@@ -5,6 +5,7 @@
 }: let
   local = with inputs.self.packages.${pkgs.system}; [
     miru
+		tutanota-desktop
   ];
   games = with pkgs; [
     steam
@@ -34,7 +35,6 @@
     nuclear
     cinny-desktop
     devdocs-desktop
-    tutanota-desktop
     vesktop
     github-desktop
     gnome.nautilus
@@ -52,6 +52,7 @@
     webcord-vencord
     xplorer
     youtube-music
+		temurin-jre-bin-17
   ];
 
   appsOverride = with pkgs; [
@@ -75,6 +76,7 @@
     grim
     htop
     unzip
+		wget
     ripgrep
     p7zip
     rar
