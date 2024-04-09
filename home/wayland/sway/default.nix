@@ -1,5 +1,5 @@
 {
   imports = [
-    ./browser
+    ./swayosd.nix
   ];
 }

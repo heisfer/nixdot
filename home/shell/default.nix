@@ -1,9 +1,9 @@
 {
   imports = [
-    ./nu.nix
-    ./starship.nix
-    ./git.nix
-    ./xplr.nix
-    ./carapace.nix
+    ./nushell
+    ./oh-my-posh
+    ./git
+    ./direnv
+    ./carapace
   ];
 }
