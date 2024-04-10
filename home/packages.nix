@@ -5,5 +5,6 @@
     tutanota-desktop
     qdigidoc
     devenv
+    xdg-utils
   ];
 }

@@ -1,4 +1,8 @@
-{outputs, ...}: {
+{
+  inputs,
+  outputs,
+  ...
+}: {
   imports = [
     ./internet
     ./wayland
@@ -6,6 +10,8 @@
     ./packages.nix
     ./shell
     ./editor
+    inputs.hypridle.homeManagerModules.default
+    inputs.hyprlock.homeManagerModules.default
   ];
 
   nixpkgs = {

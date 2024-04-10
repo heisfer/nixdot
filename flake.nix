@@ -16,6 +16,10 @@
       flake = false;
     };
     heisfer-nixvim.url = "git+file:///home/heisfer/Projects/nix/nixvim";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
+    hyprlock.url = "github:hyprwm/hyprlock";
+    hypridle.url = "github:hyprwm/hypridle";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {

@@ -7,7 +7,6 @@
   wayland.windowManager.hyprland.settings = {
     env = [
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-      "QT_QPA_PLATFORMTHEME,qt6ct"
     ];
     monitor = [
       "DP-1,1920x1080@75,0x0,1" # external monitor

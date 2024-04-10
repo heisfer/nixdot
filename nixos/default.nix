@@ -53,7 +53,23 @@
     regreet.enable = true;
     hyprland.enable = true;
   };
-  xdg.portal.wlr.enable = true;
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+    };
+
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
+
+  security = {
+    pam.services.hyprlock.text = "auth include login";
+    rtkit.enable = true;
+  };
   hardware = {
     bluetooth = {
       enable = true;
@@ -119,10 +135,10 @@
   fonts.packages = with pkgs; [
     ibm-plex
     (nerdfonts.override {
-        fonts = [
-          "IBMPlexMono"
-        ];
-      })
+      fonts = [
+        "IBMPlexMono"
+      ];
+    })
   ];
 
   # List packages installed in system profile. To search, run:

@@ -16,11 +16,19 @@
         bitwarden
       ];
       search = {
+        force = true;
         engines = {
           "Bing".metaData.hidden = true;
           "Wikipedia (en)".metaData.hidden = true;
           "Amazon.com".metaData.hidden = true;
-
+          "Youtube  Music" = {
+            urls = [
+              {
+                template = "https://music.youtube.com/search?q={searchTerms}";
+              }
+            ];
+            definedAliases = ["ym"];
+          };
           "Nix Packages" = {
             urls = [
               {
