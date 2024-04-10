@@ -7,5 +7,6 @@
     devenv
     xdg-utils
     telegram-desktop
+    nitch
   ];
 }
