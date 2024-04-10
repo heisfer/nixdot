@@ -18,7 +18,7 @@
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-      timeout = 0; # Just keep pressing random key until menu comes;      
+      timeout = 0; # Just keep pressing random key until menu comes;
     };
     kernelPackages = pkgs.linuxPackages_latest;
   };
@@ -119,6 +119,7 @@
   };
 
   services = {
+    ath11k-sleep.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;

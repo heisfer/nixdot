@@ -20,6 +20,10 @@
     hyprlock.url = "github:hyprwm/hyprlock";
     hypridle.url = "github:hyprwm/hypridle";
     hyprland.url = "github:hyprwm/Hyprland";
+    waybar-rose-pine = {
+      url = "github:rose-pine/waybar";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -34,6 +38,7 @@
       system = "x86_64-linux";
       modules = [
         ./nixos
+        ./modules
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager = {

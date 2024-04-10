@@ -6,5 +6,6 @@
     qdigidoc
     devenv
     xdg-utils
+    telegram-desktop
   ];
 }

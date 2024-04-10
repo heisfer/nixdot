@@ -2,4 +2,4 @@
   services.swayosd = {
     enable = true;
   };
-]
+}

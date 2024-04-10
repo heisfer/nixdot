@@ -5,5 +5,6 @@
     ./waybar
     ./gtk.nix
     ./xdg.nix
+    ./sway
   ];
 }

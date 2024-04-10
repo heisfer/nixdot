@@ -811,7 +811,8 @@
         "hyprpaper": "hyprpaper",
         "kak-rose-pine": "kak-rose-pine",
         "nixpkgs": "nixpkgs_8",
-        "rycee-nurpkgs": "rycee-nurpkgs"
+        "rycee-nurpkgs": "rycee-nurpkgs",
+        "waybar-rose-pine": "waybar-rose-pine"
       }
     },
     "rycee-nurpkgs": {
@@ -969,6 +970,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "waybar-rose-pine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1692757972,
+        "narHash": "sha256-xrxceul8HRySG1cBg6uF6aYE52SJ/jCeICTh2Zj0iHo=",
+        "owner": "rose-pine",
+        "repo": "waybar",
+        "rev": "1b118bd60d1c5778dc8a82b919069eeb8a834604",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rose-pine",
+        "repo": "waybar",
         "type": "github"
       }
     },
