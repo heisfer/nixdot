@@ -6,8 +6,8 @@
   ...
 }: {
   xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = ${config.home.homeDirectory} + "/cat.png"
-    wallpaper = , ${config.home.homeDirectory} + "/cat.png"
+    preload = ${config.home.homeDirectory}/cat.png
+    wallpaper = , ${config.home.homeDirectory}/cat.png
   '';
 
   systemd.user.services.hyprpaper = {

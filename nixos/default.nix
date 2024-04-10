@@ -13,9 +13,15 @@
   ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    plymouth.enable = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 0; # Just keep pressing random key until menu comes;      
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   nixpkgs.config = {
     allowUnfree = true;
@@ -50,8 +56,30 @@
 
   programs = {
     steam.enable = true;
-    regreet.enable = true;
     hyprland.enable = true;
+  };
+  users.extraUsers.greeter = {
+    packages = [
+      (pkgs.callPackage ../pkgs/rose-pine-gtk {})
+    ];
+    home = "/tmp/greeter-home";
+    createHome = true;
+  };
+  programs.regreet = {
+    enable = true;
+    cageArgs = ["-s" "-m" "last"];
+    settings = {
+      background = {
+        path = /home/heisfer/cat.png;
+        fit = "Cover";
+      };
+      GTK = {
+        application_prefer_dark_theme = true;
+        cursor_theme_name = "Bibata-Modern-Classic";
+        icon_theme_name = "Adwaita";
+        theme_name = "RosePine-Main-B-LB";
+      };
+    };
   };
   xdg.portal = {
     enable = true;

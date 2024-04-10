@@ -22,7 +22,7 @@
     };
     theme = {
       name = "RosePine-Main-B-LB";
-      package = pkgs.callPackage ../../pkgs/rose-pine-gtk/defalut.nix {};
+      package = pkgs.callPackage ../../pkgs/rose-pine-gtk {};
     };
 
     gtk3.extraConfig = {
