@@ -2,6 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -23,13 +24,24 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
+  nixpkgs = {
+    overlays = [
+      inputs.nur.overlay
+    ];
+    config = {
+      allowUnfree = true;
+    };
   };
 
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
+      substituters = [
+        "https://devenv.cachix.org"
+      ];
+      trusted-public-keys = [
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      ];
     };
   };
 

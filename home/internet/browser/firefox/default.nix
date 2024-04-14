@@ -10,10 +10,12 @@
       extraPolicies.SecurityDevices.p11-kit-proxy = "${pkgs.p11-kit}/lib/p11-kit-proxy.so";
     };
     profiles.dev-edition-default = {
-      extensions = with inputs.rycee-nurpkgs.packages.${pkgs.system}; [
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         web-eid
         bitwarden
+        languagetool
+        darkreader
       ];
       search = {
         force = true;

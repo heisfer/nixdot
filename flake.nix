@@ -7,15 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rycee-nurpkgs = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/nur";
     kak-rose-pine = {
       url = "git+https://gitea.nulo.in/Nulo/rose-pine.kak.git";
       flake = false;
     };
-    heisfer-nixvim.url = "git+file:///home/heisfer/Projects/nix/nixvim";
+    heisfer-nixvim.url = "git+file:///home/heisfer/Projects/nix/nvim";
     hyprpaper.url = "github:hyprwm/hyprpaper";
     hyprlock.url = "github:hyprwm/hyprlock";
     hypridle.url = "github:hyprwm/hypridle";
@@ -35,6 +32,9 @@
   in {
     overlays."local" = final: _prev: import ./pkgs {pkgs = final;};
     nixosConfigurations.voyage = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+      };
       system = "x86_64-linux";
       modules = [
         ./nixos

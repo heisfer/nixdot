@@ -1,9 +1,10 @@
 {
   imports = [
+    ./carapace
+    ./direnv
+    ./git
     ./nushell
     ./oh-my-posh
-    ./git
-    ./direnv
-    ./carapace
+    ./zoxide
   ];
 }

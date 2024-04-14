@@ -25,7 +25,7 @@
     };
     plugins = with pkgs.kakounePlugins; [
       auto-pairs-kak
-      kak-lsp
+      kakoune-lsp
       smarttab-kak
       powerline-kak
 

@@ -21,7 +21,7 @@
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
-    "x-scheme-handler/tg=" = ["org.telegram.desktop.desktop"];
+    "x-scheme-handler/tg" = ["org.telegram.desktop.desktop"];
 
     "audio/*" = video;
     "video/*" = video;
