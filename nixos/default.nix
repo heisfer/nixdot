@@ -64,11 +64,13 @@
   services = {
     fprintd.enable = true;
     pcscd.enable = true;
+    gnome.gnome-keyring.enable = true;
   };
 
   programs = {
     steam.enable = true;
     hyprland.enable = true;
+    adb.enable = true;
   };
   users.extraUsers.greeter = {
     packages = [
@@ -142,6 +144,11 @@
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # Tell p11-kit to load/proxy opensc-pkcs11.so, providing all available slots
+  # (PIN1 for authentication/decryption, PIN2 for signing).
+  environment.etc."pkcs11/modules/opensc-pkcs11".text = ''
+    module: ${pkgs.opensc}/lib/opensc-pkcs11.so
+  '';
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -161,7 +168,7 @@
   users.users.heisfer = {
     initialPassword = "password";
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "adbusers"]; # Enable ‘sudo’ for the user.
     shell = pkgs.nushell;
     packages = with pkgs; [
       firefox

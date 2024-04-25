@@ -9,9 +9,10 @@
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
     ];
     monitor = [
-      "DP-1,1920x1080@75,0x0,1" # external monitor
-      "DP-2,1920x1080@75,0x0,1" # external monitor #if seconday port is used
-      "eDP-1,1920x1200@60,0x1080,1" # laptop monitor
+      #      "DP-1,1920x1080@75,0x0,1" # external monitor
+      #      "DP-2,1920x1080@75,0x0,1" # external monitor #if seconday port is used
+      #      "eDP-1,1920x1200@60,0x1080,1" # laptop monitor
+      "eDP-1,1920x1200@60,0x0,1" # laptop monitor
     ];
 
     exec-once = [

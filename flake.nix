@@ -21,6 +21,8 @@
       url = "github:rose-pine/waybar";
       flake = false;
     };
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = {

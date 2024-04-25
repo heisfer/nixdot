@@ -8,6 +8,7 @@
     ./wayland
     ./terminal
     ./packages.nix
+    ./services.nix
     ./shell
     ./editor
     inputs.hypridle.homeManagerModules.default
