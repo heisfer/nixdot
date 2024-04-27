@@ -24,33 +24,31 @@ in {
       [
         "$mod SHIFT, Q, exit,"
         "$mod, Q, killactive,"
+        "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
+        "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
         "$mod, F, fullscreen,"
         "$mod, T, togglefloating,"
 
-        ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
-
-        "$mod ,PRINT,exec,${lib.getExe pkgs.grim} -o $(hyprctl monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.focused) | .name') - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
-
         "$mod, RETURN, exec, ${lib.getExe config.programs.foot.package}"
-        "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
-        "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
-        "$mod, B, exec, ${lib.getExe pkgs.rofi-rbw-wayland}"
-        "$mod SHIFT, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
-        "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
 
-        #keep it same with helix
         "$mod, H, movefocus, l"
-        "$mod, L, movefocus, r"
         "$mod, J, movefocus, u"
         "$mod, K, movefocus, d"
+        "$mod, L, movefocus, r"
 
         "$mod SHIFT, H, movewindow, l"
         "$mod SHIFT, L, movewindow, r"
         "$mod SHIFT, J, movewindow, u"
         "$mod SHIFT, K, movewindow, d"
 
+        "$mod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
+        "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
         "$mod, TAB, cyclenext,"
         "$mod, TAB, bringactivetotop,"
+
+        ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
+
+        "$mod ,PRINT,exec,${lib.getExe pkgs.grim} -o $(hyprctl monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.focused) | .name') - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
 
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"

@@ -6,7 +6,7 @@
   stdenv,
 }: let
   pname = "beekeeper-studio";
-  version = "4.2.9";
+  version = "4.3.0";
 
   plat =
     {
@@ -17,8 +17,8 @@
 
   hash =
     {
-      aarch64-linux = "sha256-8gcxYQ6ZvYC42V/vShFgalJtm8SGZRwtUfwUF9ZirBo=";
-      x86_64-linux = "sha256-hGQoVMbo/DfzSaaASVPJ/3uV0Rjz+DIZXdMuNOcSTxk=";
+      aarch64-linux = "";
+      x86_64-linux = "sha256-Iu+AKLoVbkZv9yDcnUkIhHUdXwtEydXU6XRgSYDrrGQ=";
     }
     .${stdenv.hostPlatform.system};
 
@@ -33,8 +33,6 @@ in
     inherit pname version src;
 
     extraInstallCommands = ''
-      mv $out/bin/{${pname}-${version},${pname}}
-      source "${makeWrapper}/nix-support/setup-hook"
       install -Dm444 ${appimageContents}/${pname}.desktop -t $out/share/applications/
       install -Dm444 ${appimageContents}/${pname}.png -t $out/share/pixmaps/
       substituteInPlace $out/share/applications/${pname}.desktop \
