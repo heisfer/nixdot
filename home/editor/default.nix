@@ -1,6 +1,6 @@
 {
   imports = [
-    ./kak
+#    ./kak
     ./vscode
   ];
 }

@@ -53,6 +53,8 @@ in {
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
 
+        "$mod, ., exec, ${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
+
         #function keys
         ", XF86AudioRaiseVolume, exec, ${swayosd} --output-volume raise"
         ", XF86AudioLowerVolume, exec, ${swayosd} --output-volume lower"

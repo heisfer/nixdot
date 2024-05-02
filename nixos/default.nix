@@ -21,7 +21,7 @@
       efi.canTouchEfiVariables = true;
       timeout = 0; # Just keep pressing random key until menu comes;
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_xanmod;
   };
 
   nixpkgs = {
@@ -46,6 +46,7 @@
   };
 
   networking.hostName = "voyage"; # Define your hostname.
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -79,6 +80,9 @@
     ];
     home = "/tmp/greeter-home";
     createHome = true;
+  };
+  virtualisation.waydroid = {
+    enable = true;
   };
   programs.regreet = {
     enable = true;
