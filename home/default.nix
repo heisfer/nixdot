@@ -1,22 +1,30 @@
 {
-  lib,
-  self,
+  inputs,
+  outputs,
   ...
 }: {
+  imports = [
+    ./internet
+    ./wayland
+    ./terminal
+    ./packages.nix
+    ./services.nix
+    ./shell
+    ./editor
+    inputs.hypridle.homeManagerModules.default
+    inputs.hyprlock.homeManagerModules.default
+  ];
+
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.local
+      inputs.nur.overlay
+    ];
+  };
+
   home = {
     username = "heisfer";
     homeDirectory = "/home/heisfer";
-    stateVersion = "23.11";
-    extraOutputsToInstall = ["doc" "devdoc"];
+    stateVersion = "24.05";
   };
-
-  # disable manuals as nmd fails to build often
-  manual = {
-    html.enable = false;
-    json.enable = false;
-    manpages.enable = false;
-  };
-
-  # let HM manage itself when in standalone mode
-  programs.home-manager.enable = true;
 }

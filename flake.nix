@@ -1,16 +1,35 @@
 {
-  description = "Description for the project";
+  description = "Heisfer's nixdot";
+
+  inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/nur";
+
+    heisfer-nixvim.url = "git+file:///home/heisfer/Projects/nix/nvim";
+
+    hyprpaper.url = "github:hyprwm/hyprpaper";
+    hyprlock.url = "github:hyprwm/hyprlock";
+    hypridle.url = "github:hyprwm/hypridle";
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    waybar-rose-pine.url = "github:rose-pine/waybar";
+    waybar-rose-pine.flake = false;
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+  };
 
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        ./home/profiles
-        ./nixos
-        ./pkgs
-        ./modules
-        inputs.devenv.flakeModule
+        # To import a flake module
+        # 1. Add foo to inputs
+        # 2. Add foo as a parameter to the outputs function
+        # 3. Add here: foo.flakeModule
       ];
-      systems = ["x86_64-linux"];
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
       perSystem = {
         config,
         self',
@@ -19,51 +38,36 @@
         system,
         ...
       }: {
+        # Per-system attributes can be defined here. The self' and inputs'
+        # module parameters provide easy access to attributes of the same
+        # system.
+
+        # Equivalent to  inputs'.nixpkgs.legacyPackages.hello;
         packages.default = pkgs.hello;
-
-        devenv.shells.default = {
-          # https://devenv.sh/reference/options/
-          packages = [config.packages.default];
-
-          enterShell = ''
-            hello
-          '';
-        };
-        formatter = pkgs.alejandra;
       };
       flake = {
+        nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          system = "x86_64-linux";
+          modules = [
+            ./nixos
+            ./modules
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.heisfer = import ./home;
+                extraSpecialArgs = {inherit inputs;};
+              };
+            }
+          ];
+        };
         # The usual flake attributes can be defined here, including system-
         # agnostic ones like nixosModule and system-enumerating ones, although
         # those are more easily expressed in perSystem.
       };
     };
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    devenv.url = "github:cachix/devenv";
-
-    nixd.url = "github:nix-community/nixd";
-    nixd.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    hyprland.url = "github:hyprwm/Hyprland";
-    # helix.url = "github:helix-editor/helix";
-    helix.url = "github:SoraTenshi/helix/new-daily-driver";
-    ags.url = "github:Aylur/ags";
-    rycee-nurpkgs = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    firefox-cascade = {
-      url = "github:andreasgrafen/cascade/main";
-      flake = false;
-    };
-
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    kmonad = {
-      url = "github:kmonad/kmonad?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    lanzaboote.url = "github:nix-community/lanzaboote";
-  };
 }
