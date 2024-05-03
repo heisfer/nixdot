@@ -67,6 +67,14 @@
           };
         };
       };
+      settings = {
+        "browser.tabs.firefox-view" = false; # Disables the annyoing Firefox view
+        "extensions.pocket.enabled" = false; # Disables firefox pocket
+        "full-screen-api.ignore-widgets" = true; # Make videos full screen without being fullscreen
+        "browser.tabs.closeWindowWithLastTab" = false; # Make so the browser doesn't close when last tab is closed
+        "identity.fxaccounts.enabled" = false; #Disable Firefox accounts integration.
+
+      };
     };
   };
 }
