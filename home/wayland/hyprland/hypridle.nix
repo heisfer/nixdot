@@ -18,12 +18,14 @@ in {
     enable = true;
     package = inputs.hypridle.packages.${pkgs.system}.default;
     settings = {
-      before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-      lock_cmd = lib.getExe config.programs.hyprlock.package;
+      general = {
+        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
+        lock_cmd = lib.getExe config.programs.hyprlock.package;
+      };
 
-      listeners = [
+      listener = [
         {
-          timeout = 330;
+          timeout = 300; # 5min
           onTimeout = suspendScript.outPath;
         }
       ];
