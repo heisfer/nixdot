@@ -1,4 +1,5 @@
-{inputs, pkgs, ...}: {
+{ inputs, pkgs, ... }:
+{
   home.file = {
     rose-pine = {
       target = ".config/kak/colors/rose-pine.kak";
@@ -28,8 +29,6 @@
       kakoune-lsp
       smarttab-kak
       powerline-kak
-
     ];
   };
-
 }

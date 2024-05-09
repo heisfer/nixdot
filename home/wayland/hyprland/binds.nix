@@ -3,64 +3,68 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   swayosd = lib.getExe' pkgs.swayosd "swayosd-client";
-  workspaces = builtins.concatLists (builtins.genList (
-      x: let
-        ws = let
-          c = (x + 1) / 10;
-        in
+  workspaces = builtins.concatLists (
+    builtins.genList (
+      x:
+      let
+        ws =
+          let
+            c = (x + 1) / 10;
+          in
           builtins.toString (x + 1 - (c * 10));
-      in [
+      in
+      [
         "$mod, ${ws}, workspace, ${toString (x + 1)}"
         "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
       ]
-    )
-    10);
-in {
+    ) 10
+  );
+in
+{
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
-    bind =
-      [
-        "$mod SHIFT, Q, exit,"
-        "$mod, Q, killactive,"
-        "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
-        "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
-        "$mod, F, fullscreen,"
-        "$mod, T, togglefloating,"
+    bind = [
+      "$mod SHIFT, Q, exit,"
+      "$mod, Q, killactive,"
+      "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
+      "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
+      "$mod, F, fullscreen,"
+      "$mod, T, togglefloating,"
 
-        "$mod, RETURN, exec, ${lib.getExe config.programs.foot.package}"
+      "$mod, RETURN, exec, ${lib.getExe config.programs.foot.package}"
 
-        "$mod, H, movefocus, l"
-        "$mod, J, movefocus, u"
-        "$mod, K, movefocus, d"
-        "$mod, L, movefocus, r"
+      "$mod, H, movefocus, l"
+      "$mod, J, movefocus, u"
+      "$mod, K, movefocus, d"
+      "$mod, L, movefocus, r"
 
-        "$mod SHIFT, H, movewindow, l"
-        "$mod SHIFT, L, movewindow, r"
-        "$mod SHIFT, J, movewindow, u"
-        "$mod SHIFT, K, movewindow, d"
+      "$mod SHIFT, H, movewindow, l"
+      "$mod SHIFT, L, movewindow, r"
+      "$mod SHIFT, J, movewindow, u"
+      "$mod SHIFT, K, movewindow, d"
 
-        "$mod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
-        "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
-        "$mod, TAB, cyclenext,"
-        "$mod, TAB, bringactivetotop,"
+      "$mod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
+      "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
+      "$mod, TAB, cyclenext,"
+      "$mod, TAB, bringactivetotop,"
 
-        ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
+      ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
 
-        "$mod ,PRINT,exec,${lib.getExe pkgs.grim} -o $(hyprctl monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.focused) | .name') - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
+      "$mod ,PRINT,exec,${lib.getExe pkgs.grim} -o $(hyprctl monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.focused) | .name') - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
 
-        "$mod, mouse_down, workspace, e+1"
-        "$mod, mouse_up, workspace, e-1"
+      "$mod, mouse_down, workspace, e+1"
+      "$mod, mouse_up, workspace, e-1"
 
-        "$mod, ., exec, ${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
+      "$mod, ., exec, ${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
 
-        #function keys
-        ", XF86AudioRaiseVolume, exec, ${swayosd} --output-volume raise"
-        ", XF86AudioLowerVolume, exec, ${swayosd} --output-volume lower"
-        ", XF86AudioMute, exec, ${swayosd} --output-volume mute-toggle"
-      ]
-      ++ workspaces;
+      #function keys
+      ", XF86AudioRaiseVolume, exec, ${swayosd} --output-volume raise"
+      ", XF86AudioLowerVolume, exec, ${swayosd} --output-volume lower"
+      ", XF86AudioMute, exec, ${swayosd} --output-volume mute-toggle"
+    ] ++ workspaces;
     bindm = [
       "$mod, mouse:272, movewindow"
       "$mod, mouse:273, resizewindow"

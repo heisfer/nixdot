@@ -1,3 +1,1 @@
-{
-  local = final: _prev: import ../pkgs {pkgs = final;};
-}
+{ local = final: _prev: import ../pkgs { pkgs = final; }; }

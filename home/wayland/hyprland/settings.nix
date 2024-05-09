@@ -1,12 +1,7 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
   wayland.windowManager.hyprland.settings = {
-    env = [
-      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-    ];
+    env = [ "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" ];
     monitor = [
       #      "DP-1,1920x1080@75,0x0,1" # external monitor
       #      "DP-2,1920x1080@75,0x0,1" # external monitor #if seconday port is used
@@ -15,7 +10,7 @@
     ];
 
     exec-once = [
-      "${lib.getExe pkgs.xorg.xrandr} --output DP-2 --primary" #just for games
+      "${lib.getExe pkgs.xorg.xrandr} --output DP-2 --primary" # just for games
       "${lib.getExe' pkgs.swww "swww-daemon"}"
     ];
 
@@ -45,9 +40,7 @@
     animations = {
       enabled = true;
 
-      bezier = [
-        "myBezier, 0.05, 0.9, 0.1, 1.05"
-      ];
+      bezier = [ "myBezier, 0.05, 0.9, 0.1, 1.05" ];
 
       animation = [
         "windows, 1, 7, myBezier"

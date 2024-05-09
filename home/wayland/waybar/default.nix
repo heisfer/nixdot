@@ -4,7 +4,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   home.file = {
     waybar-rose-pine = {
       target = ".config/waybar/rose-pine.css";
@@ -19,9 +20,19 @@
       mainBar = {
         layer = "top";
         position = "top";
-        modules-left = ["clock" "hyprland/language" "hyprland/workspaces"];
-        modules-center = ["hyprland/window"];
-        modules-right = ["tray" "network" "battery" "pulseaudio" "backlight"];
+        modules-left = [
+          "clock"
+          "hyprland/language"
+          "hyprland/workspaces"
+        ];
+        modules-center = [ "hyprland/window" ];
+        modules-right = [
+          "tray"
+          "network"
+          "battery"
+          "pulseaudio"
+          "backlight"
+        ];
 
         "hyprland/workspaces" = {
           format = "{}";

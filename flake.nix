@@ -25,8 +25,15 @@
     };
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+        };
       flake = {
         nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
           specialArgs = {
@@ -42,7 +49,9 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.heisfer = import ./home;
-                extraSpecialArgs = {inherit inputs;};
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
               };
             }
           ];

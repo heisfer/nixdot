@@ -15,13 +15,9 @@ stdenvNoCC.mkDerivation rec {
     sha256 = "I9UnEhXdJ+HSMFE6R+PRNN3PT6ZAAzqdtdQNQWt7o4Y=";
   };
 
-  propagatedUserEnvPkgs = [
-    gtk-engine-murrine
-  ];
+  propagatedUserEnvPkgs = [ gtk-engine-murrine ];
 
-  buildInputs = [
-    gnome-themes-extra
-  ];
+  buildInputs = [ gnome-themes-extra ];
 
   dontBuild = true;
 

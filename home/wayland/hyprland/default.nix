@@ -8,5 +8,5 @@
     ./hyprpaper.nix
   ];
   wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
+  wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
 }

@@ -1,8 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{ pkgs, inputs, ... }:
+let
   marketplace-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
   ui = with marketplace-extensions; [
     silverquark.dancehelix
@@ -13,6 +10,7 @@
     mkhl.direnv
     bmewburn.vscode-intelephense-client
   ];
-in {
+in
+{
   programs.vscode.extensions = ui ++ misc;
 }

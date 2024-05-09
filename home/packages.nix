@@ -1,7 +1,5 @@
-{
-  pkgs,
-  ...
-}: let
+{ pkgs, ... }:
+let
   apps = with pkgs; [
     prismlauncher
     tutanota-desktop
@@ -15,8 +13,8 @@
     devenv
     #inputs.heisfer-nixvim.packages.${pkgs.system}.default
     dbeaver
-    (pkgs.callPackage ../pkgs/beekeeper-studio {})
-    (pkgs.callPackage ../pkgs/tableplus {})
+    (pkgs.callPackage ../pkgs/beekeeper-studio { })
+    (pkgs.callPackage ../pkgs/tableplus { })
   ];
   utils = with pkgs; [
     unzip
@@ -24,6 +22,7 @@
     xdg-utils
     nitch
   ];
-in {
+in
+{
   home.packages = apps ++ dev ++ utils;
 }

@@ -1,3 +1,1 @@
-pkgs: {
-  rose-pine-gtk = pkgs.callPackage ./rose-pine-gtk;
-}
+pkgs: { rose-pine-gtk = pkgs.callPackage ./rose-pine-gtk; }

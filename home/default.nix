@@ -1,8 +1,5 @@
+{ inputs, outputs, ... }:
 {
-  inputs,
-  outputs,
-  ...
-}: {
   imports = [
     ./internet
     ./wayland

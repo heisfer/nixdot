@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.stdenv.mkDerivation {
   name = "TablePlus";
 
@@ -68,7 +68,7 @@ pkgs.stdenv.mkDerivation {
   meta = with pkgs.stdenv.lib; {
     description = "Tableplus";
     homepage = "https://tableplus.com/";
-    platforms = ["x86_64-linux"];
+    platforms = [ "x86_64-linux" ];
     mainProgram = "tableplus";
   };
 }

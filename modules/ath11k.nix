@@ -4,9 +4,11 @@
   config,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.ath11k-sleep;
-in {
+in
+{
   options = {
     services.ath11k-sleep = {
       enable = mkOption {
@@ -22,8 +24,8 @@ in {
   # Source: https://wiki.archlinux.org/title/Lenovo_ThinkPad_T14_(AMD)_Gen_3#Suspend/Hibernate
   config = mkIf cfg.enable {
     systemd.services.ath11k-suspend = {
-      wantedBy = ["sleep.target"];
-      before = ["sleep.target"];
+      wantedBy = [ "sleep.target" ];
+      before = [ "sleep.target" ];
       description = "Suspend: modprobe ath11k_pci";
       serviceConfig = {
         Type = "simple";
@@ -31,8 +33,8 @@ in {
       };
     };
     systemd.services.ath11k-resume = {
-      wantedBy = ["suspend.target"];
-      after = ["suspend.target"];
+      wantedBy = [ "suspend.target" ];
+      after = [ "suspend.target" ];
       description = "Resume: modprobe ath11k_pci";
       serviceConfig = {
         Type = "simple";

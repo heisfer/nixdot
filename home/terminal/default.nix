@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./foot
-  ];
-}
+{ imports = [ ./foot ]; }

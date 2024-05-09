@@ -3,7 +3,8 @@
   fetchurl,
   lib,
   stdenv,
-}: let
+}:
+let
   pname = "beekeeper-studio";
   version = "4.3.0";
 
@@ -26,25 +27,31 @@
     inherit hash;
   };
 
-  appimageContents = appimageTools.extractType2 {inherit pname version src;};
+  appimageContents = appimageTools.extractType2 { inherit pname version src; };
 in
-  appimageTools.wrapType2 {
-    inherit pname version src;
+appimageTools.wrapType2 {
+  inherit pname version src;
 
-    extraInstallCommands = ''
-      install -Dm444 ${appimageContents}/${pname}.desktop -t $out/share/applications/
-      install -Dm444 ${appimageContents}/${pname}.png -t $out/share/pixmaps/
-      substituteInPlace $out/share/applications/${pname}.desktop \
-        --replace 'Exec=AppRun --no-sandbox' 'Exec=${pname}'
-    '';
+  extraInstallCommands = ''
+    install -Dm444 ${appimageContents}/${pname}.desktop -t $out/share/applications/
+    install -Dm444 ${appimageContents}/${pname}.png -t $out/share/pixmaps/
+    substituteInPlace $out/share/applications/${pname}.desktop \
+      --replace 'Exec=AppRun --no-sandbox' 'Exec=${pname}'
+  '';
 
-    meta = with lib; {
-      description = "Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows";
-      homepage = "https://www.beekeeperstudio.io";
-      changelog = "https://github.com/beekeeper-studio/beekeeper-studio/releases/tag/v${version}";
-      license = licenses.gpl3Only;
-      mainProgram = "beekeeper-studio";
-      maintainers = with maintainers; [milogert alexnortung];
-      platforms = ["aarch64-linux" "x86_64-linux"];
-    };
-  }
+  meta = with lib; {
+    description = "Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more. Linux, MacOS, and Windows";
+    homepage = "https://www.beekeeperstudio.io";
+    changelog = "https://github.com/beekeeper-studio/beekeeper-studio/releases/tag/v${version}";
+    license = licenses.gpl3Only;
+    mainProgram = "beekeeper-studio";
+    maintainers = with maintainers; [
+      milogert
+      alexnortung
+    ];
+    platforms = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+  };
+}

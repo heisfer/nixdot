@@ -1,7 +1,5 @@
 {
-  imports = [
-    ./core
-  ];
+  imports = [ ./core ];
   programs.neovim = {
     enable = true;
     defaultEditor = true;

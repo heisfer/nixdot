@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./swayosd.nix
-  ];
-}
+{ imports = [ ./swayosd.nix ]; }

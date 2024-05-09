@@ -1,7 +1,5 @@
 {
-  imports = [
-    ./extensions.nix
-  ];
+  imports = [ ./extensions.nix ];
   programs.vscode = {
     enable = true;
     enableUpdateCheck = false;

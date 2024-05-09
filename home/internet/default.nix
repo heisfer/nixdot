@@ -1,5 +1,1 @@
-{
-  imports = [
-    ./browser
-  ];
-}
+{ imports = [ ./browser ]; }

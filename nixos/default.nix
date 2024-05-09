@@ -1,11 +1,8 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+{ inputs, pkgs, ... }:
 {
-  inputs,
-  pkgs,
-  ...
-}: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -35,18 +32,20 @@
 
   nix = {
     settings = {
-      experimental-features = ["nix-command" "flakes"];
-      substituters = [
-        "https://devenv.cachix.org"
+      experimental-features = [
+        "nix-command"
+        "flakes"
       ];
-      trusted-public-keys = [
-        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
-      ];
+      substituters = [ "https://devenv.cachix.org" ];
+      trusted-public-keys = [ "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=" ];
     };
   };
 
   networking.hostName = "voyage"; # Define your hostname.
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+  ];
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -62,8 +61,7 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-  services = {
-  };
+  services = { };
 
   programs = {
     steam.enable = true;
@@ -71,9 +69,7 @@
     adb.enable = true;
   };
   users.extraUsers.greeter = {
-    packages = [
-      (pkgs.callPackage ../pkgs/rose-pine-gtk {})
-    ];
+    packages = [ (pkgs.callPackage ../pkgs/rose-pine-gtk { }) ];
     home = "/tmp/greeter-home";
     createHome = true;
   };
@@ -82,7 +78,11 @@
   };
   programs.regreet = {
     enable = true;
-    cageArgs = ["-s" "-m" "last"];
+    cageArgs = [
+      "-s"
+      "-m"
+      "last"
+    ];
     settings = {
       background = {
         path = /home/heisfer/cat.png;
@@ -100,13 +100,14 @@
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      common.default = [ "gtk" ];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
     };
 
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   security = {
@@ -175,7 +176,11 @@
   users.users.heisfer = {
     initialPassword = "password";
     isNormalUser = true;
-    extraGroups = ["wheel" "adbusers" "libvirtd"]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "adbusers"
+      "libvirtd"
+    ]; # Enable ‘sudo’ for the user.
     shell = pkgs.nushell;
     packages = with pkgs; [
       firefox
@@ -189,11 +194,7 @@
 
   fonts.packages = with pkgs; [
     ibm-plex
-    (nerdfonts.override {
-      fonts = [
-        "IBMPlexMono"
-      ];
-    })
+    (nerdfonts.override { fonts = [ "IBMPlexMono" ]; })
   ];
 
   # List packages installed in system profile. To search, run:
