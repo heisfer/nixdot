@@ -6,5 +6,6 @@
     ./lsp
     ./cmp
     ./battery
+    ./git
   ];
 }
