@@ -41,12 +41,14 @@
     };
   };
 
-  networking.hostName = "voyage"; # Define your hostname.
-  networking.nameservers = [
-    "1.1.1.1"
-    "1.0.0.1"
-  ];
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking = {
+    hostName = "voyage"; # Define your hostname.
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
+    networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Tallinn";
