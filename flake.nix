@@ -19,6 +19,10 @@
     waybar-rose-pine.flake = false;
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nixneovimplugins = {
+      url = "github:jooooscha/nixpkgs-vim-extra-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:

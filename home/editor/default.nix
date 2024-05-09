@@ -2,5 +2,6 @@
   imports = [
 #    ./kak
     ./vscode
+    ./neovim
   ];
 }
