@@ -11,6 +11,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./virtual.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -27,6 +28,7 @@
   nixpkgs = {
     overlays = [
       inputs.nur.overlay
+      inputs.nixneovimplugins.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -63,10 +65,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
   services = {
-    fprintd.enable = true;
-    pcscd.enable = true;
-    gnome.gnome-keyring.enable = true;
-    fwupd.enable = true;
   };
 
   programs = {
@@ -114,6 +112,7 @@
   };
 
   security = {
+    polkit.enable = true;
     pam.services.hyprlock.text = "auth include login";
     rtkit.enable = true;
   };
@@ -139,6 +138,7 @@
 
   services = {
     ath11k-sleep.enable = true;
+    polkit-gnome.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
@@ -146,6 +146,10 @@
       alsa.support32Bit = true;
       jack.enable = true;
     };
+    fprintd.enable = true;
+    pcscd.enable = true;
+    gnome.gnome-keyring.enable = true;
+    fwupd.enable = true;
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -173,7 +177,7 @@
   users.users.heisfer = {
     initialPassword = "password";
     isNormalUser = true;
-    extraGroups = ["wheel" "adbusers"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "adbusers" "libvirtd"]; # Enable ‘sudo’ for the user.
     shell = pkgs.nushell;
     packages = with pkgs; [
       firefox
