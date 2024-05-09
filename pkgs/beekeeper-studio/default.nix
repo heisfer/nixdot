@@ -2,7 +2,6 @@
   appimageTools,
   fetchurl,
   lib,
-  makeWrapper,
   stdenv,
 }: let
   pname = "beekeeper-studio";

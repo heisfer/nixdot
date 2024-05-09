@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   imports = [
     ./theme.nix
     ./trouble.nix
