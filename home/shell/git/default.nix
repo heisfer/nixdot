@@ -8,4 +8,7 @@
       ".envrc"
     ];
   };
+  programs.gh = {
+    enable = true;
+  };
 }

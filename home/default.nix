@@ -18,6 +18,7 @@
     overlays = [
       outputs.overlays.local
       inputs.nur.overlay
+      inputs.nixneovimplugins.overlays.default
     ];
   };
 

@@ -14,7 +14,7 @@
 
   dev = with pkgs; [
     devenv
-    inputs.heisfer-nixvim.packages.${pkgs.system}.default
+    #inputs.heisfer-nixvim.packages.${pkgs.system}.default
     dbeaver
     (pkgs.callPackage ../pkgs/beekeeper-studio {})
     (pkgs.callPackage ../pkgs/tableplus {})
