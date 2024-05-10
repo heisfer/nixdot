@@ -19,6 +19,7 @@
     };
     kernelPackages = pkgs.linuxPackages_xanmod;
   };
+  programs.nh.enable = true;
 
   nixpkgs = {
     overlays = [
