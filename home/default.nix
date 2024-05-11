@@ -8,7 +8,6 @@
     ./services.nix
     ./shell
     ./editor
-    inputs.hyprlock.homeManagerModules.default
   ];
 
   nixpkgs = {

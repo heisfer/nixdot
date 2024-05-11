@@ -8,11 +8,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/nur";
 
-    hyprpaper.url = "github:hyprwm/hyprpaper";
-    hyprlock.url = "github:hyprwm/hyprlock";
-    hypridle.url = "github:hyprwm/hypridle";
-    hyprland.url = "github:hyprwm/Hyprland";
-
     waybar-rose-pine.url = "github:rose-pine/waybar";
     waybar-rose-pine.flake = false;
 

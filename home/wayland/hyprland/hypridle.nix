@@ -1,34 +1,28 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 let
-  suspendScript = pkgs.writeShellScript "suspend-script" ''
-    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
-    # only suspend if audio isn't running
-    if [ $? == 1 ]; then
-      ${pkgs.systemd}/bin/systemctl suspend
-    fi
-  '';
+  hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
+  hyprlock = lib.getExe' config.programs.hyprlock.package "hyprlock";
 in
 {
   # screen idle
   services.hypridle = {
     enable = true;
-    package = inputs.hypridle.packages.${pkgs.system}.default;
     settings = {
       general = {
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-        lock_cmd = lib.getExe config.programs.hyprlock.package;
+        after_sleep_cmd = "${hyprctl} dispatch dpms on";
+        before_sleep_cmd = "${hyprlock}";
+        lock_cmd = "${hyprlock}";
       };
 
       listener = [
         {
+          timeout = 150; # 2.5 min
+          onTimeout = "${hyprlock}";
+        }
+        {
           timeout = 300; # 5min
-          onTimeout = suspendScript.outPath;
+          onTimeout = "${hyprctl} dispatch dpms off";
+          on-resume = "${hyprctl} dispatch dpms on";
         }
       ];
     };
