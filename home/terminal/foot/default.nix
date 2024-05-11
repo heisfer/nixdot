@@ -4,7 +4,7 @@
     settings = {
       main = {
         term = "xterm-256color";
-        font = "BlexMono Nerd Font Mono:size=16:weight=medium";
+        font = "BlexMono Nerd Font Mono:size=14:weight=medium";
         box-drawings-uses-font-glyphs = "yes";
         dpi-aware = false;
       };
