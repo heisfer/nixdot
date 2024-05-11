@@ -13,7 +13,6 @@ let
     devenv
     statix
     nh
-    #inputs.heisfer-nixvim.packages.${pkgs.system}.default
     dbeaver
     (pkgs.callPackage ../pkgs/beekeeper-studio { })
     (pkgs.callPackage ../pkgs/tableplus { })
