@@ -18,6 +18,7 @@ let
     (pkgs.callPackage ../pkgs/tableplus { })
   ];
   utils = with pkgs; [
+    wl-clipboard
     unzip
     zip
     xdg-utils
