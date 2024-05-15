@@ -15,7 +15,7 @@
     ];
 
     input = {
-      kb_layout = "us,ee,no";
+      kb_layout = "us,ee";
       kb_options = "caps:swapescape,grp:alt_space_toggle";
     };
     general = {
