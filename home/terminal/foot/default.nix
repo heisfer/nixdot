@@ -10,6 +10,8 @@
       };
       cursor = {
         color = "191724 e0def4";
+        style = "beam";
+        beam-thickness = "2px";
       };
 
       colors = {
