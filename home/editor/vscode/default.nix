@@ -7,6 +7,7 @@
       "window.titleBarStyle" = "custom";
       "workbench.colorTheme" = "Rosé Pine";
       "workbench.iconTheme" = "rose-pine-icons";
+      "keyboard.dispatch" = "keyCode"; # For CAPS and ESC swap (Hyprland keyboard modification)
     };
   };
 }

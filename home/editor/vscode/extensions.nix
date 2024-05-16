@@ -2,7 +2,7 @@
 let
   marketplace-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
   ui = with marketplace-extensions; [
-    silverquark.dancehelix
+    gregoire.dance
     mvllow.rose-pine
     sulsami.rose-pine-burnt
   ];
