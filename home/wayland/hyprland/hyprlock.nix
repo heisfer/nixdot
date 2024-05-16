@@ -1,4 +1,4 @@
-{ config, ... }:
+{ inputs, ... }:
 {
   programs.hyprlock = {
     enable = true;
@@ -11,13 +11,14 @@
       background = [
         {
           monitor = "";
-          #FIZME: add wallpaper attribute
-          path = "${config.home.homeDirectory}/cat.png";
+          path = "${inputs.wallpapers}/rose-pine-nix.png";
         }
       ];
       input-field = [
         {
           size = "200, 50";
+          position = "0, -300";
+          placeholder_text = "<i>Fingerprint</i>";
           outer_color = "rgb(25, 23, 36)";
           inner_color = "rgb(31, 29, 46)";
           font_color = "rgb(224, 222, 244)";
@@ -33,7 +34,7 @@
           font_size = 50;
           color = "rgb(235, 188, 186)";
 
-          position = "0, 80";
+          position = "-550, 450";
 
           valign = "center";
           halign = "center";

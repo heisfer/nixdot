@@ -21,6 +21,15 @@
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpapers = {
+      url = "github:heisfer/Wallpapers";
+      flake = false;
+    };
+
+    rose-pine-rofi = {
+      url = "github:heisfer/rose-pine-rofi";
+      flake = false;
+    };
   };
 
   outputs =

@@ -365,7 +365,25 @@
         "nixneovimplugins": "nixneovimplugins",
         "nixpkgs": "nixpkgs_3",
         "nur": "nur",
+        "rose-pine-rofi": "rose-pine-rofi",
+        "wallpapers": "wallpapers",
         "waybar-rose-pine": "waybar-rose-pine"
+      }
+    },
+    "rose-pine-rofi": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715820344,
+        "narHash": "sha256-Mk/1mCqMMpXiTaf0ABOkctIJ/DHEIYRJ6FO1bJ5/sR4=",
+        "owner": "heisfer",
+        "repo": "rose-pine-rofi",
+        "rev": "447684818a64e1b6c144d568b618282a10d2ccc3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "heisfer",
+        "repo": "rose-pine-rofi",
+        "type": "github"
       }
     },
     "rust-overlay": {
@@ -475,6 +493,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715817431,
+        "narHash": "sha256-g8bxJy91l9R2FTc8pDWhLmNx2LubAgMCrKQdTC209Ms=",
+        "owner": "heisfer",
+        "repo": "Wallpapers",
+        "rev": "25399524a32ac79b2878615c904ac45563b604ce",
+        "type": "github"
+      },
+      "original": {
+        "owner": "heisfer",
+        "repo": "Wallpapers",
         "type": "github"
       }
     },

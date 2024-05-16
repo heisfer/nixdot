@@ -1,10 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   programs.rofi = {
     enable = true;
-    #    font = "Comic Code Ligatures 14";
     package = pkgs.rofi-wayland;
-    theme = ./rose.rasi;
+    theme = "${inputs.rose-pine-rofi}/rose-pine.rasi";
   };
-  #  xdg.configFile."rofi".source = ./config;
 }

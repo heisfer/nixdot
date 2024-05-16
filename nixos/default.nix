@@ -88,7 +88,7 @@
     ];
     settings = {
       background = {
-        path = /home/heisfer/cat.png;
+        path = "${inputs.wallpapers}/rose-pine.jpg";
         fit = "Cover";
       };
       GTK = {
