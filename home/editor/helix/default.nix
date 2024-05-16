@@ -17,6 +17,17 @@
           normal = "block";
           select = "underline";
         };
+        lsp = {
+          display-messages = true;
+          display-inlay-hints = true;
+        };
+        file-picker = {
+          hidden = false;
+        };
+      };
+      keys.normal = {
+        space.w = ":w";
+        space.q = ":q";
       };
     };
   };
