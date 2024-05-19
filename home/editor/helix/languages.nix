@@ -18,6 +18,11 @@
           provideFormatter = true;
         };
       };
+
+      tsserver = {
+        command = "${lib.getExe' pkgs.nodePackages_latest.typescript-language-server "typescript-language-server"}";
+        args = [ "--stdio" ];
+      };
       emmet-lsp = {
         command = "${lib.getExe pkgs.emmet-language-server}";
         args = [ "--stdio" ];
@@ -29,6 +34,10 @@
       phpactor = {
         command = "${lib.getExe' pkgs.phpactor "phpactor"}";
         args = [ "language-server" ];
+      };
+      tailwindcss-ls = {
+        command = "${lib.getExe pkgs.tailwindcss-language-server}";
+        args = [ "--stdio" ];
       };
     };
     language =
@@ -74,6 +83,16 @@
           file-types = [ "html" ];
         }
         {
+          name = "javascript";
+          auto-format = true;
+          language-servers = [ "tsserver" ];
+        }
+        {
+          name = "typescript";
+          auto-format = true;
+          language-servers = [ "tsserver" ];
+        }
+        {
           name = "php";
           auto-format = true;
           language-servers = phplsp;
@@ -86,7 +105,14 @@
             "blade"
           ];
           injection-regex = "blade";
-          language-servers = [ "vscode-html-language-server" ];
+          language-servers = [
+            "vscode-html-language-server"
+            "tailwindcss-ls"
+          ];
+          block-comment-tokens = {
+            start = "{{--";
+            end = "--}}";
+          };
           roots = [
             "composer.json"
             "index.php"
