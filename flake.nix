@@ -39,34 +39,37 @@
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [ ./pkgs ];
       systems = [ "x86_64-linux" ];
       perSystem =
         { pkgs, ... }:
         {
           formatter = pkgs.nixfmt-rfc-style;
         };
-      flake = {
-        nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs;
-          };
-          system = "x86_64-linux";
-          modules = [
-            ./nixos
-            ./modules
-            inputs.home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.heisfer = import ./home;
-                extraSpecialArgs = {
-                  inherit inputs;
+      flake =
+        { self', ... }:
+        {
+          nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
+            specialArgs = {
+              inherit inputs;
+            };
+            system = "x86_64-linux";
+            modules = [
+              ./nixos
+              ./modules
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.heisfer = import ./home;
+                  extraSpecialArgs = {
+                    inherit inputs self';
+                  };
                 };
-              };
-            }
-          ];
+              }
+            ];
+          };
         };
-      };
     };
 }

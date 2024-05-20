@@ -110,6 +110,11 @@
         }
         {
           name = "blade";
+          auto-format = true;
+          formatter = {
+            command = "blade-formatter";
+            args = [ "--stdin" ];
+          };
           scope = "source.blade.php";
           file-types = [
             { glob = "*.blade.php"; }

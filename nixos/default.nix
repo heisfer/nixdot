@@ -139,6 +139,7 @@
   };
 
   services = {
+    upower.enable = true;
     ath11k-sleep.enable = true;
     polkit-gnome.enable = true;
     pipewire = {

@@ -15,6 +15,7 @@ let
     nh
     dbeaver
     (pkgs.callPackage ../pkgs/beekeeper-studio { })
+    (pkgs.callPackage ../pkgs/blade-formatter { })
     (pkgs.callPackage ../pkgs/tableplus { })
   ];
   utils = with pkgs; [
