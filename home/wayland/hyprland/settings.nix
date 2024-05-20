@@ -1,7 +1,10 @@
 { pkgs, lib, ... }:
 {
   wayland.windowManager.hyprland.settings = {
-    env = [ "QT_WAYLAND_DISABLE_WINDOWDECORATION,1" ];
+    env = [
+      "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "QT_QPA_PLATFORM,wayland"
+    ];
     monitor = [
       #      "DP-1,1920x1080@75,0x0,1" # external monitor
       #      "DP-2,1920x1080@75,0x0,1" # external monitor #if seconday port is used

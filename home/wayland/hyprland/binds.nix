@@ -18,58 +18,56 @@ let
           builtins.toString (x + 1 - (c * 10));
       in
       [
-        "$mod, ${ws}, workspace, ${toString (x + 1)}"
-        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+        "SUPER, ${ws}, workspace, ${toString (x + 1)}"
+        "SUPER_SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
       ]
     ) 10
   );
 in
 {
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
     bind = [
-      "$mod SHIFT, Q, exit,"
-      "$mod, Q, killactive,"
-      "$mod, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
-      "$mod SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
-      "$mod, F, fullscreen,"
-      "$mod, T, togglefloating,"
+      "SUPER_SHIFT, Q, exit,"
+      "SUPER, Q, killactive,"
+      "SUPER, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
+      "SUPER_SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
+      "SUPER, F, fullscreen,"
+      "SUPER, T, togglefloating,"
 
-      "$mod, RETURN, exec, ${lib.getExe config.programs.foot.package}"
+      "SUPER, RETURN, exec, ${lib.getExe config.programs.foot.package}"
 
-      "$mod, H, movefocus, l"
-      "$mod, J, movefocus, u"
-      "$mod, K, movefocus, d"
-      "$mod, L, movefocus, r"
+      "SUPER, H, movefocus, l"
+      "SUPER, J, movefocus, u"
+      "SUPER, K, movefocus, d"
+      "SUPER, L, movefocus, r"
 
-      "$mod SHIFT, H, movewindow, l"
-      "$mod SHIFT, L, movewindow, r"
-      "$mod SHIFT, J, movewindow, u"
-      "$mod SHIFT, K, movewindow, d"
+      "SUPER_SHIFT, H, movewindow, l"
+      "SUPER_SHIFT, L, movewindow, r"
+      "SUPER_SHIFT, J, movewindow, u"
+      "SUPER_SHIFT, K, movewindow, d"
 
-      "$mod, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
-      "$mod, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
-      "$mod, TAB, cyclenext,"
-      "$mod, TAB, bringactivetotop,"
+      "SUPER, B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
+      "SUPER, M, exec, ${lib.getExe config.programs.rofi.package} -show drun -modi drun,run -display-drun \" Search\""
+      "SUPER, TAB, cyclenext,"
+      "SUPER, TAB, bringactivetotop,"
 
       # I don't really want to save screenshots.... just for notification eye candy :)
       ", PRINT, exec, ${hyprshot} -m region -o /tmp/sswkjf"
-      "$mod, PRINT, exec, ${hyprshot} -m output -c -o /tmp/sswkjf" # -c for current output
-      "$mod SHIFT, PRINT, exec, ${hyprshot} -m window -o /tmp/sswkjf"
+      "SUPER, PRINT, exec, ${hyprshot} -m output -c -o /tmp/sswkjf" # -c for current output
+      "SUPER_SHIFT, PRINT, exec, ${hyprshot} -m window -o /tmp/sswkjf"
 
-      "$mod, mouse_down, workspace, e+1"
-      "$mod, mouse_up, workspace, e-1"
-
-      "$mod, ., exec, ${lib.getExe' pkgs.wl-clipboard "wl-paste"}"
+      "SUPER, mouse_down, workspace, e+1"
+      "SUPER, mouse_up, workspace, e-1"
 
       #function keys
       ", XF86AudioRaiseVolume, exec, ${swayosd} --output-volume raise"
       ", XF86AudioLowerVolume, exec, ${swayosd} --output-volume lower"
       ", XF86AudioMute, exec, ${swayosd} --output-volume mute-toggle"
     ] ++ workspaces;
+
     bindm = [
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
+      "SUPER, mouse:272, movewindow"
+      "SUPER, mouse:273, resizewindow"
     ];
   };
 }
