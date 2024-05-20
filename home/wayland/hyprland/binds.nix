@@ -6,6 +6,7 @@
 }:
 let
   swayosd = lib.getExe' pkgs.swayosd "swayosd-client";
+  hyprshot = lib.getExe pkgs.hyprshot;
   workspaces = builtins.concatLists (
     builtins.genList (
       x:
@@ -51,9 +52,10 @@ in
       "$mod, TAB, cyclenext,"
       "$mod, TAB, bringactivetotop,"
 
-      ",PRINT,exec,${lib.getExe pkgs.grim} -g \"$(${lib.getExe pkgs.slurp})\" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
-
-      "$mod ,PRINT,exec,${lib.getExe pkgs.grim} -o $(hyprctl monitors -j | ${lib.getExe pkgs.jq} -r '.[] | select(.focused) | .name') - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"} -t image/png && ${lib.getExe' pkgs.libnotify "notify-send"} 'Screenshot Copied to Clipboard'"
+      # I don't really want to save screenshots.... just for notification eye candy :)
+      ", PRINT, exec, ${hyprshot} -m region -o /tmp/sswkjf"
+      "$mod, PRINT, exec, ${hyprshot} -m output -c -o /tmp/sswkjf" # -c for current output
+      "$mod SHIFT, PRINT, exec, ${hyprshot} -m window -o /tmp/sswkjf"
 
       "$mod, mouse_down, workspace, e+1"
       "$mod, mouse_up, workspace, e-1"
