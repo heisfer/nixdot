@@ -8,6 +8,7 @@
     ./services.nix
     ./shell
     ./editor
+    inputs.ags.homeManagerModules.default
   ];
 
   nixpkgs = {
