@@ -5,7 +5,7 @@ let
     tutanota-desktop
     qdigidoc
     telegram-desktop
-    vesktop
+    (vesktop.override { withSystemVencord = false; })
     keepassxc
   ];
 
@@ -15,6 +15,7 @@ let
     nh
     dbeaver
     (pkgs.callPackage ../pkgs/beekeeper-studio { })
+    (pkgs.callPackage ../pkgs/laravel { })
     (pkgs.callPackage ../pkgs/blade-formatter { })
     (pkgs.callPackage ../pkgs/tableplus { })
   ];
