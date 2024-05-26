@@ -119,6 +119,7 @@
     rtkit.enable = true;
   };
   hardware = {
+    firmware = [ pkgs.sof-firmware ];
     bluetooth = {
       enable = true;
     };

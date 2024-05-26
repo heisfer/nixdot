@@ -11,9 +11,10 @@ let
 
   dev = with pkgs; [
     devenv
+    nixpkgs-review
     statix
     nh
-    dbeaver
+    dbeaver-bin
     (pkgs.callPackage ../pkgs/beekeeper-studio { })
     (pkgs.callPackage ../pkgs/laravel { })
     (pkgs.callPackage ../pkgs/blade-formatter { })

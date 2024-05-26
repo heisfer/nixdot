@@ -62,11 +62,11 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1714641030,
-        "narHash": "sha256-yzcRNDoyVP7+SCNX0wmuDju1NUCt8Dz9+lyUXEI0dbI=",
+        "lastModified": 1715865404,
+        "narHash": "sha256-/GJvTdTpuDjNn84j82cU6bXztE0MSkdnTWClUCRub78=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "e5d10a24b66c3ea8f150e47dfdb0416ab7c3390e",
+        "rev": "8dc45382d5206bd292f9c2768b8058a8fd8311d9",
         "type": "github"
       },
       "original": {
@@ -155,11 +155,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1715676857,
-        "narHash": "sha256-SSohpqbkPgyzLGT89hDxBD9WC88tm+eN5wGOZ6cupEc=",
+        "lastModified": 1716520196,
+        "narHash": "sha256-OdZe7n3+cHUnN3Lq5Ou89OEJq0kMdbnFMJeKCE+CFnc=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "e76020ddb93eeb051de606c24f92189c3fc55547",
+        "rev": "f1c9580e4b636d014fefb61080d8d019c14e37b7",
         "type": "github"
       },
       "original": {
@@ -175,11 +175,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715486357,
-        "narHash": "sha256-4pRuzsHZOW5W4CsXI9uhKtiJeQSUoe1d2M9mWU98HC4=",
+        "lastModified": 1716457508,
+        "narHash": "sha256-ZxzffLuWRyuMrkVVq7wastNUqeO0HJL9xqfY1QsYaqo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "44677a1c96810a8e8c4ffaeaad10c842402647c1",
+        "rev": "850cb322046ef1a268449cf1ceda5fd24d930b05",
         "type": "github"
       },
       "original": {
@@ -239,11 +239,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1715649763,
-        "narHash": "sha256-0R+MQ9DjYseLlp+KgvHmxzt+mfaS6aur1xaHyVrk10M=",
+        "lastModified": 1716513793,
+        "narHash": "sha256-j/xtcGcfIEFALc6RRjXg1amS19U8XBI7ozmCX3rwks8=",
         "owner": "nix-community",
         "repo": "nix-vscode-extensions",
-        "rev": "42ea80c62ffdb15d8b0abc6cc1fd9bec14bccd6a",
+        "rev": "55eecd49a91d0b105218a6874fa212b753ca14c7",
         "type": "github"
       },
       "original": {
@@ -261,11 +261,11 @@
         "poetry2nix": "poetry2nix"
       },
       "locked": {
-        "lastModified": 1715595425,
-        "narHash": "sha256-vZF8pEBXYUbWOpAYUsZSh6BBudPwqjWrNftbCl6qxio=",
+        "lastModified": 1716474112,
+        "narHash": "sha256-1/x586AK1TC8N05Te/YbcpLp12SbJo/FPVncNb8yfGw=",
         "owner": "jooooscha",
         "repo": "nixpkgs-vim-extra-plugins",
-        "rev": "ac4c571f4a9426b877500336ffff15d155bce5fe",
+        "rev": "7e533e27a366045d795ad34f9622edb8b1aa3152",
         "type": "github"
       },
       "original": {
@@ -320,11 +320,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1715534503,
-        "narHash": "sha256-5ZSVkFadZbFP1THataCaSf0JH2cAH3S29hU9rrxTEqk=",
+        "lastModified": 1716330097,
+        "narHash": "sha256-8BO3B7e3BiyIDsaKA0tY8O88rClYRTjvAp66y+VBUeU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2057814051972fa1453ddfb0d98badbea9b83c06",
+        "rev": "5710852ba686cc1fd0d3b8e22b3117d43ba374c2",
         "type": "github"
       },
       "original": {
@@ -336,11 +336,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1715692144,
-        "narHash": "sha256-H4EQ78QCy86Sb7Q0wj7tQN7F64Ze6aq1HwW23YSM1xc=",
+        "lastModified": 1716579939,
+        "narHash": "sha256-BSxBoVa/lr1pmhPotluhukn6iuIgyYzkZPE4u5PbTDU=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "22c8addb8f2d310ce3c20d0ab02c41f0c9d11e67",
+        "rev": "b664a42cce5dde08afc67bd8f4d388682eca09ac",
         "type": "github"
       },
       "original": {
@@ -520,11 +520,11 @@
     "wallpapers": {
       "flake": false,
       "locked": {
-        "lastModified": 1715817431,
-        "narHash": "sha256-g8bxJy91l9R2FTc8pDWhLmNx2LubAgMCrKQdTC209Ms=",
+        "lastModified": 1715819207,
+        "narHash": "sha256-EyoERCW7DvO9kEqdIk3HZ8Us3M0QRkjjXxVSSe9LvHE=",
         "owner": "heisfer",
         "repo": "Wallpapers",
-        "rev": "25399524a32ac79b2878615c904ac45563b604ce",
+        "rev": "7c0207ca62c2ca0c82747dedaedc8e8c356bdf4a",
         "type": "github"
       },
       "original": {
