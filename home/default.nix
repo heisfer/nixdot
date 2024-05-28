@@ -9,6 +9,7 @@
     ./shell
     ./editor
     inputs.ags.homeManagerModules.default
+    inputs.hyprland.homeManagerModules.default
   ];
 
   nixpkgs = {

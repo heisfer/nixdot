@@ -10,6 +10,7 @@ let
   ];
 
   dev = with pkgs; [
+    jetbrains.phpstorm
     devenv
     nixpkgs-review
     statix

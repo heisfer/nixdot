@@ -1,7 +1,13 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 let
   hyprctl = lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl";
   hyprlock = lib.getExe' config.programs.hyprlock.package "hyprlock";
+  lock = "${pkgs.systemd}/bin/loginctl lock-session";
 in
 {
   # screen idle
@@ -9,16 +15,11 @@ in
     enable = true;
     settings = {
       general = {
-        after_sleep_cmd = "${hyprctl} dispatch dpms on";
-        before_sleep_cmd = "${hyprlock}";
+        before_sleep_cmd = "${lock}";
         lock_cmd = "${hyprlock}";
       };
 
       listener = [
-        {
-          timeout = 150; # 2.5 min
-          onTimeout = "${hyprlock}";
-        }
         {
           timeout = 300; # 5min
           onTimeout = "${hyprctl} dispatch dpms off";
