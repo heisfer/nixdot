@@ -5,7 +5,7 @@
     ./wayland
     ./terminal
     ./packages.nix
-    ./services.nix
+    ./services
     ./shell
     ./editor
     inputs.ags.homeManagerModules.default
