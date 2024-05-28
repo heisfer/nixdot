@@ -6,5 +6,6 @@
     ./nushell
     ./oh-my-posh
     ./zoxide
+    ./xplr
   ];
 }
