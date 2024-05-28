@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./programs
-    ./services
-    ./windowManagers
-  ];
-}

@@ -2,7 +2,7 @@
 {
   imports = [
     ./internet
-    ./desktop
+    ./wayland
     ./terminal
     ./packages.nix
     ./services
