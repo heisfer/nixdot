@@ -9,6 +9,13 @@ let
     keepassxc
   ];
 
+  local = with pkgs; [
+    (pkgs.callPackage ../pkgs/beekeeper-studio { })
+    (pkgs.callPackage ../pkgs/laravel { })
+    (pkgs.callPackage ../pkgs/blade-formatter { })
+    (pkgs.callPackage ../pkgs/tableplus { })
+  ];
+
   dev = with pkgs; [
     jetbrains.phpstorm
     devenv
@@ -16,10 +23,6 @@ let
     statix
     nh
     dbeaver-bin
-    (pkgs.callPackage ../pkgs/beekeeper-studio { })
-    (pkgs.callPackage ../pkgs/laravel { })
-    (pkgs.callPackage ../pkgs/blade-formatter { })
-    (pkgs.callPackage ../pkgs/tableplus { })
   ];
   utils = with pkgs; [
     wl-clipboard
@@ -30,5 +33,5 @@ let
   ];
 in
 {
-  home.packages = apps ++ dev ++ utils;
+  home.packages = apps ++ dev ++ utils ++ local;
 }
