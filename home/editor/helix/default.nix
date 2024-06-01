@@ -26,7 +26,6 @@
         };
       };
       keys.normal = {
-        space.w = ":w";
         space.q = ":q";
       };
     };
