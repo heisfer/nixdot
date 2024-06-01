@@ -4,39 +4,22 @@
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ./pkgs ];
+
+      imports = [
+        ./nixos
+        ./nixos/modules
+        ./pkgs
+      ];
+
       systems = [ "x86_64-linux" ];
+
       perSystem =
         { pkgs, ... }:
         {
           formatter = pkgs.nixfmt-rfc-style;
         };
-      flake =
-        { self', ... }:
-        {
-          nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs = {
-              inherit inputs;
-            };
-            system = "x86_64-linux";
-            modules = [
-              ./nixos
-              ./nixos/modules
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  users.heisfer = import ./home;
-                  extraSpecialArgs = {
-                    inherit inputs self';
-                  };
-                };
-              }
-            ];
-          };
-        };
     };
+
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";

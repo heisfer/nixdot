@@ -1,8 +1,6 @@
 {
-  lib,
   mkYarnPackage,
   fetchFromGitHub,
-  system,
   fetchYarnDeps,
 }:
 
@@ -24,12 +22,4 @@ mkYarnPackage rec {
   };
 
   postBuild = "yarn build";
-
-  meta = with lib; {
-    description = "Laravel Blade template formatter";
-    homepage = "https://github.com/shufo/blade-formatter";
-    platforms = [ system ];
-    license = licenses.mit;
-    maintainers = with maintainers; [ lelgenio ];
-  };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, self', ... }:
 let
   apps = with pkgs; [
     prismlauncher
@@ -9,14 +9,15 @@ let
     keepassxc
   ];
 
-  local = with pkgs; [
-    (pkgs.callPackage ../pkgs/beekeeper-studio { })
-    (pkgs.callPackage ../pkgs/laravel { })
-    (pkgs.callPackage ../pkgs/blade-formatter { })
-    (pkgs.callPackage ../pkgs/tableplus { })
+  local = with self'.packages; [
+    laravel
+    beekeeper-studio
+    blade-formatter
+    tableplus
   ];
 
   dev = with pkgs; [
+    devbox
     jetbrains.phpstorm
     devenv
     nixpkgs-review
