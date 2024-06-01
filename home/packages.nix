@@ -14,6 +14,7 @@ let
     beekeeper-studio
     blade-formatter
     tableplus
+    clickup
   ];
 
   dev = with pkgs; [
