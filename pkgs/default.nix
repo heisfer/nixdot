@@ -9,6 +9,7 @@
         tableplus = pkgs.callPackage ./tableplus { };
         laravel = pkgs.callPackage ./laravel { };
         clickup = pkgs.callPackage ./clickup { };
+        zoho-mail-desktop-lite = pkgs.callPackage ./zoho-mail-desktop-lite { };
       };
     };
 }

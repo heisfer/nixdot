@@ -15,6 +15,7 @@ let
     blade-formatter
     tableplus
     clickup
+    zoho-mail-desktop-lite
   ];
 
   dev = with pkgs; [
