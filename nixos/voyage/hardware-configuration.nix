@@ -12,6 +12,10 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
+    binfmt.emulatedSystems = [
+      "i686-linux"
+      "aarch64-linux"
+    ];
     initrd.availableKernelModules = [
       "nvme"
       "xhci_pci"
