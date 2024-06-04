@@ -12,6 +12,16 @@
         config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
       };
 
+      nixd = {
+        command = lib.getExe inputs.nixd.packages.${pkgs.system}.default;
+        config.nixd = {
+          formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+
+          nixos.expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.voyage.options";
+          home-manager.expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.voyage.options";
+        };
+      };
+
       vscode-html-language-server = {
         command = lib.getExe' pkgs.vscode-langservers-extracted "vscode-html-language-server";
         args = [ "--stdio" ];
@@ -76,7 +86,7 @@
       [
         {
           name = "nix";
-          language-servers = [ "nil" ];
+          language-servers = [ "nixd" ];
           scope = "source.nix";
           injection-regex = "nix";
           auto-format = true;

@@ -40,6 +40,11 @@
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixd = {
+      url = "github:nix-community/nixd";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "github:heisfer/Wallpapers";
       flake = false;
