@@ -3,6 +3,8 @@ let
   apps = with pkgs; [
     prismlauncher
     tutanota-desktop
+    teamviewer
+    rustdesk
     qdigidoc
     telegram-desktop
     (vesktop.override { withSystemVencord = false; })
