@@ -8,8 +8,8 @@
   flake.nixosConfigurations = {
     voyage = withSystem "x86_64-linux" (
       {
-        inputs',
-        config,
+        # inputs',
+        # config,
         self',
         ...
       }:
