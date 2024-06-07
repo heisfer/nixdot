@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, self', ... }:
 {
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
@@ -19,7 +19,7 @@
     };
     theme = {
       name = "RosePine-Main-B-LB";
-      package = pkgs.callPackage ../../pkgs/rose-pine-gtk { };
+      package = self'.packages.rose-pine-gtk-theme;
     };
 
     gtk3.extraConfig = {

@@ -1,12 +1,13 @@
 {
+  lib,
   stdenvNoCC,
   fetchFromGitHub,
   gnome-themes-extra,
   gtk-engine-murrine,
 }:
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "rose-pine-gtk-theme";
-  version = "unstable-2023-07-22";
+  version = "0-unstable-2023-02-20";
 
   src = fetchFromGitHub {
     owner = "Fausto-Korpsvart";
@@ -30,11 +31,11 @@ stdenvNoCC.mkDerivation rec {
     runHook postInstall
   '';
 
-  # meta = with lib; {
-  #   description = "A Gtk theme based on the Gruvbox colour pallete";
-  #   homepage = "https://www.pling.com/p/1681313/";
-  #   license = licenses.gpl3Only;
-  #   platforms = platforms.unix;
-  #   maintainers = [ maintainers.math-42 ];
-  # };
+  meta = {
+    description = "A GTK theme with the Rosé Pine colour palette. ";
+    homepage = "https://www.pling.com/p/1810530 ";
+    license = lib.licenses.gpl3Only;
+    platforms = lib.platforms.linux;
+    maintainers = with lib.maintainers; [ heisfer ];
+  };
 }

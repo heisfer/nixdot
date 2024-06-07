@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       packages = {
-        rose-pine-gtk = pkgs.callPackage ./rose-pine-gtk { };
+        rose-pine-gtk-theme = pkgs.callPackage ./rose-pine-gtk-theme { };
         blade-formatter = pkgs.callPackage ./blade-formatter { };
         beekeeper-studio = pkgs.callPackage ./beekeeper-studio { };
         tableplus = pkgs.callPackage ./tableplus { };

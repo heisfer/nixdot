@@ -88,7 +88,7 @@
     adb.enable = true;
   };
   users.extraUsers.greeter = {
-    packages = [ self'.packages.rose-pine-gtk ];
+    packages = [ self'.packages.rose-pine-gtk-theme ];
     home = "/tmp/greeter-home";
     createHome = true;
   };
