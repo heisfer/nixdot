@@ -29,6 +29,8 @@
 
     waybar-rose-pine.url = "github:rose-pine/waybar";
     waybar-rose-pine.flake = false;
+    swaync-rose-pine.url = "github:rose-pine/swaync";
+    swaync-rose-pine.flake = false;
 
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     nixneovimplugins = {
