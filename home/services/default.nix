@@ -1,1 +1,6 @@
-{ imports = [ ./gnome-keyring.nix ]; }
+{
+  imports = [
+    ./gnome-keyring.nix
+    ./mpd.nix
+  ];
+}
