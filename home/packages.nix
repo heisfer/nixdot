@@ -12,15 +12,14 @@ let
   ];
 
   local = with self'.packages; [
-    laravel
     beekeeper-studio
     blade-formatter
     tableplus
-    clickup
     zoho-mail-desktop-lite
   ];
 
   dev = with pkgs; [
+    laravel
     devbox
     jetbrains.phpstorm
     devenv
