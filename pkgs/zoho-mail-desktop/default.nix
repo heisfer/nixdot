@@ -4,7 +4,7 @@
   fetchurl,
 }:
 let
-  pname = "zoho-mail-desktop-lite";
+  pname = "zoho-mail-desktop";
   version = "1.6.1";
 
   src = fetchurl {
@@ -27,12 +27,11 @@ appimageTools.wrapType2 {
     install -m 444 -D ${appimageContents}/zoho-mail-desktop.desktop $out/share/applications/zoho-mail-desktop-lite.desktop
 
     substituteInPlace $out/share/applications/zoho-mail-desktop-lite.desktop \
-      --replace-fail 'Exec=AppRun --no-sandbox %U' 'Exec=zoho-mail-desktop-lite' \
-      --replace-fail 'Icon=zoho-mail-desktop' 'Icon=zoho-mail-desktop-lite'
+      --replace-fail 'Exec=AppRun --no-sandbox %U' 'Exec=zoho-mail-desktop' \
 
     for size in 16 32 64 128 256 512 1024; do
       install -Dm444 ${appimageContents}/usr/share/icons/hicolor/''${size}x''${size}/apps/zoho-mail-desktop.png \
-        -t $out/share/icons/hicolor/''${size}x''${size}/apps/zoho-mail-desktop-lite.png
+        -t $out/share/icons/hicolor/''${size}x''${size}/apps/
     done
   '';
 }

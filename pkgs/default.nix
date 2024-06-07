@@ -7,7 +7,7 @@
         blade-formatter = pkgs.callPackage ./blade-formatter { };
         beekeeper-studio = pkgs.callPackage ./beekeeper-studio { };
         tableplus = pkgs.callPackage ./tableplus { };
-        zoho-mail-desktop-lite = pkgs.callPackage ./zoho-mail-desktop-lite { };
+        zoho-mail-desktop = pkgs.callPackage ./zoho-mail-desktop { };
       };
     };
 }

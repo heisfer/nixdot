@@ -15,7 +15,7 @@ let
     beekeeper-studio
     blade-formatter
     tableplus
-    zoho-mail-desktop-lite
+    zoho-mail-desktop
   ];
 
   dev = with pkgs; [
