@@ -6,9 +6,11 @@ let
     teamviewer
     rustdesk
     qdigidoc
+    onlyoffice-bin_latest
     telegram-desktop
     (vesktop.override { withSystemVencord = false; })
     keepassxc
+    termusic
   ];
 
   local = with self'.packages; [
