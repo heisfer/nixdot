@@ -1,7 +1,7 @@
 {
   imports = [
-    #    ./kak
-    ./vscode
+    # ./kak
+    # ./vscode
     ./helix
     ./neovim
   ];
