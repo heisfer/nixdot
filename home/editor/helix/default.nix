@@ -3,6 +3,7 @@
   imports = [ ./languages.nix ];
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     package = inputs.helix.packages.${pkgs.system}.default;
     settings = {
       theme = "rose_pine";
