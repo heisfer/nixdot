@@ -7,5 +7,6 @@
     ./oh-my-posh
     ./zoxide
     ./xplr
+    ./bash
   ];
 }
