@@ -15,7 +15,6 @@ let
 
   local = with self'.packages; [
     beekeeper-studio
-    blade-formatter
     tableplus
     zoho-mail-desktop
   ];

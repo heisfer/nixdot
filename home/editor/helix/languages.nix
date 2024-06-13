@@ -122,7 +122,7 @@
           name = "blade";
           auto-format = true;
           formatter = {
-            command = "blade-formatter";
+            command = lib.getExe pkgs.blade-formatter;
             args = [ "--stdin" ];
           };
           scope = "source.blade.php";
