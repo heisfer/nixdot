@@ -208,7 +208,6 @@
       git
       nano
       vim
-      kitty
       tree
     ];
   };
