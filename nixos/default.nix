@@ -28,7 +28,7 @@
               useUserPackages = true;
               users.heisfer = import ../home;
               extraSpecialArgs = {
-                inherit inputs self';
+                inherit inputs self' self;
               };
             };
           }

@@ -8,6 +8,7 @@
       imports = [
         ./nixos
         ./nixos/modules
+        ./home/modules
         ./pkgs
       ];
 

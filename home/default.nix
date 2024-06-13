@@ -1,8 +1,14 @@
-{ inputs, outputs, ... }:
+{
+  inputs,
+  self,
+  outputs,
+  ...
+}:
 {
   imports = [
     ./internet
     ./wayland
+    ./programs
     ./terminal
     ./packages.nix
     ./services
@@ -10,6 +16,7 @@
     ./editor
     inputs.ags.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
+    self.homeManagerModules.default
   ];
 
   nixpkgs = {
