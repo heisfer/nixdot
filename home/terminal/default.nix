@@ -1,1 +1,7 @@
-{ imports = [ ./foot ]; }
+{
+  imports = [
+    ./emulator
+    ./programs
+    ./shell
+  ];
+}

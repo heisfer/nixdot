@@ -33,11 +33,6 @@
     swaync-rose-pine.url = "github:rose-pine/swaync";
     swaync-rose-pine.flake = false;
 
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    nixneovimplugins = {
-      url = "github:jooooscha/nixpkgs-vim-extra-plugins";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     helix.url = "github:helix-editor/helix";
     nil = {
       url = "github:oxalica/nil";
