@@ -60,6 +60,9 @@
         command = lib.getExe pkgs.tailwindcss-language-server;
         args = [ "--stdio" ];
       };
+      lua-language-server = {
+        command = lib.getExe pkgs.lua-language-server;
+      };
     };
     language =
       let
