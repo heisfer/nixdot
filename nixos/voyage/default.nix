@@ -2,6 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
+  lib,
   inputs,
   pkgs,
   config,
@@ -17,9 +18,14 @@
 
   # Use the systemd-boot EFI boot loader.
   boot = {
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+
     plymouth.enable = true;
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = true;
       timeout = 0; # Just keep pressing random key until menu comes;
     };
@@ -130,6 +136,10 @@
   };
 
   security = {
+    tpm2.enable = true;
+    tpm2.pkcs11.enable = true;
+    tpm2.tctiEnvironment.enable = true;
+
     polkit.enable = true;
     pam.services.hyprlock.text = "auth include login";
     rtkit.enable = true;
@@ -219,10 +229,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
+  environment.systemPackages = with pkgs; [ sbctl ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

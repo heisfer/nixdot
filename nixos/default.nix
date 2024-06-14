@@ -21,6 +21,7 @@
           ./voyage
           self.nixosModules.ath11k
           self.nixosModules.polkit-gnome
+          inputs.lanzaboote.nixosModules.lanzaboote
           inputs.home-manager.nixosModules.home-manager
           {
             home-manager = {
