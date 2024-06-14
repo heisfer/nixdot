@@ -34,10 +34,7 @@
   programs.nh.enable = true;
 
   nixpkgs = {
-    overlays = [
-      inputs.nur.overlay
-      inputs.nixneovimplugins.overlays.default
-    ];
+    overlays = [ inputs.nur.overlay ];
     config = {
       allowUnfree = true;
     };

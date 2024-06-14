@@ -3,10 +3,9 @@
     ./carapace
     ./direnv
     ./git
-    ./nushell
+    ./helix
     ./oh-my-posh
-    ./zoxide
     ./xplr
-    ./bash
+    ./zoxide
   ];
 }

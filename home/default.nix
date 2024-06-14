@@ -6,14 +6,11 @@
 }:
 {
   imports = [
-    ./internet
-    ./wayland
-    ./programs
-    ./terminal
     ./packages.nix
+    ./programs
     ./services
-    ./shell
-    ./editor
+    ./terminal
+    ./wayland
     inputs.ags.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     self.homeManagerModules.default
@@ -23,7 +20,6 @@
     overlays = [
       outputs.overlays.local
       inputs.nur.overlay
-      inputs.nixneovimplugins.overlays.default
     ];
   };
 

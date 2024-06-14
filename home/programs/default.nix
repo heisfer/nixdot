@@ -1,1 +1,6 @@
-{ imports = [ ./vesktop ]; }
+{
+  imports = [
+    ./firefox
+    ./vesktop
+  ];
+}
