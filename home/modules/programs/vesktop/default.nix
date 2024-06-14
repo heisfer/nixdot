@@ -27,7 +27,7 @@ in
             autoUpdate = false;
             autoUpdateNotification = false;
             # semi-required if you use theme
-            enabledThemes = [ "themes.css" ]; 
+            enabledThemes = [ "theme.css" ]; 
             plugin = {
                AlwaysAnimate.enabled = true;
                WebContextMenus = {
