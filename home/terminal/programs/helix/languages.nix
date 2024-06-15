@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   lib,
+  self',
   ...
 }:
 {
@@ -10,6 +11,10 @@
       nil = {
         command = lib.getExe inputs.nil.packages.${pkgs.system}.default;
         config.nil.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+      };
+
+      scls = {
+        command = lib.getExe self'.packages.simple-completion-language-server;
       };
 
       nixd = {
@@ -89,7 +94,10 @@
       [
         {
           name = "nix";
-          language-servers = [ "nixd" ];
+          language-servers = [
+            "nixd"
+            "scls"
+          ];
           scope = "source.nix";
           injection-regex = "nix";
           auto-format = true;

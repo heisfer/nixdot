@@ -8,6 +8,7 @@
         beekeeper-studio = pkgs.callPackage ./beekeeper-studio { };
         tableplus = pkgs.callPackage ./tableplus { };
         zoho-mail-desktop = pkgs.callPackage ./zoho-mail-desktop { };
+        simple-completion-language-server = pkgs.callPackage ./simple-completion-language-server { };
       };
     };
 }
