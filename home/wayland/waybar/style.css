@@ -104,7 +104,7 @@ tooltip {
 #workspaces {
   background: @base;
   border-radius: 8px;
-  margin-left: 10px;
+  margin-left: 20px;
   padding-right: 0px;
   padding-left: 5px;
 }
@@ -145,7 +145,6 @@ window#waybar.empty #window {
   color: @text;
   background: @pine;
   border-radius: 8px;
-  margin-left: 20px;
 }
 
 #network {

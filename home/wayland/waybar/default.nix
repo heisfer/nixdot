@@ -21,11 +21,10 @@
         layer = "top";
         position = "top";
         modules-left = [
-          "clock"
-          "hyprland/language"
           "hyprland/workspaces"
+          "hyprland/language"
         ];
-        modules-center = [ "hyprland/window" ];
+        modules-center = [ "clock" ];
         modules-right = [
           "tray"
           "network"
