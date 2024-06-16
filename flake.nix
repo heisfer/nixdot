@@ -32,6 +32,8 @@
     waybar-rose-pine.flake = false;
     swaync-rose-pine.url = "github:rose-pine/swaync";
     swaync-rose-pine.flake = false;
+    alacritty-rose-pine.url = "github:rose-pine/alacritty";
+    alacritty-rose-pine.flake = false;
 
     helix.url = "github:helix-editor/helix";
     nil = {
@@ -61,6 +63,10 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    wezterm-nightly = {
+      url = "github:wez/wezterm?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

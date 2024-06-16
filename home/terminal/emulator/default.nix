@@ -2,5 +2,6 @@
   imports = [
     ./alacritty
     ./foot
+    ./wezterm
   ];
 }
