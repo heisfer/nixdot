@@ -34,7 +34,7 @@ in
       "SUPER, F, fullscreen,"
       "SUPER, T, togglefloating,"
 
-      "SUPER, RETURN, exec, ${lib.getExe config.programs.wezterm.package}"
+      "SUPER, RETURN, exec, ${lib.getExe' config.programs.wezterm.package "wezterm"}"
 
       "SUPER, H, movefocus, l"
       "SUPER, J, movefocus, u"
