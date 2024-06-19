@@ -1,7 +1,6 @@
 { pkgs, self', ... }:
 let
   apps = with pkgs; [
-    prismlauncher
     tutanota-desktop
     teamviewer
     rustdesk
@@ -11,12 +10,20 @@ let
     (vesktop.override { withSystemVencord = false; })
     keepassxc
     termusic
+    vlc
+    mpv
+  ];
+
+  games = with pkgs; [
+    prismlauncher
+    tetrio-desktop
   ];
 
   local = with self'.packages; [
     beekeeper-studio
     tableplus
     zoho-mail-desktop
+    spacedrive
   ];
 
   dev = with pkgs; [
@@ -24,6 +31,7 @@ let
     devbox
     jetbrains.phpstorm
     devenv
+    jetbrains.idea-community-bin
     nixpkgs-review
     statix
     nh
@@ -38,5 +46,5 @@ let
   ];
 in
 {
-  home.packages = apps ++ dev ++ utils ++ local;
+  home.packages = apps ++ dev ++ utils ++ local ++ games;
 }

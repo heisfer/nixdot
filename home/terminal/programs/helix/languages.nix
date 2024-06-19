@@ -21,7 +21,6 @@
         command = lib.getExe inputs.nixd.packages.${pkgs.system}.default;
         config.nixd = {
           formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
-
           nixos.expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.voyage.options";
           home-manager.expr = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.voyage.options";
         };
@@ -68,6 +67,15 @@
       lua-language-server = {
         command = lib.getExe pkgs.lua-language-server;
       };
+
+      jdtls = {
+        command = lib.getExe pkgs.jdt-language-server;
+      };
+
+      java-language-server = {
+        command = lib.getExe pkgs.java-language-server;
+      };
+
     };
     language =
       let
@@ -164,6 +172,12 @@
             "vscode-html-language-server"
             "emmet-lsp"
           ];
+        }
+        {
+          name = "java";
+          auto-format = true;
+          language-servers = [ "java-language-server" ];
+          formatter.command = lib.getExe pkgs.google-java-format;
         }
       ];
     grammar = [
