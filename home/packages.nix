@@ -12,6 +12,15 @@ let
     termusic
     vlc
     mpv
+    (flameshot.overrideAttrs (oldAttrs: {
+      version = oldAttrs.version + "-unstable-latest";
+      src = pkgs.fetchFromGitHub {
+        owner = "flameshot-org";
+        repo = "flameshot";
+        rev = "c1dac52231024174faa68a29577129ebca125dff";
+        hash = "sha256-Y9RnVxic5mlRIc48wYVQXrvu/s65smtMMVj8HBskHzE=";
+      };
+    }))
   ];
 
   games = with pkgs; [
@@ -21,7 +30,6 @@ let
 
   local = with self'.packages; [
     beekeeper-studio
-    tableplus
     zoho-mail-desktop
     spacedrive
   ];
@@ -36,6 +44,7 @@ let
     statix
     nh
     dbeaver-bin
+    devdocs-desktop
   ];
   utils = with pkgs; [
     wl-clipboard
