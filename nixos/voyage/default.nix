@@ -221,6 +221,9 @@
 
   fonts.packages = with pkgs; [
     ibm-plex
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-monochrome-emoji
     (nerdfonts.override { fonts = [ "IBMPlexMono" ]; })
   ];
 
