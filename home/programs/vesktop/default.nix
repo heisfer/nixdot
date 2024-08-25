@@ -18,6 +18,7 @@
         FakeNitro.enabled = true;
       };
     };
+    withSystemVencord = true;
     theme = ./rose-pine.theme.css;
 
     # You can also use it like this:

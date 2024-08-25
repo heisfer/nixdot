@@ -10,6 +10,7 @@
         zoho-mail-desktop = pkgs.callPackage ./zoho-mail-desktop { };
         simple-completion-language-server = pkgs.callPackage ./simple-completion-language-server { };
         spacedrive = pkgs.callPackage ./spacedrive { };
+        mdpls = pkgs.callPackage ./mdpls { };
       };
     };
 }

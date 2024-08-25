@@ -3,13 +3,12 @@ let
   apps = with pkgs; [
     tutanota-desktop
     teamviewer
-    rustdesk
+    # rustdesk
     qdigidoc
     onlyoffice-bin_latest
     telegram-desktop
-    (vesktop.override { withSystemVencord = false; })
     keepassxc
-    termusic
+    # termusic
     vlc
     mpv
     (flameshot.overrideAttrs (oldAttrs: {

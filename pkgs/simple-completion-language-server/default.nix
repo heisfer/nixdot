@@ -11,11 +11,11 @@ rustPlatform.buildRustPackage {
   src = fetchFromGitHub {
     owner = "estin";
     repo = "simple-completion-language-server";
-    rev = "5d8f29b95b1e3491cc508ab4b6bc53f909c31d89";
-    hash = "sha256-nqbth8dbrtPGkWghTzi4S7U7FcbX3v4gVb8E9Xfy2Tc=";
+    rev = "485c56b8187573a53fe5558371b4c4b64fb62cfa";
+    hash = "sha256-wNLlUng309UF1CwIzRnYgTFyhpJotfto63G3C1mDlfA=";
   };
 
-  cargoHash = "sha256-Un7hRzsjOBJHQ83SoTYtruE6l9PdAVGCxVqnB0xReKA=";
+  cargoHash = "sha256-skVQLsohMkWzVIGMt4d3YbMXYElEwZ9EhgtzLtp4pJA=";
 
   meta = {
     description = "Word completion and snippets LSP for Helix editor";

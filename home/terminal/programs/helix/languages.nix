@@ -17,6 +17,19 @@
         command = lib.getExe self'.packages.simple-completion-language-server;
       };
 
+      mdpls = {
+        command = lib.getExe self'.packages.mdpls;
+        config = {
+          markdown.preview.auto = true;
+          markdown.preview.browser = "firefox-devedition";
+        };
+      };
+
+      marksman = {
+        command = lib.getExe pkgs.marksman;
+        args = [ "server" ];
+      };
+
       nixd = {
         command = lib.getExe inputs.nixd.packages.${pkgs.system}.default;
         config.nixd = {
@@ -178,6 +191,13 @@
           auto-format = true;
           language-servers = [ "java-language-server" ];
           formatter.command = lib.getExe pkgs.google-java-format;
+        }
+        {
+          name = "markdown";
+          language-servers = [
+            "mdpls"
+            "marksman"
+          ];
         }
       ];
     grammar = [

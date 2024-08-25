@@ -10,6 +10,7 @@
         ./nixos/modules
         ./home/modules
         ./pkgs
+        ./overlays
       ];
 
       systems = [ "x86_64-linux" ];

@@ -29,7 +29,7 @@
       efi.canTouchEfiVariables = true;
       timeout = 0; # Just keep pressing random key until menu comes;
     };
-    kernelPackages = pkgs.linuxPackages_xanmod;
+    kernelPackages = pkgs.linuxPackages_zen;
   };
   programs.nh.enable = true;
 
@@ -78,10 +78,6 @@
   #    useXkbConfig = true; # use xkb.options in tty.
   #  };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  services = { };
-
   programs = {
     steam.enable = true;
     hyprland = {
@@ -112,9 +108,9 @@
       };
       GTK = {
         application_prefer_dark_theme = true;
-        cursor_theme_name = "Bibata-Modern-Classic";
-        icon_theme_name = "Adwaita";
-        theme_name = "RosePine-Main-B-LB";
+        cursor_theme_name = lib.mkDefault "Bibata-Modern-Classic";
+        icon_theme_name = lib.mkDefault "Adwaita";
+        theme_name = lib.mkDefault "RosePine-Main-B-LB";
       };
     };
   };
@@ -155,7 +151,7 @@
   services = {
     upower.enable = true;
     ath11k-sleep.enable = true;
-    polkit-gnome.enable = true;
+    # polkit-gnome.enable = true;
     pipewire = {
       enable = true;
       pulse.enable = true;
