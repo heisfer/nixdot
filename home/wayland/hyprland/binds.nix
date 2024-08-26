@@ -63,6 +63,9 @@ in
       ", XF86AudioRaiseVolume, exec, ${swayosd} --output-volume raise"
       ", XF86AudioLowerVolume, exec, ${swayosd} --output-volume lower"
       ", XF86AudioMute, exec, ${swayosd} --output-volume mute-toggle"
+      ", XF86MonBrightnessUp, exec, ${swayosd} --brightness raise"
+      ", XF86MonBrightnessDown, exec, ${swayosd} --brightness lower"
+
     ] ++ workspaces;
 
     bindm = [
