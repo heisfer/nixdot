@@ -163,6 +163,7 @@
     pcscd.enable = true;
     gnome.gnome-keyring.enable = true;
     fwupd.enable = true;
+    tailscale.enable = true;
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
