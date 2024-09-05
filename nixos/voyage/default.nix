@@ -108,9 +108,9 @@
       };
       GTK = {
         application_prefer_dark_theme = true;
-        cursor_theme_name = lib.mkDefault "Bibata-Modern-Classic";
-        icon_theme_name = lib.mkDefault "Adwaita";
-        theme_name = lib.mkDefault "RosePine-Main-B-LB";
+        cursor_theme_name = lib.mkForce "Bibata-Modern-Classic";
+        icon_theme_name = lib.mkForce "Adwaita";
+        theme_name = lib.mkForce "RosePine-Main-B-LB";
       };
     };
   };
