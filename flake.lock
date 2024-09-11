@@ -8,11 +8,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1721306136,
-        "narHash": "sha256-VKPsIGf3/a+RONBipx4lEE4LXG2sdMNkWQu22LNQItg=",
+        "lastModified": 1725841979,
+        "narHash": "sha256-SXYqzpHPuXFR6w/cUKo3VN8XRn6XA2mGbdRXs9oLk6k=",
         "owner": "Aylur",
         "repo": "ags",
-        "rev": "344ea72cd3b8d4911f362fec34bce7d8fb37028c",
+        "rev": "aaef50bb2c80ef4b4a359329d72669a95e7c4796",
         "type": "github"
       },
       "original": {
@@ -336,11 +336,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1725679874,
-        "narHash": "sha256-VphwzYNIBiNBzNm5qp6eXpwSdEqii9B8Dr/IGXsJ5Lw=",
+        "lastModified": 1725976743,
+        "narHash": "sha256-pLQQbiC9uO4lF58fAnlcDxlbsBB1XFWswsU1oZOIVqU=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "c5083ef952cb30a62b2fc71d4079edef3b1a54bd",
+        "rev": "237cbe4bca46eed52efed39ed75eb44aaccbdde3",
         "type": "github"
       },
       "original": {
@@ -356,11 +356,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725694918,
-        "narHash": "sha256-+HsjshXpqNiJHLaJaK0JnIicJ/a1NquKcfn4YZ3ILgg=",
+        "lastModified": 1725948275,
+        "narHash": "sha256-4QOPemDQ9VRLQaAdWuvdDBhh+lEUOAnSMHhdr4nS1mk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "aaebdea769a5c10f1c6e50ebdf5924c1a13f0cda",
+        "rev": "e5fa72bad0c6f533e8d558182529ee2acc9454fe",
         "type": "github"
       },
       "original": {
@@ -410,11 +410,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1725722063,
-        "narHash": "sha256-TP+WpKl6gc2NCe7OfyXWCz4oGBqYf/MSEf03ossVnXg=",
+        "lastModified": 1725976150,
+        "narHash": "sha256-Dv4XEWRcVFZhBDbj11/zuuXyf7TGHFVU1IGH9W/yPX8=",
         "ref": "refs/heads/main",
-        "rev": "5ca48231287d67e75a3f21dbdbc47d6dc65752c4",
-        "revCount": 5193,
+        "rev": "155d44016d0cb11332c454db73d59030cdbd7b13",
+        "revCount": 5209,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -769,6 +769,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-small": {
+      "locked": {
+        "lastModified": 1725990404,
+        "narHash": "sha256-zjSZ0gH4d2EKfsAswZXtpNiTx4K47tFCyGFKspfv1tY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "aa2c4fc81bf56b380c21c502487bdf75ed51abe9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1710695816,
@@ -819,11 +835,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1725727226,
-        "narHash": "sha256-1OIoBxbdi0ubRSFZWntx1VmFxZP647RBobDzJ5fTdqE=",
+        "lastModified": 1725986569,
+        "narHash": "sha256-8tzbBpsg+YaQN5LCUgooTpvy9GMExlWd1EpanErRhjc=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "22b3fd31d4b976ead0678ef88063b5b2b9dd7225",
+        "rev": "50223f67c52e3983114665da4a62c7d47f278429",
         "type": "github"
       },
       "original": {
@@ -872,6 +888,7 @@
         "nil": "nil",
         "nixd": "nixd",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-small": "nixpkgs-small",
         "nur": "nur",
         "rose-pine-rofi": "rose-pine-rofi",
         "swaync-rose-pine": "swaync-rose-pine",
@@ -1207,11 +1224,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725203932,
-        "narHash": "sha256-VLULC/OnI+6R9KEP2OIGk+uLJJsfRlaLouZ5gyFd2+Y=",
+        "lastModified": 1725228143,
+        "narHash": "sha256-kbSiPA5oXiz1+1eVoRslMi5wylHD6SDT8dS9eZAxXAM=",
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "rev": "2425e8f541525fa7409d9f26a8ffaf92a3767251",
+        "rev": "11e15b437e7efc39e452f36e15a183225d6bfa39",
         "type": "github"
       },
       "original": {
