@@ -86,31 +86,20 @@
     };
     adb.enable = true;
   };
-  users.extraUsers.greeter = {
-    packages = [ self'.packages.rose-pine-gtk-theme ];
-    home = "/tmp/greeter-home";
-    createHome = true;
-  };
   virtualisation.waydroid = {
     enable = true;
   };
   programs.regreet = {
     enable = true;
-    cageArgs = [
-      "-s"
-      "-m"
-      "last"
-    ];
+    theme.name = "RosePine-Main-B-LB";
+    theme.package = self'.packages.rose-pine-gtk-theme;
+    cursorTheme.name = "Bibata-Modern-Classic";
+    cursorTheme.package = pkgs.bibata-cursors;
+    font.size = 14;
     settings = {
       background = {
         path = "${inputs.wallpapers}/rose-pine.jpg";
         fit = "Cover";
-      };
-      GTK = {
-        application_prefer_dark_theme = true;
-        cursor_theme_name = lib.mkForce "Bibata-Modern-Classic";
-        icon_theme_name = lib.mkForce "Adwaita";
-        theme_name = lib.mkForce "RosePine-Main-B-LB";
       };
     };
   };
