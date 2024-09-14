@@ -1,9 +1,8 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
-    package = inputs.nixpkgs-small.legacyPackages.${pkgs.system}.firefox-devedition.override {
-      # until it goes to unstable
+    package = pkgs.firefox-devedition.override {
       nativeMessagingHosts = [
         pkgs.web-eid-app
         pkgs.keepassxc
