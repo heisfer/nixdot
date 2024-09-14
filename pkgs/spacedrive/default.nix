@@ -14,7 +14,7 @@
   gst_all_1,
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "spacedrive";
   version = "0.3.1";
 
@@ -60,4 +60,4 @@ stdenv.mkDerivation (finalAttrs: {
 
     runHook postInstall
   '';
-})
+}
