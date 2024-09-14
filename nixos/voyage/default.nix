@@ -197,13 +197,6 @@
       "libvirtd"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.nushell;
-    packages = with pkgs; [
-      firefox
-      git
-      nano
-      vim
-      tree
-    ];
   };
 
   fonts.packages = with pkgs; [
