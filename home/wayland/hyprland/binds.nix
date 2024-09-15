@@ -29,8 +29,13 @@ in
     bind = [
       "SUPER_SHIFT, Q, exit,"
       "SUPER, Q, killactive,"
-      "SUPER, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
-      "SUPER_SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
+      # "SUPER, W, exec, ${lib.getExe config.programs.firefox.package} -new-tab about:newtab"
+      # "SUPER_SHIFT, W, exec, ${lib.getExe config.programs.firefox.package}"
+
+      # trying out zen
+      "SUPER, W, exec, zen -new-tab about:newtab"
+      "SUPER_SHIFT, W, exec, zen"
+
       "SUPER, F, fullscreen,"
       "SUPER, T, togglefloating,"
 

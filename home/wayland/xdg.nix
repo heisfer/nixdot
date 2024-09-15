@@ -1,6 +1,7 @@
 { config, ... }:
 let
-  browser = [ "firefox-devedition.desktop" ];
+  # browser = [ "firefox-devedition.desktop" ];
+  browser = [ "zen.desktop" ];
   video = [ "mpv.desktop" ];
   image = [ "imv.desktop" ];
 

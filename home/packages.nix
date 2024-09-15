@@ -1,4 +1,9 @@
-{ pkgs, self', ... }:
+{
+  pkgs,
+  self',
+  inputs,
+  ...
+}:
 let
   apps = with pkgs; [
     tutanota-desktop
@@ -35,7 +40,6 @@ let
 
   dev = with pkgs; [
     laravel
-    devbox
     jetbrains.phpstorm
     devenv
     jetbrains.idea-community-bin
@@ -52,7 +56,10 @@ let
     xdg-utils
     nitch
   ];
+  inputs-package = [
+    inputs.zen-browser.packages."${pkgs.system}".specific
+  ];
 in
 {
-  home.packages = apps ++ dev ++ utils ++ local ++ games;
+  home.packages = apps ++ dev ++ utils ++ local ++ games ++ inputs-package;
 }
