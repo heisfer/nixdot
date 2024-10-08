@@ -79,7 +79,11 @@
   #  };
 
   programs = {
-    steam.enable = true;
+    steam = {
+      enable = true;
+      protontricks.enable = true;
+      extraCompatPackages = [ pkgs.proton-ge-bin ];
+    };
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
