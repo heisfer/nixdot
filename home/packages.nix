@@ -52,6 +52,8 @@ let
   utils = with pkgs; [
     wl-clipboard
     unzip
+    unrar
+    p7zip
     zip
     xdg-utils
     nitch
