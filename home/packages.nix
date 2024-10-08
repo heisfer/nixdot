@@ -57,6 +57,7 @@ let
     nitch
   ];
   inputs-package = [
+    inputs.ashell.defaultPackage."${pkgs.system}"
     inputs.zen-browser.packages."${pkgs.system}".specific
   ];
 in
