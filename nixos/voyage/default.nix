@@ -77,13 +77,12 @@
   #    keyMap = "us";
   #    useXkbConfig = true; # use xkb.options in tty.
   #  };
+  preconfigured = {
+    steam.enable = true;
+    regreet.enable = true;
+  };
 
   programs = {
-    steam = {
-      enable = true;
-      protontricks.enable = true;
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
-    };
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -93,20 +92,20 @@
   virtualisation.waydroid = {
     enable = true;
   };
-  programs.regreet = {
-    enable = true;
-    theme.name = "RosePine-Main-B-LB";
-    theme.package = self'.packages.rose-pine-gtk-theme;
-    cursorTheme.name = "Bibata-Modern-Classic";
-    cursorTheme.package = pkgs.bibata-cursors;
-    font.size = 14;
-    settings = {
-      background = {
-        path = "${inputs.wallpapers}/rose-pine.jpg";
-        fit = "Cover";
-      };
-    };
-  };
+  # programs.regreet = {
+  #   enable = true;
+  #   theme.name = "RosePine-Main-B-LB";
+  #   theme.package = self'.packages.rose-pine-gtk-theme;
+  #   cursorTheme.name = "Bibata-Modern-Classic";
+  #   cursorTheme.package = pkgs.bibata-cursors;
+  #   font.size = 14;
+  #   settings = {
+  #     background = {
+  #       path = "${inputs.wallpapers}/rose-pine.jpg";
+  #       fit = "Cover";
+  #     };
+  #   };
+  # };
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;

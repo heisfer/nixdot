@@ -20,6 +20,7 @@
         modules = [
           ./voyage
           self.nixosModules.ath11k
+          self.nixosModules.preconfigured
           # self.nixosModules.polkit-gnome
           inputs.hyprland.nixosModules.default
           inputs.lanzaboote.nixosModules.lanzaboote
