@@ -6,6 +6,9 @@
         command = lib.getExe pkgs.nixd;
         config.nixd = {
           formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+          options = {
+            home-manager.expr = "(builtins.getFlake \"/home/heisfer/Projects/nix/dots\").homeConfigurations.\"heisfer@voyage\".options";
+          };
         };
       };
     };

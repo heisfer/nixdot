@@ -46,6 +46,15 @@
             };
           };
         };
+        homeConfigurations = {
+          "heisfer@voyage" = inputs.home-manager.lib.homeManagerConfiguration {
+            pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
+            extraSpecialArgs = {
+              inherit inputs;
+              ylib = inputs.nypkgs.lib."x86_64-linux";
+            };
+          };
+        };
       };
     };
 
