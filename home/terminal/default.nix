@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./emulator
-    ./programs
-    ./shell
-  ];
-}

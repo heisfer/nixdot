@@ -1,5 +1,5 @@
 {
-  programs.xplr = {
+  programs.wezterm = {
     enable = true;
   };
 }

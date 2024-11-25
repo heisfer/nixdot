@@ -1,31 +1,16 @@
+{ ylib, ... }:
 {
-  inputs,
-  self,
-  outputs,
-  ...
-}:
-{
-  imports = [
-    ./packages.nix
-    ./programs
-    ./services
-    ./terminal
-    ./wayland
-    inputs.ags.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
-    self.homeManagerModules.default
-  ];
-
-  nixpkgs = {
-    overlays = [
-      outputs.overlays.local
-      inputs.nur.overlay
+  imports = ylib.umport {
+    paths = [
+      ./terminal
+      ./programs
     ];
+    recursive = true;
   };
 
   home = {
     username = "heisfer";
     homeDirectory = "/home/heisfer";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
   };
 }

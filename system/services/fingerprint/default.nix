@@ -1,5 +1,5 @@
 {
-  services.swayosd = {
+  services.fprintd = {
     enable = true;
   };
 }
