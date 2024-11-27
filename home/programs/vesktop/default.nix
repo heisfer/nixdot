@@ -23,11 +23,6 @@
     };
     withSystemVencord = true;
     theme = ./rose-pine.theme.css;
-
-    # You can also use it like this:
-    # theme = ''
-    # Css stuff here
-    # '';
   };
 
 }

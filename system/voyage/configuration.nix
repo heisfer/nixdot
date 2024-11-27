@@ -4,6 +4,7 @@
 
 {
   ylib,
+  inputs,
   config,
   pkgs,
   ...
@@ -32,7 +33,22 @@
       "flakes"
     ];
   };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+    overlays = [
+      inputs.nur.overlay
+    ];
+  };
 
+  programs.steam = {
+    enable = true;
+    protontricks.enable = true;
+    extraCompatPackages = [
+      pkgs.proton-ge-bin
+    ];
+  };
   networking.hostName = "voyage"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -95,9 +111,11 @@
     #jack.enable = true;
 
   };
+  services.swayosd.enable = true;
   users.users.heisfer = {
     isNormalUser = true;
     description = "Heisfer Light";
+    shell = pkgs.nushell;
     extraGroups = [
       "networkmanager"
       "wheel"
@@ -114,9 +132,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    helix
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-monochrome-emoji
+    (nerdfonts.override {
+      fonts = [
+        "IBMPlexMono"
+        "JetBrainsMono"
+      ];
+    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

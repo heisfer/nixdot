@@ -15,11 +15,11 @@
       ];
       perSystem =
         {
-          config,
-          self',
-          inputs',
+          # config,
+          # self',
+          # inputs',
           pkgs,
-          system,
+          # system,
           ...
         }:
         {
@@ -30,6 +30,7 @@
           voyage = inputs.nixpkgs.lib.nixosSystem {
             modules = [
               ./system/voyage/configuration.nix
+              inputs.dotmod.nixosModules.swayosd
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
@@ -42,6 +43,7 @@
               }
             ];
             specialArgs = {
+              inherit inputs;
               ylib = inputs.nypkgs.lib."x86_64-linux";
             };
           };
@@ -53,6 +55,7 @@
               inherit inputs;
               ylib = inputs.nypkgs.lib."x86_64-linux";
             };
+            modules = [ ./home/default.nix ];
           };
         };
       };
@@ -67,6 +70,7 @@
       url = "github:yunfachi/nypkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur.url = "github:nix-community/nur";
 
     home-manager = {
       url = "github:nix-community/home-manager";

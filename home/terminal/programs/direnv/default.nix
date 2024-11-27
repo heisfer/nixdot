@@ -1,8 +1,8 @@
 { config, ... }:
 {
-  programs.atuin = {
+  programs.direnv = {
     enable = true;
-    enableBashIntegration = config.programs.bash.enable;
     enableNushellIntegration = config.programs.nushell.enable;
+    enableBashIntegration = config.programs.bash.enable;
   };
 }
