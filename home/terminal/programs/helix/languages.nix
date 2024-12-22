@@ -1,5 +1,8 @@
 { lib, pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    python312Packages.python-lsp-server
+  ];
   programs.helix.languages = {
     language-server = {
       nixd = {
@@ -21,6 +24,18 @@
         language-servers = [
           "nixd"
         ];
+        auto-format = true;
+      }
+      {
+        name = "python";
+        formatter = {
+          command = lib.getExe pkgs.black;
+          args = [
+            "-"
+            "--quiet"
+            "--line-length 100"
+          ];
+        };
         auto-format = true;
       }
     ];

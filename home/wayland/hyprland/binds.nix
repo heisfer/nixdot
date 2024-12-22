@@ -5,7 +5,7 @@
   ...
 }:
 let
-  terminal = lib.getExe config.programs.kitty.package;
+  terminal = lib.getExe config.programs.wezterm.package;
   browser = lib.getExe config.programs.firefox.package;
   launcher = lib.getExe config.programs.rofi.package + " -show drun";
   swayosd = lib.getExe' config.services.swayosd.package "swayosd-client";
@@ -21,6 +21,7 @@ in
         "W, exec, ${browser}"
         "RETURN, exec, ${terminal}"
         "M, exec, ${launcher}"
+        "B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
         "F, fullscreen,"
         "PRINT, exec, ${hyprshot} -m output -c -o /tmp/sswkjf" # -c for current output
 

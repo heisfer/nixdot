@@ -35,6 +35,7 @@
   };
   nixpkgs = {
     config = {
+      android_sdk.accept_license = true;
       allowUnfree = true;
     };
     overlays = [
@@ -49,6 +50,9 @@
       pkgs.proton-ge-bin
     ];
   };
+
+  hardware.enableAllFirmware = true;
+
   networking.hostName = "voyage"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -64,6 +68,15 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc
+      fcitx5-gtk
+    ];
+  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "et_EE.UTF-8";
@@ -85,7 +98,27 @@
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;
   programs.hyprland.enable = true;
-  hardware.graphics.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = [ "gtk" ];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
+    };
+  };
+
+  programs.river = {
+    enable = true;
+  };
+  hardware.graphics = {
+    enable = true;
+
+  };
+  hardware.amdgpu.initrd.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -119,15 +152,14 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-    ];
-    packages = with pkgs; [
-      kitty
-      firefox-devedition
+      "kvm"
+      "adbusers"
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  programs.adb.enable = true;
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -141,12 +173,8 @@
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-monochrome-emoji
-    (nerdfonts.override {
-      fonts = [
-        "IBMPlexMono"
-        "JetBrainsMono"
-      ];
-    })
+    nerd-fonts.im-writing
+    nerd-fonts.blex-mono
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

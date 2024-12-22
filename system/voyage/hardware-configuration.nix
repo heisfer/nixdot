@@ -21,7 +21,12 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "amdgpu.dpm=1"
+    "amdgpu.dcdebugmask=0x10"
+  ];
+  # boot.kernelPackages = pkgs.linuxPackages_6_1;
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {

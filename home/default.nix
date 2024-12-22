@@ -5,13 +5,14 @@
       ./terminal
       ./programs
       ./wayland
+      ./services
     ];
     recursive = true;
   };
 
   nixpkgs = {
     overlays = [
-      inputs.nur.overlay
+      inputs.nur.overlay.default
     ];
   };
   home = {

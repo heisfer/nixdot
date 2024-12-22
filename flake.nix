@@ -4,9 +4,8 @@
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports =
-        [
-        ];
+      imports = [
+      ];
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -31,6 +30,7 @@
             modules = [
               ./system/voyage/configuration.nix
               inputs.dotmod.nixosModules.swayosd
+              inputs.hyprland.nixosModules.default
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;
@@ -77,14 +77,49 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    helix = {
-      url = "github:helix-editor/helix";
+    wired = {
+      url = "github:Toqozz/wired-notify";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dotmod = {
       url = "git+file:///home/heisfer/Projects/nix/modules";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Master Packages
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Themes
+    vesktop-rose-pine = {
+      url = "github:toonoeichi/rosepine-discord-newthemes";
+      flake = false;
+    };
+
+    rofi-rose-pine = {
+      url = "github:heisfer/rose-pine-rofi";
+      flake = false;
+    };
+    swaync-rose-pine = {
+      url = "github:rose-pine/swaync";
+      flake = false;
+    };
+    waybar-rose-pine = {
+      url = "github:rose-pine/waybar";
+      flake = false;
     };
   };
 }

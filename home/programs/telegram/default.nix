@@ -1,0 +1,3 @@
+{
+  programs.telegram.enable = true;
+}
