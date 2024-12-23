@@ -5,6 +5,7 @@
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
+        ./system
       ];
       systems = [
         "x86_64-linux"
@@ -14,40 +15,14 @@
       ];
       perSystem =
         {
-          # config,
-          # self',
-          # inputs',
           pkgs,
-          # system,
           ...
         }:
         {
           formatter = pkgs.nixfmt-rfc-style;
         };
       flake = {
-        nixosConfigurations = {
-          voyage = inputs.nixpkgs.lib.nixosSystem {
-            modules = [
-              ./system/voyage/configuration.nix
-              inputs.dotmod.nixosModules.swayosd
-              inputs.hyprland.nixosModules.default
-              inputs.home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.heisfer = import ./home;
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  ylib = inputs.nypkgs.lib."x86_64-linux";
-                };
-              }
-            ];
-            specialArgs = {
-              inherit inputs;
-              ylib = inputs.nypkgs.lib."x86_64-linux";
-            };
-          };
-        };
+        # for nixd
         homeConfigurations = {
           "heisfer@voyage" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
