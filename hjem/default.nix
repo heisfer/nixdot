@@ -8,5 +8,7 @@
       directory = "/home/heisfer";
       user = "heisfer";
     };
+    # So that files change after rebuild
+    clobberByDefault = true;
   };
 }
