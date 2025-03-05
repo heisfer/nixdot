@@ -1,5 +1,0 @@
-{
-  programs.xplr = {
-    enable = true;
-  };
-}

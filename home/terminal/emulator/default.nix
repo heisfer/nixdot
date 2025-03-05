@@ -1,7 +1,0 @@
-{
-  imports = [
-    ./alacritty
-    ./foot
-    ./wezterm
-  ];
-}

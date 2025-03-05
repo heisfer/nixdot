@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./bash
-    ./nushell
-  ];
-}
