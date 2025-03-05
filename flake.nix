@@ -5,6 +5,8 @@
       nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
+          ./hjem
+          inputs.hjem.nixosModules.default
         ];
         specialArgs = {
           inherit inputs;
@@ -15,6 +17,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # MASTER BRANCH
     hyprland.url = "github:hyprwm/hyprland";
   };
