@@ -108,6 +108,9 @@
     unzip
     zoxide
     legcord
+    # rbw
+    rbw
+    pkgs.pinentry-rofi
   ];
 
   programs.bash.interactiveShellInit = ''
