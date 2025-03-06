@@ -3,6 +3,7 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -15,9 +16,15 @@
     ./hardware-configuration.nix
     ./hyprland.nix
     ./tpm2.nix
-    ./modules/waybar.nix
     ./waybar/default.nix
-  ];
+  ] ++ lib.filesystem.listFilesRecursive ./modules;
+
+  programs.hyprpaper.enable = true;
+  programs.hyprpaper.settings = ''
+    ipc = off
+    preload = ${inputs.wallpapers}/summer-night.png
+    wallpaper = ,${inputs.wallpapers}/summer-night.png
+  '';
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

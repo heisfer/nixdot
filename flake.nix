@@ -23,5 +23,10 @@
     };
     # MASTER BRANCH
     hyprland.url = "github:hyprwm/hyprland";
+
+    wallpapers = {
+      url = "github:heisfer/Wallpapers";
+      flake = false;
+    };
   };
 }

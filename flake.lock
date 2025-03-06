@@ -405,11 +405,29 @@
         "type": "github"
       }
     },
+    "rofi-rose-pine": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715820344,
+        "narHash": "sha256-Mk/1mCqMMpXiTaf0ABOkctIJ/DHEIYRJ6FO1bJ5/sR4=",
+        "owner": "heisfer",
+        "repo": "rose-pine-rofi",
+        "rev": "447684818a64e1b6c144d568b618282a10d2ccc3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "heisfer",
+        "repo": "rose-pine-rofi",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "hjem": "hjem",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "rofi-rose-pine": "rofi-rose-pine",
+        "wallpapers": "wallpapers"
       }
     },
     "systems": {
@@ -424,6 +442,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740838946,
+        "narHash": "sha256-FVMMwgYvT5TmODIFEyI/kaOJGHDvQ1JyGB39tapD+JE=",
+        "owner": "heisfer",
+        "repo": "Wallpapers",
+        "rev": "11a9de049bee5683f97cdb05bd50ff4bef1683c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "heisfer",
+        "repo": "Wallpapers",
         "type": "github"
       }
     },
