@@ -19,9 +19,10 @@ in
 
   imports = [ inputs.hyprland.nixosModules.default ];
 
+  programs.hyprnotify.enable = true;
+
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
-
   programs.hyprland.settings = {
 
     "$base" = "0xff191724";
@@ -52,6 +53,7 @@ in
     misc = {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
+      font_family = "monospace";
     };
     input = {
       kb_layout = "us,ee";
