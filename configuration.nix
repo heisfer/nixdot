@@ -17,6 +17,7 @@
     ./hyprland.nix
     ./tpm2.nix
     ./waybar/default.nix
+    ./fonts.nix
   ] ++ lib.filesystem.listFilesRecursive ./modules;
 
   programs.hyprpaper.enable = true;
