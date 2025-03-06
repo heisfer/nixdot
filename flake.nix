@@ -4,7 +4,7 @@
     {
       nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
         modules = [
-          ./configuration.nix
+          ./systems/voyage
           ./hjem
           inputs.hjem.nixosModules.default
         ];

@@ -14,19 +14,12 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./hyprland.nix
     ./tpm2.nix
-    ./waybar/default.nix
     ./fonts.nix
-  ] ++ lib.filesystem.listFilesRecursive ./modules;
-
-  programs.hyprpaper.enable = true;
-  programs.hyprpaper.settings = ''
-    ipc = off
-    preload = ${inputs.wallpapers}/summer-night.png
-    wallpaper = ,${inputs.wallpapers}/summer-night.png
-  '';
-
+    ./compositor/hyprland.nix
+    ./compositor/hyprpaper.nix
+    ./compositor/waybar
+  ] ++ lib.filesystem.listFilesRecursive ../../modules;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
