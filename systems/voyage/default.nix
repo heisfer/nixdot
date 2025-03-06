@@ -24,6 +24,50 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  programs.helix = {
+    enable = true;
+    users = [ "heisfer" ];
+    settings = {
+      theme = "rose_pine";
+      editor = {
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+        file-picker = {
+          ignore = true;
+        };
+        completion-timeout = 5;
+        completion-trigger-len = 1;
+        color-modes = true;
+        end-of-line-diagnostics = "hint";
+      };
+    };
+    languages = {
+      language-server = {
+        nixd = {
+          command = lib.getExe pkgs.nixd;
+          config.nixd = {
+            formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+          };
+        };
+        nil = {
+          command = lib.getExe pkgs.nil;
+        };
+      };
+      language = [
+        {
+          name = "nix";
+          language-servers = [
+            "nixd"
+            "nil"
+          ];
+          auto-format = true;
+        }
+      ];
+    };
+  };
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   nix.settings.experimental-features = [
