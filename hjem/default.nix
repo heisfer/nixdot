@@ -1,6 +1,7 @@
 {
   imports = [
     ./helix
+    ./rofi.nix
   ];
   hjem = {
     users.heisfer = {

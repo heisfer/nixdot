@@ -24,9 +24,16 @@
     # MASTER BRANCH
     hyprland.url = "github:hyprwm/hyprland";
 
+    # OWN STYLES
+    rofi-rose-pine = {
+      url = "github:heisfer/rose-pine-rofi";
+      flake = false;
+    };
+
     wallpapers = {
       url = "github:heisfer/Wallpapers";
       flake = false;
     };
+
   };
 }
