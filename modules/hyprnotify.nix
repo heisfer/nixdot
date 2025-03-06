@@ -17,7 +17,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
-    programs.hyprland.settings.exec-once = [(lib.getExe cfg.package)];
+    programs.hyprland.settings.exec-once = [ (lib.getExe cfg.package) ];
   };
 
 }
