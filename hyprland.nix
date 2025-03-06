@@ -23,9 +23,32 @@ in
   programs.hyprland.withUWSM = true;
 
   programs.hyprland.settings = {
+
+    "$base" = "0xff191724";
+    "$surface" = "0xff1f1d2e";
+    "$overlay" = "0xff26233a";
+    "$muted" = "0xff6e6a86";
+    "$subtle" = "0xff908caa";
+    "$text" = "0xffe0def4";
+    "$love" = "0xffeb6f92";
+    "$gold" = "0xfff6c177";
+    "$rose" = "0xffebbcba";
+    "$pine" = "0xff31748f";
+    "$foam" = "0xff9ccfd8";
+    "$iris" = "0xffc4a7e7";
+    "$highlightLow" = "0xff21202e";
+    "$highlightMed" = "0xff403d52";
+    "$highlightHigh" = "0xff524f67";
     monitor = [
       "eDP-1, 1920x1200@60, 0x0, 1"
     ];
+    exec-once = [
+      "uwsm finalize"
+    ];
+    general = {
+      "col.active_border" = "$rose";
+      "col.inactive_border" = "$muted";
+    };
     misc = {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
@@ -42,7 +65,7 @@ in
         "RETURN, exec, ${terminal}"
         "M, exec, ${launcher}"
         "P, exec, ${rofi-rbw}"
-        "B, exec, ${lib.getExe pkgs.rofi-bluetooth}"
+        "B, exec, uwsm app -- ${lib.getExe pkgs.rofi-bluetooth}"
         "F, fullscreen,"
         "PRINT, exec, ${hyprshot} -m output -m active -c -o /tmp/sswkjf" # -c for current output
         "S, togglespecialworkspace, magic"
