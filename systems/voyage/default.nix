@@ -145,6 +145,8 @@
     unzip
     zoxide
     legcord
+    youtube-music
+    wl-clipboard
     # rbw
     rbw
     pkgs.pinentry-rofi
