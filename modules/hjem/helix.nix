@@ -18,24 +18,55 @@ in
     enable = mkEnableOption "helix";
 
     package = mkPackageOption pkgs "helix" { };
+
     users = mkOption {
       type = listOf str;
-      default = [ ];
+      default = [ ]; # I have no idea how to automate this
+      description = "List of users under hjem.users.<users>";
+      example = [ "username" ];
     };
+
     settings = mkOption {
       type = tomlFormat.type;
       default = { };
+      description = "Helix configuration. List of options https://docs.helix-editor.com/configuration.html";
+      example = {
+        theme = "rose_pine";
+        editor = {
+          line-number = "relative";
+          file-picker = {
+            hidden = false;
+          };
+        };
+      };
     };
     languages = mkOption {
       type = tomlFormat.type;
       default = { };
+      description = "Helix Languages configuration. List of options in https://docs.helix-editor.com/languages.html";
+      example = {
+        language-server = {
+          nixd = {
+            command = "nixd";
+            config.nixd = {
+              formatting.command = [ "nixfmt-rfc-style" ];
+            };
+          };
+        };
+        language = [
+          {
+            name = "nix";
+            language-servers = [ "nixd" ];
+            auto-format = true;
+          }
+        ];
+      };
     };
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
 
-    # Lets hope this works :)
     hjem.users = builtins.listToAttrs (
       builtins.map (name: {
         inherit name;
