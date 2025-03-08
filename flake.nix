@@ -23,7 +23,7 @@
         };
       };
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      # packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
+      packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
     };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
