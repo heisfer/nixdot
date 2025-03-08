@@ -1,5 +1,5 @@
 > [!WARNING]  
-> Removing Home-manager and moving to nixos/hjem based system. Below README is out of date.
+> Removing Home-manager and moving to nixos/hjem based system. Below README is out-of-date.
 
 # My NixOS Configuration
 This flakes configuration is built with `flake-parts`. Currently it's only supporting single hosts.
