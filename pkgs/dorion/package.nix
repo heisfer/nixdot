@@ -26,8 +26,8 @@ let
   };
 
   shelter = fetchurl {
-    url = "https://raw.githubusercontent.com/uwu/shelter-builds/4264c79a7e8efb2c0000c180dd8369c9a5194105/shelter.js";
-    hash = "sha256-C+iPl40QN2CfhHX8cc+5mu+8qfD1VZDJHbUjfY2QcUg=";
+    url = "https://raw.githubusercontent.com/uwu/shelter-builds/818204a0a78c07ccaed6552cc9522da9c2b82e2a/shelter.js";
+    hash = "sha256-yhYE710nZQjTNr1No3d40wTP8D+Zj22s37wBWgk4TF0=";
     meta = {
       homepage = "https://github.com/uwu/shelter";
       sourceProvenance = [ lib.sourceTypes.binaryBytecode ]; # actually, minified JS
@@ -40,13 +40,13 @@ in
 # https://github.com/NixOS/nixpkgs/pull/194475
 rustPlatform.buildRustPackage rec {
   pname = "dorion";
-  version = "6.4.1";
+  version = "0-unstable-2025-02-27";
 
   src = fetchFromGitHub {
     owner = "SpikeHD";
     repo = "Dorion";
-    tag = "v${version}";
-    hash = "sha256-La58qj9acZzTG7WDfnBNdVWzAjOYVkIZzO8uyjQvt6o=";
+    rev = "26c534a118aeace4cde4db5447a460ebcba5d6ba";
+    hash = "sha256-EetRPa2v2UBav+UwprG7TgcswNzbjfBMvP4xlYOnWYI=";
   };
 
   cargoPatches = [
@@ -57,7 +57,7 @@ rustPlatform.buildRustPackage rec {
   buildAndTestSubdir = cargoRoot;
 
   useFetchCargoVendor = true;
-  cargoHash = "sha256-5qK1IRaUrf4pYDmoBZoR6q6rL06irurwo4v5JLX+Io4=";
+  cargoHash = "sha256-+AVmg/fyIsyksOoGwphePdd+9VtklTO1SFWlM+FBgbE=";
 
   pnpmDeps = pnpm_9.fetchDeps {
     inherit pname version src;
