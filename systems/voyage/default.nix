@@ -9,6 +9,32 @@
   pkgs,
   ...
 }:
+let
+  loadNixFiles =
+    dir:
+    lib.flatten (
+      lib.mapAttrsToList (
+        name: type:
+        if type == "directory" then
+          loadNixFiles (dir + "/${name}")
+        else if name == "default.nix" then
+          dir + "/${name}"
+        else
+          [ ]
+      ) (builtins.readDir dir)
+    );
+  system = pkgs.system;
+  nixpkgs-fprint-fix = pkgs.fetchFromGitHub {
+    owner = "pineapplehunter";
+    repo = "nixpkgs";
+    rev = "9f9f51f10007131b1d7c94a2072264b0c1e0f52d";
+    hash = "sha256-vbVTT+2holgA4t6n6eVyTC6YwVxGOLS9sdRiRegtJpw=";
+  };
+  pr389711 = import nixpkgs-fprint-fix {
+    inherit system;
+    config.allowUnfree = true;
+  };
+in
 
 {
   imports =
@@ -17,21 +43,40 @@
       ./hardware-configuration.nix
       ./tpm2.nix
       ./fonts.nix
-      ./compositor/hyprland.nix
-      ./compositor/hyprpaper.nix
-      ./compositor/waybar
     ]
     ++ lib.filesystem.listFilesRecursive ../../modules
-    ++ lib.filesystem.listFilesRecursive ../../userspace;
+    ++ loadNixFiles ../../userspace;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.zfs.package = pkgs.zfs_unstable;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
+
+  nix.settings = {
+    substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+      "https://wezterm.cachix.org"
+      "https://helix.cachix.org"
+    ];
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "wezterm.cachix.org-1:kAbhjYUC9qvblTE+s7S+kl5XM1zVa4skO+E/1IDWdH0="
+      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
+    ];
+  };
+
+  nixpkgs.flake.setFlakeRegistry = true;
+  nixpkgs.config.allowUnfree = true;
+
+  services.playerctld.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.graphics = {
@@ -45,6 +90,7 @@
   networking.hostId = "4e98920d";
   networking.hostName = "voyage"; # Define your hostname.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.wifi.powersave = false;
 
   # Set your time zone.
   time.timeZone = "Europe/Tallinn";
@@ -75,7 +121,7 @@
   };
 
   services.fprintd.enable = true;
-  services.fprintd.package = pkgs.fprintd-tod;
+  services.fprintd.package = pr389711.fprintd-tod;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.heisfer = {
@@ -84,34 +130,50 @@
     extraGroups = [
       "wheel"
       "tss"
+      "networkmanager"
     ]; # Enable ‘sudo’ for the user.
   };
 
-  programs.firefox.enable = true;
-  programs.firefox.package = pkgs.firefox-devedition;
+  programs.nh = {
+    enable = true;
+    flake = "/home/heisfer/Projects/system/dots";
+  };
 
-  programs.git.enable = true;
-
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.systemPackages = with pkgs; [
+
     wget
-    helix
-    nixd
-    nil
+    tree
     kitty
-    wofi
-    bash-language-server
     unzip
-    zoxide
     legcord
     youtube-music
     wl-clipboard
+    freetube
     # rbw
     rbw
     pkgs.pinentry-rofi
   ];
 
-  programs.bash.interactiveShellInit = ''
-    eval "$(zoxide init bash)"
+  services.flatpak.enable = true;
+
+  programs.command-not-found.enable = true;
+
+  environment.shellInit = ''
+    function __zoxide_zih() {
+      \builtin local result
+      result="$(\command zoxide query -i -- "$@")" && __zoxide_cd "$result"
+      _direnv_hook
+      hx .
+    }
+    function __zoxide_zh() {
+      __zoxide_z "$@"
+      _direnv_hook
+      hx .
+    }
+
+    alias zh=__zoxide_zh
+    alias zih=__zoxide_zih
   '';
 
   system.stateVersion = "25.05"; # Did you read the comment?

@@ -1,6 +1,13 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (lib.meta) getExe;
+  home = config.users.users.heisfer.home;
+  hostname = config.networking.hostName;
 in
 {
   programs.helix.languages = {
@@ -9,10 +16,10 @@ in
         command = getExe pkgs.nixd;
         config.nixd = {
           formatting.command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
+          options = {
+            nixos.expr = "(builtins.getFlake \"${home}/Projects/system/dots\").nixosConfigurations.${hostname}.options";
+          };
         };
-      };
-      nil = {
-        command = getExe pkgs.nil;
       };
       marksman = {
         command = getExe pkgs.marksman;
@@ -31,14 +38,14 @@ in
         command = getExe pkgs.nushell;
         args = [ "--lsp" ];
       };
+      rust-analyzer.config = {
+        check.command = "clippy";
+      };
     };
     language = [
       {
         name = "nix";
-        language-servers = [
-          "nixd"
-          "nil"
-        ];
+        language-servers = [ "nixd" ];
         auto-format = true;
       }
       {

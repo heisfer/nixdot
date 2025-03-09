@@ -1,0 +1,5 @@
+{
+  programs.xonsh = {
+    enable = true;
+  };
+}

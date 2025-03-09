@@ -7,7 +7,7 @@
 let
 
   inherit (lib.options) mkEnableOption mkOption mkPackageOption;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
   inherit (lib.types) listOf str;
 
   cfg = config.programs.helix;
@@ -21,7 +21,7 @@ in
 
     users = mkOption {
       type = listOf str;
-      default = [ ]; # I have no idea how to automate this
+      default = config.shitfest.users; # I have no idea how to automate this
       description = "List of users under hjem.users.<users>";
       example = [ "username" ];
     };
@@ -65,21 +65,20 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ cfg.package ];
 
-    hjem.users = builtins.listToAttrs (
-      builtins.map (name: {
-        inherit name;
-        value = {
-          files.".config/helix/config.toml" = mkIf (cfg.settings != { }) {
+    environment.systemPackages = [ cfg.package ];
+    hjem.users = mkMerge (
+      lib.lists.forEach cfg.users (user: {
+        ${user}.files = {
+          ".config/helix/config.toml" = mkIf (cfg.settings != { }) {
             source = tomlFormat.generate "helix-config" cfg.settings;
           };
-          files.".config/helix/languages.toml" = mkIf (cfg.languages != { }) {
+          ".config/helix/languages.toml" = mkIf (cfg.settings != { }) {
             source = tomlFormat.generate "helix-languages-config" cfg.languages;
           };
         };
-      }) cfg.users
+      })
     );
-
   };
+
 }

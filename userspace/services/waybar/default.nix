@@ -105,7 +105,7 @@
     "pulseaudio" = {
       format = "{icon} {volume}%";
       format-muted = "";
-      on-click = "${lib.getExe pkgs.pavucontrol}";
+      on-click = "${lib.getExe pkgs.small.pwvucontrol}";
       # on-scroll-up = "${lib.getExe' config.services.swayosd.package "swayosd-client"} --output-volume 1";
       # on-scroll-down = "${lib.getExe' config.services.swayosd.package "swayosd-client"} --output-volume -1";
       format-icons = {

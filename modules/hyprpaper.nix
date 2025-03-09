@@ -8,10 +8,10 @@ let
   inherit (lib.options) mkEnableOption mkPackageOption mkOption;
   inherit (lib.modules) mkIf;
   inherit (lib.types) lines;
-  cfg = config.programs.hyprpaper;
+  cfg = config.services.hyprpaper;
 in
 {
-  options.programs.hyprpaper = {
+  options.services.hyprpaper = {
     enable = mkEnableOption "hyprpaper";
     package = mkPackageOption pkgs "hyprpaper" { };
     settings = mkOption {

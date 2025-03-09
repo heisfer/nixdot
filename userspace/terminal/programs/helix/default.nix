@@ -1,7 +1,9 @@
 {
+  imports = [
+    ./languages.nix
+  ];
   programs.helix = {
     enable = true;
-    users = [ "heisfer" ];
     settings = {
       theme = "rose_pine";
       editor = {
