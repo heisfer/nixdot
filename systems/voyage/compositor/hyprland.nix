@@ -7,19 +7,24 @@
 }:
 let
   inherit (lib) getExe getExe';
-  browser = getExe config.programs.firefox.package;
-  terminal = getExe pkgs.wezterm;
-  launcher = getExe pkgs.rofi-wayland + " -show drun";
-  rofi-rbw = getExe pkgs.rofi-rbw-wayland;
-  hyprshot = getExe pkgs.hyprshot;
-  hyprpicker = getExe pkgs.hyprpicker;
-  swayosd = getExe' pkgs.swayosd "swayosd-client";
+
+  #uwsm wrapper function
+  uwsmGetExe = package: "uwsm-app -- " + getExe package;
+  uwsmGetExe' = package: bin: "uwsm-app -- " + getExe' package bin;
+
+  browser = uwsmGetExe config.programs.firefox.package;
+  terminal = uwsmGetExe pkgs.wezterm;
+  launcher = uwsmGetExe pkgs.rofi-wayland + " -show drun -run-command \"uwsm-app -- {cmd}\"";
+  rofi-rbw = uwsmGetExe pkgs.rofi-rbw-wayland;
+  hyprshot = uwsmGetExe pkgs.hyprshot;
+  hyprpicker = uwsmGetExe pkgs.hyprpicker;
+  swayosd = uwsmGetExe' pkgs.swayosd "swayosd-client";
 in
 {
 
   imports = [ inputs.hyprland.nixosModules.default ];
 
-  programs.hyprnotify.enable = true;
+  # programs.hyprnotify.enable = true;
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
@@ -67,7 +72,7 @@ in
         "RETURN, exec, ${terminal}"
         "M, exec, ${launcher}"
         "P, exec, ${rofi-rbw}"
-        "B, exec, uwsm app -- ${lib.getExe pkgs.rofi-bluetooth}"
+        "B, exec, ${uwsmGetExe pkgs.rofi-bluetooth}"
         "F, fullscreen,"
         "PRINT, exec, ${hyprshot} -m output -m active -c -o /tmp/sswkjf" # -c for current output
         "S, togglespecialworkspace, magic"
@@ -85,7 +90,7 @@ in
       # Super + Shift keybinds
       ++ map (x: "$mod SHIFT, " + x) [
         "Q, exit,"
-        "L, exec, ${lib.getExe config.programs.hyprlock.package}"
+        "L, exec, ${uwsmGetExe config.programs.hyprlock.package}"
         "S, movetoworkspace, special:magic"
         "P, exec, ${hyprpicker}"
       ]
