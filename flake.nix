@@ -16,6 +16,7 @@
         modules = [
           ./systems/voyage
           ./hjem
+          ./servers/minecraft
           # inputs.dotmod.nixosModules.nixos
           inputs.hjem.nixosModules.default
           {
@@ -77,8 +78,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # dotmod = {
-    #   url = "git+file:/home/heisfer/Projects/system/dotmod";
-    # };
+    nix-minecraft.url = "github:heisfer/nix-minecraft/geyser";
   };
 }
