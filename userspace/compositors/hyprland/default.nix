@@ -49,7 +49,7 @@ in
     env = [
       "GDK_SCALE,1"
       "QT_QPA_PLATFORM,wayland;xcb"
-      "QT_QPA_PLATFORMTHEME,qt6ct"
+      # "QT_QPA_PLATFORMTHEME,qt6ct" # managed by nix
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
       "QT_AUTO_SCREEN_SCALE_FACTOR,1"
     ];
@@ -58,6 +58,7 @@ in
     ];
     exec-once = [
       "uwsm finalize"
+      "${uwsmGetExe pkgs.local.hl-tricky-floaty}"
     ];
     general = {
       "col.active_border" = "$rose";
