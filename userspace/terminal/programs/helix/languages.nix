@@ -10,6 +10,9 @@ let
   hostname = config.networking.hostName;
 in
 {
+  programs.helix.extraPackages = with pkgs; [
+    nil
+  ];
   programs.helix.languages = {
     language-server = {
       nixd = {
@@ -17,6 +20,7 @@ in
         config.nixd = {
           formatting.command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
           options = {
+            nixpkgs.expr = "import <nixpkgs> {}";
             nixos.expr = "(builtins.getFlake \"${home}/Projects/system/dots\").nixosConfigurations.${hostname}.options";
           };
         };

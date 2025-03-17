@@ -41,6 +41,12 @@
         };
       };
     };
+    ignore = [
+      "flake.lock"
+      ".gitignore"
+      "result"
+      "Cargo.lock"
+    ];
   };
 
 }
