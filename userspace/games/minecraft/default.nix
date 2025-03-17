@@ -22,5 +22,6 @@ in
         temurin-jre-bin-17
       ];
     })
+    pkgs.prismlauncher
   ];
 }

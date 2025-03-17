@@ -22,8 +22,9 @@
           {
             nixpkgs.overlays = [
               self.overlays.local-packages
-              inputs.helix-master.overlays.default
               self.overlays.small
+              inputs.helix-master.overlays.default
+              inputs.prismlauncher.overlays.default
             ];
           }
         ];
@@ -73,6 +74,13 @@
       };
     };
     helix-master.url = "github:helix-editor/helix";
+    prismlauncher = {
+      url = "github:PrismLauncher/PrismLauncher";
+      inputs = {
+        flake-compat.follows = "";
+      };
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
