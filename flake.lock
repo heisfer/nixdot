@@ -475,6 +475,26 @@
         "type": "github"
       }
     },
+    "lightly": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1741543504,
+        "narHash": "sha256-IwN6eZusfeGIEtdubpJpp1wrzToi0Umwi9jbXc4AF90=",
+        "owner": "Bali10050",
+        "repo": "Darkly",
+        "rev": "40ccf235ae340ace5a55c7740db78f15d1285105",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Bali10050",
+        "repo": "Darkly",
+        "type": "github"
+      }
+    },
     "nix-filter": {
       "locked": {
         "lastModified": 1731533336,
@@ -673,6 +693,7 @@
         "hjem": "hjem",
         "hyprland": "hyprland",
         "hyprsunset": "hyprsunset",
+        "lightly": "lightly",
         "nix-minecraft": "nix-minecraft",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-small": "nixpkgs-small",

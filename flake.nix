@@ -74,6 +74,10 @@
       };
     };
     helix-master.url = "github:helix-editor/helix";
+    lightly = {
+      url = "github:Bali10050/Darkly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     prismlauncher = {
       url = "github:PrismLauncher/PrismLauncher";
       inputs = {
