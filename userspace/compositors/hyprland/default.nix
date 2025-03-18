@@ -56,6 +56,10 @@ in
     monitor = [
       "eDP-1, 1920x1200@60, 0x0, 1"
     ];
+
+    windowrulev2 = [
+      "noblur, class:firefox-aurora"
+    ];
     exec-once = [
       "uwsm finalize"
       "${uwsmGetExe pkgs.local.hl-tricky-floaty}"
