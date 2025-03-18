@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   nixpkgs-modrinth-fix = pkgs.fetchFromGitHub {
     owner = "getchoo-contrib";
@@ -22,6 +22,6 @@ in
         temurin-jre-bin-17
       ];
     })
-    pkgs.prismlauncher
+    inputs.prismlauncher.packages.${pkgs.system}.default
   ];
 }

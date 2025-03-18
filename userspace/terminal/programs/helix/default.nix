@@ -1,9 +1,11 @@
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./languages.nix
   ];
   programs.helix = {
     enable = true;
+    package = inputs.helix-master.packages.${pkgs.system}.default;
     settings = {
       theme = "rose_pine";
       editor = {
