@@ -148,9 +148,17 @@ in
     kitty
     unzip
     legcord
+    (discord.override {
+      withOpenASAR = true;
+    })
     youtube-music
     wl-clipboard
     freetube
+    krita
+    element-desktop
+    github-desktop
+    gh
+    gitify
     # rbw
     rbw
     pkgs.pinentry-rofi
