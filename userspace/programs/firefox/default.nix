@@ -4,6 +4,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-devedition-bin;
+    euwebid = true;
     # preferences = {
     #   "browser.aboutConfig.showWarning" = false;
     #   "browser.tabs.firefox-view" = false;
@@ -94,6 +95,10 @@
         };
         "languagetool-webextension@languagetool.org" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/latest/languagetool/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        "{e68418bc-f2b0-4459-a9ea-3e72b6751b07}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-latest.xpi";
           installation_mode = "force_installed";
         };
       };
