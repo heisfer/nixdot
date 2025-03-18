@@ -39,6 +39,9 @@
               self.overlays.local-packages
               self.overlays.small
             ];
+            nix.registry = {
+              self.flake = self;
+            };
           }
         ];
         specialArgs = {
@@ -48,6 +51,7 @@
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
       overlays = import ./flake/overlays.nix { inherit inputs; };
+      templates = import ./templates;
     };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
