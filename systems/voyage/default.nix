@@ -201,6 +201,7 @@ in
     sudo-rs.enable = true;
     sudo-rs.execWheelOnly = true;
   };
+  documentation.man.generateCaches = false;
 
   system.stateVersion = "25.05"; # Did you read the comment?
 
