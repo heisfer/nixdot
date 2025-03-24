@@ -37,6 +37,7 @@
           ./servers/minecraft
           # inputs.dotmod.nixosModules.nixos
           inputs.hjem.nixosModules.default
+          inputs.lix-module.nixosModules.default
           {
             nixpkgs.overlays = [
               self.overlays.local-packages
@@ -106,6 +107,11 @@
       inputs = {
         flake-compat.follows = "";
       };
+    };
+
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     zen-browser = {
