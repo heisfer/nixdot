@@ -7,4 +7,7 @@
     nto = "sudo nixos-rebuild test --offline --fast";
     ns = "sudo nixos-rebuild switch";
   };
+
+  # make helix default editor
+  environment.sessionVariables.EDITOR = "hx";
 }

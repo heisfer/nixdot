@@ -43,6 +43,8 @@ in
       ./hardware-configuration.nix
       ./tpm2.nix
       ./fonts.nix
+      ./silentboot.nix
+      ../../nixos/services/polkit.nix
     ]
     ++ lib.filesystem.listFilesRecursive ../../modules
     ++ loadNixFiles ../../userspace;
@@ -57,6 +59,7 @@ in
     "nix-command"
     "flakes"
   ];
+  nix.channel.enable = false;
 
   # nix.settings = {
   #   substituters = [
@@ -91,8 +94,27 @@ in
 
   networking.hostId = "4e98920d";
   networking.hostName = "voyage"; # Define your hostname.
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  networking.networkmanager.wifi.powersave = false;
+  # networking.useDHCP = false;
+  # networking.dhcpcd.enable = false;
+  # networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  # networking.networkmanager.wifi.backend = "iwd";
+  # networking.networkmanager.wifi.powersave = false;
+  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd.settings = {
+    IPv6 = {
+      Enabled = true;
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
+
+  networking.nameservers = [
+    "9.9.9.9"
+    "149.112.112.112"
+    "2620:fe::fe"
+    "2620:fe::9"
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Tallinn";
@@ -106,7 +128,7 @@ in
   services.greetd.settings =
     let
       start = {
-        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop"; # dev/null for no messages on the screen
+        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop > /dev/null"; # dev/null for no messages on the screen
         user = "heisfer";
       };
     in
@@ -159,14 +181,17 @@ in
     github-desktop
     gh
     gitify
+    nixpkgs-review
+    tutanota-desktop
     # rbw
     rbw
-    pkgs.pinentry-rofi
+    pinentry-rofi
+
+    kdiskmark
+
   ];
 
   services.flatpak.enable = true;
-
-  programs.command-not-found.enable = true;
 
   services.auto-cpufreq.enable = true;
 
@@ -186,6 +211,12 @@ in
     alias zh=__zoxide_zh
     alias zih=__zoxide_zih
   '';
+  services.dbus.packages = [ pkgs.kdiskmark ];
+  security = {
+    sudo.enable = false;
+    sudo-rs.enable = true;
+    sudo-rs.execWheelOnly = true;
+  };
 
   system.stateVersion = "25.05"; # Did you read the comment?
 

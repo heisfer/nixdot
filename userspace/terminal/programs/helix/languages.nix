@@ -12,6 +12,14 @@ in
 {
   programs.helix.extraPackages = with pkgs; [
     nil
+    taplo
+    yaml-language-server
+    bash-language-server
+    lua-language-server
+    # Pre configured rust
+    rust-analyzer
+    clippy
+    rustc
   ];
   programs.helix.languages = {
     language-server = {
@@ -38,6 +46,9 @@ in
           "--enable-emoji"
         ];
       };
+      go-grip = {
+        command = getExe pkgs.local.go-grip;
+      };
       nu-lsp = {
         command = getExe pkgs.nushell;
         args = [ "--lsp" ];
@@ -56,7 +67,7 @@ in
         name = "markdown";
         language-servers = [
           "marksman"
-          "mpls"
+          "go-grip"
         ];
       }
       {

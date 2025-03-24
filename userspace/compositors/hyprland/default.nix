@@ -6,11 +6,9 @@
   ...
 }:
 let
-  inherit (lib) getExe getExe';
+  inherit (lib.dotmod.extra) uwsmGetExe uwsmGetExe';
 
   #uwsm wrapper function
-  uwsmGetExe = package: "uwsm-app -- " + getExe package;
-  uwsmGetExe' = package: bin: "uwsm-app -- " + getExe' package bin;
 
   browser = uwsmGetExe config.programs.firefox.package;
   terminal = uwsmGetExe pkgs.wezterm;
@@ -19,6 +17,7 @@ let
   hyprshot = uwsmGetExe pkgs.hyprshot;
   hyprpicker = uwsmGetExe pkgs.hyprpicker;
   swayosd = uwsmGetExe' pkgs.swayosd "swayosd-client";
+  swaync-client = uwsmGetExe' config.services.swaync.package "swaync-client";
 in
 {
 
@@ -86,6 +85,7 @@ in
         "M, exec, ${launcher}"
         "P, exec, ${rofi-rbw}"
         "B, exec, ${uwsmGetExe pkgs.rofi-bluetooth}"
+        "N, exec, ${swaync-client} --open-panel"
         "F, fullscreen,"
         "PRINT, exec, ${hyprshot} -m output -m active -c -o /tmp/sswkjf" # -c for current output
         "S, togglespecialworkspace, magic"
@@ -106,6 +106,7 @@ in
         "L, exec, ${uwsmGetExe config.programs.hyprlock.package}"
         "S, movetoworkspace, special:magic"
         "P, exec, ${hyprpicker}"
+        "PRINT, exec, ${hyprshot} -m window -m active -c -o /tmp/sswkjf"
       ]
       # NO MOD
       ++ [

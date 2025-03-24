@@ -25,9 +25,12 @@
         "x86_64-darwin"
       ];
       forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+      customLib = inputs.nixpkgs.lib.extend (final: prev: import ./lib/default.nix { lib = prev; });
     in
     {
+      lib = customLib;
       nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
+        inherit (self) lib;
         modules = [
           ./systems/voyage
           ./hjem
@@ -48,6 +51,7 @@
           inherit inputs;
         };
       };
+
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
       overlays = import ./flake/overlays.nix { inherit inputs; };
@@ -57,6 +61,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -108,5 +114,9 @@
     };
 
     nix-minecraft.url = "github:heisfer/nix-minecraft/geyser";
+
+    dotmod = {
+      url = "git+file:///home/heisfer/Projects/system/modules";
+    };
   };
 }

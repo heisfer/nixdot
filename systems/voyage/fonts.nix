@@ -14,6 +14,7 @@
     inter
     maple-mono-NF
     maple-mono-SC-NF
+    ibm-plex
   ];
   fonts.fontconfig = {
     enable = true;
