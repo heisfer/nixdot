@@ -10,6 +10,9 @@ let
   hostname = config.networking.hostName;
 in
 {
+  # Addidng ref to upstream languages.toml so i don't have to search it manually
+  # https://github.com/helix-editor/helix/blob/master/languages.toml
+  # Preconfigured lsp's
   programs.helix.extraPackages = with pkgs; [
     nil
     taplo
