@@ -109,9 +109,15 @@
       };
     };
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.92.0-1.tar.gz";
+    lix = {
+      url = "git+https://git.lix.systems/lix-project/lix.git";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lix-module = {
+      url = "git+https://git.lix.systems/lix-project/nixos-module.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.lix.follows = "lix";
     };
 
     zen-browser = {

@@ -11,15 +11,26 @@
     noto-fonts-monochrome-emoji
     nerd-fonts.im-writing
     nerd-fonts.blex-mono
+    nerd-fonts.symbols-only
     inter
-    maple-mono-NF
-    maple-mono-SC-NF
     ibm-plex
   ];
+  # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.maple-mono);
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "BlexMono Nerd Font Propo" ];
+      serif = [
+        "IBM Plex Serif"
+        "Symbols Nerd Font"
+      ];
+      sansSerif = [
+        "IBM Plex Sans"
+        "Symbols Nerd Font"
+      ];
+      monospace = [
+        "IBM Plex Mono"
+        "Symbols Nerd Font"
+      ];
       emoji = [ "Noto Emoji" ];
     };
   };
