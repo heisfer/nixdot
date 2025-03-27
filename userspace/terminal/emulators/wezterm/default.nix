@@ -1,6 +1,8 @@
+{ inputs, pkgs, ... }:
 {
   programs.wezterm = {
     enable = true;
+    package = inputs.wezterm-master.packages.${pkgs.system}.default;
     settings = # lua
       ''
         local wezterm = require 'wezterm'

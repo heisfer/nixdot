@@ -97,7 +97,9 @@
         hyprland-protocols.follows = "hyprland/hyprland-protocols";
       };
     };
-    helix-master.url = "github:helix-editor/helix";
+    # helix-master.url = "github:helix-editor/helix";
+    helix-master.url = "github:heisfer/helix/patchy";
+    wezterm-master.url = "github:wezterm/wezterm?dir=nix";
     lightly = {
       url = "github:Bali10050/Darkly";
       inputs.nixpkgs.follows = "nixpkgs";
