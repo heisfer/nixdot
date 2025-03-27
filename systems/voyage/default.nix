@@ -166,9 +166,10 @@ in
     tree
     kitty
     unzip
-    legcord
+    # legcord
     (discord.override {
       withOpenASAR = true;
+      withMoonlight = true;
     })
     youtube-music
     wl-clipboard
@@ -183,6 +184,8 @@ in
     # rbw
     rbw
     pinentry-rofi
+    nix-init
+    miru
 
     kdiskmark
 
