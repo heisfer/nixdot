@@ -3,10 +3,9 @@
   fetchFromGitHub,
   gtk-engine-murrine,
   sassc,
-  jdupes,
   gnome-themes-extra,
 }:
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "rose-pine-gtk-theme";
   version = "0-unstable-2024-11-06";
 
