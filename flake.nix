@@ -35,6 +35,7 @@
           ./systems/voyage
           ./hjem
           ./servers/minecraft
+          ./servers/darwin
           # inputs.dotmod.nixosModules.nixos
           inputs.hjem.nixosModules.default
           inputs.lix-module.nixosModules.default
@@ -131,6 +132,10 @@
 
     dotmod = {
       url = "git+file:///home/heisfer/Projects/system/modules";
+    };
+    nixtheplanet.url = "github:matthewcroughan/nixtheplanet";
+    nvf = {
+      url = "./nvf";
     };
   };
 }
