@@ -48,34 +48,6 @@
         specialArgs = { inherit self; };
       };
 
-      # revisit this later
-      # checks = inputs.nixpkgs.lib.genAttrs [ "x86_64-linux" ] (
-      #   system:
-      #   let
-      #     inherit (inputs.nixpkgs) lib;
-      #     nixosMachines = lib.mapAttrs' (
-      #       name: config: lib.nameValuePair "nixos-${name}" config.config.system.build.toplevel
-      #     ) ((lib.filterAttrs (_: config: config.pkgs.system == system)) self.nixosConfigurations);
-      #   in
-      #   nixosMachines
-      # );
-
-      # WTF
-      deploy = {
-        remoteBuild = true; # Uncomment in case the system you're deploying from is not darwin
-        nodes."azazel" = {
-          hostname = "azazel";
-          profiles.system = {
-            user = "root";
-            path = inputs.deploy-rs.lib.x86_64-darwin.activate.darwin self.darwinConfigurations.azazel;
-          };
-        };
-      };
-
-      checks = builtins.mapAttrs (
-        system: deployLib: deployLib.deployChecks self.deploy
-      ) inputs.deploy-rs.lib;
-
       formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
       packages = forAllSystems (system: import ./pkgs inputs.nixpkgs.legacyPackages.${system});
       overlays = import ./flake/overlays.nix { inherit inputs; };
@@ -101,9 +73,6 @@
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    deploy-rs.url = "github:serokell/deploy-rs";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
