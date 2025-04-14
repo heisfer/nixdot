@@ -49,6 +49,7 @@
         ImproveSuggest = false;
         Locked = true;
       };
+      # FUCK OFF
       SearchEngines = {
         Add = [
           {
@@ -99,6 +100,10 @@
         };
         "{e68418bc-f2b0-4459-a9ea-3e72b6751b07}" = {
           install_url = "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-latest.xpi";
+          installation_mode = "force_installed";
+        };
+        "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/file/4470107/refined_github-latest.xpi";
           installation_mode = "force_installed";
         };
       };

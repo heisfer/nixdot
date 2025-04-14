@@ -5,6 +5,10 @@
   pkgs,
   ...
 }:
+let
+  inherit (lib.dotmod.extra) uwsmGetExe uwsmGetExe';
+  inherit (lib.meta) getExe getExe';
+in
 {
 
   programs.waybar.enable = true;
@@ -21,6 +25,7 @@
       "mpris"
     ];
     modules-right = [
+      "custom/notification"
       "tray"
       "network"
       "battery"
@@ -38,10 +43,6 @@
       };
     };
 
-    "hyprland/workspaces" = {
-      format = "{}";
-      max-length = 40;
-    };
     "hyprland/workspaces" = {
       disable-scroll = true;
       on-click = "activate";
@@ -71,8 +72,8 @@
         "󰃟"
         "󰃠"
       ];
-      # on-scroll-up = "${lib.getExe' config.services.swayosd.package "swayosd-client"} --brightness raise";
-      # on-scroll-down = "${lib.getExe' config.services.swayosd.package "swayosd-client"} --brightness lower";
+      on-scroll-up = "${getExe' config.services.swayosd.package "swayosd-client"} --brightness raise";
+      on-scroll-down = "${getExe' config.services.swayosd.package "swayosd-client"} --brightness lower";
       min-length = 6;
     };
     "battery" = {
@@ -105,9 +106,9 @@
     "pulseaudio" = {
       format = "{icon} {volume}%";
       format-muted = "";
-      on-click = "${lib.getExe pkgs.small.pwvucontrol}";
-      # on-scroll-up = "${lib.getExe' config.services.swayosd.package "swayosd-client"} --output-volume 1";
-      # on-scroll-down = "${lib.getExe' config.services.swayosd.package "swayosd-client"} --output-volume -1";
+      on-click = "${getExe pkgs.small.pwvucontrol}";
+      on-scroll-up = "${getExe' config.services.swayosd.package "swayosd-client"} --output-volume 1";
+      on-scroll-down = "${getExe' config.services.swayosd.package "swayosd-client"} --output-volume -1";
       format-icons = {
         headphone = "";
         hands-free = "";
@@ -122,6 +123,27 @@
         ];
       };
     };
+
+    "custom/notification" = {
+      tooltip = false;
+      format = "{icon}";
+      format-icons = {
+        notification = "<span foreground='red'><sup></sup></span>";
+        none = "";
+        dnd-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-none = "";
+        inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        inhibited-none = "";
+        dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+        dnd-inhibited-none = "";
+      };
+      return-type = "json";
+      exec = "${getExe' config.services.swaync.package "swaync-client"} -swb";
+      on-click = "${getExe' config.services.swaync.package "swaync-client"} -t -sw";
+      on-click-right = "${getExe' config.services.swaync.package "swaync-client"} -d -sw";
+      escape = true;
+    };
+
     "network" = {
       format-wifi = " {signalStrength}%";
       format-ethernet = "󰇧 ONLINE";

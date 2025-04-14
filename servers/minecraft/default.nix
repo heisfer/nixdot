@@ -19,6 +19,11 @@
         autoStart = false;
         package = pkgs.geyser-server;
       };
+      fabric-server = {
+        enable = true;
+        autoStart = false;
+        package = pkgs.fabric-server;
+      };
     };
 
   };

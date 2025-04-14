@@ -10,30 +10,7 @@
   ...
 }:
 let
-  loadNixFiles =
-    dir:
-    lib.flatten (
-      lib.mapAttrsToList (
-        name: type:
-        if type == "directory" then
-          loadNixFiles (dir + "/${name}")
-        else if name == "default.nix" then
-          dir + "/${name}"
-        else
-          [ ]
-      ) (builtins.readDir dir)
-    );
-  system = pkgs.system;
-  nixpkgs-fprint-fix = pkgs.fetchFromGitHub {
-    owner = "pineapplehunter";
-    repo = "nixpkgs";
-    rev = "9f9f51f10007131b1d7c94a2072264b0c1e0f52d";
-    hash = "sha256-vbVTT+2holgA4t6n6eVyTC6YwVxGOLS9sdRiRegtJpw=";
-  };
-  pr389711 = import nixpkgs-fprint-fix {
-    inherit system;
-    config.allowUnfree = true;
-  };
+  inherit (lib.dotmod.extra) loadNixFiles;
 in
 
 {
@@ -62,49 +39,34 @@ in
     ];
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      # FIX: https://github.com/NixOS/nixpkgs/issues/392278
-      auto-cpufreq = prev.auto-cpufreq.overrideAttrs (oldAttrs: {
-        postPatch =
-          oldAttrs.postPatch
-          + ''
-            substituteInPlace pyproject.toml \
-            --replace-fail 'psutil = "^6.0.0"' 'psutil = ">=6.0.0,<8.0.0"'
-          '';
-      });
-    })
-  ];
   nixpkgs.flake.setFlakeRegistry = true;
   nixpkgs.config.allowUnfree = true;
 
   services.playerctld.enable = true;
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    settings = {
+      General = {
+        ControllerMode = "bredr";
+      };
+    };
+  };
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
+  # For appimages unzip
+  programs.nix-ld.enable = true;
+
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = false;
 
   networking.hostId = "4e98920d";
-  networking.hostName = "voyage"; # Define your hostname.
-  # networking.useDHCP = false;
-  # networking.dhcpcd.enable = false;
-  # networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
-  # networking.networkmanager.wifi.backend = "iwd";
-  # networking.networkmanager.wifi.powersave = false;
-  networking.wireless.iwd.enable = true;
-  networking.wireless.iwd.settings = {
-    IPv6 = {
-      Enabled = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
-  };
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.networkmanager.wifi.powersave = false;
+  networking.networkmanager.wifi.scanRandMacAddress = false;
 
   networking.nameservers = [
     "9.9.9.9"
@@ -142,22 +104,28 @@ in
   };
 
   services.fprintd.enable = true;
-  services.fprintd.package = pr389711.fprintd-tod;
+  services.fprintd.package = pkgs.fprintd-tod;
+  # services.fprintd.package = pr389711.fprintd-tod;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.heisfer = {
-    isNormalUser = true;
-    initialPassword = "password";
-    extraGroups = [
+  # users.users.heisfer = {
+  #   isNormalUser = true;
+  #   initialPassword = "password";
+  #   extraGroups = [
+  #     "wheel"
+  #     "tss"
+  #     "networkmanager"
+  #   ]; # Enable ‘sudo’ for the user.
+  # };
+
+  userspace.users.heisfer = {
+    isDefault = true;
+    enableHjem = true;
+    groups = [
       "wheel"
       "tss"
       "networkmanager"
-    ]; # Enable ‘sudo’ for the user.
-  };
-
-  programs.nh = {
-    enable = true;
-    flake = "/home/heisfer/Projects/system/dots";
+    ];
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -166,10 +134,11 @@ in
     tree
     kitty
     unzip
-    # legcord
+    rar
+    unrar
+    legcord
     (discord.override {
       withOpenASAR = true;
-      withMoonlight = true;
     })
     youtube-music
     wl-clipboard
@@ -184,11 +153,42 @@ in
     # rbw
     rbw
     pinentry-rofi
-    nix-init
     miru
 
     kdiskmark
+    imv
+    mpv
+    # just desiding
+    nautilus
+    kdePackages.ark
+    kdePackages.dolphin
+    local.code2prompt
 
+    # inputs.nvf.packages.${pkgs.system}.default
+    nix-fast-build
+    nix-output-monitor
+
+    (pkgs.writers.writePython3Bin "krisp-patcher"
+      {
+        libraries = with pkgs.python3Packages; [
+          capstone
+          pyelftools
+        ];
+        flakeIgnore = [
+          "E501" # line too long (82 > 79 characters)
+          "F403" # 'from module import *' used; unable to detect undefined names
+          "F405" # name may be undefined, or defined from star imports: module
+        ];
+      }
+      (
+        builtins.readFile (
+          pkgs.fetchurl {
+            url = "https://pastebin.com/raw/8tQDsMVd";
+            sha256 = "sha256-IdXv0MfRG1/1pAAwHLS2+1NESFEz2uXrbSdvU9OvdJ8=";
+          }
+        )
+      )
+    )
   ];
 
   services.flatpak.enable = true;

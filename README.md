@@ -4,14 +4,15 @@
 # My NixOS Configuration
 This flakes configuration is built with `flake-parts`. Currently it's only supporting single hosts.
 
-## File Structure
+## Directory Structure
 | Location | Description |
 | --- | --- |
-| `flake.nix` | Starting Point of Configurations |
-| `flake.lock` | Locked versions of inputs |
-| `home` | Home Manager Configurations & Modules |
+| [Root](./)
+| [Lib](./lib) | Extended nixpkgs lib and extra |
+| [Userspace](./userspace) | Home directory configurations. |
 | `nixos` | NixOS Configurations & Modules |
-| `pkgs` | Custom Packages |
+| |
+| [Pkgs](./pkgs) | Custom Packages |
 * overlays are not used
 
 ## Made with

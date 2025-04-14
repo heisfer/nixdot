@@ -33,6 +33,7 @@
         normal = {
           tab = "move_parent_node_end";
           S-tab = "move_parent_node_start";
+          "=" = ":format";
         };
         insert = {
           S-tab = "move_parent_node_start";

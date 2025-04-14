@@ -11,6 +11,25 @@
     autoStart = false;
   };
 
+  # ssh darwin
+  programs.ssh.extraConfig = ''
+    Host azazel
+        HostName localhost
+        User admin
+        Port 2222
+        IdentityFile ~/.ssh/darwin
+  '';
+
+  # Broken experimental code
+  # nix.distributedBuilds = true;
+  # nix.buildMachines = [
+  #   {
+  #     hostname = "azazel";
+  #     system = "x86_64-darwin";
+  #     protocol = "ssh-ng";
+  #   }
+  # ];
+
   # For VNC
   environment.systemPackages = [ pkgs.remmina ];
 }

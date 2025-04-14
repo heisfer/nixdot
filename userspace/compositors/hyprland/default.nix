@@ -21,7 +21,10 @@ let
 in
 {
 
-  imports = [ inputs.hyprland.nixosModules.default ];
+  imports = [
+    inputs.hyprland.nixosModules.default
+    ./xdg.nix
+  ];
 
   # programs.hyprnotify.enable = true;
 
@@ -58,6 +61,9 @@ in
 
     windowrulev2 = [
       "noblur, class:firefox-aurora"
+      "float, class:com.saivert.pwvucontrol"
+      "size 850 450, class:com.saivert.pwvucontrol"
+      "move 50% 20%, class:com.saivert.pwvucontrol"
     ];
     exec-once = [
       "uwsm finalize"
@@ -85,7 +91,7 @@ in
         "M, exec, ${launcher}"
         "P, exec, ${rofi-rbw}"
         "B, exec, ${uwsmGetExe pkgs.rofi-bluetooth}"
-        "N, exec, ${swaync-client} --open-panel"
+        "N, exec, ${swaync-client} --toggle-panel"
         "F, fullscreen,"
         "PRINT, exec, ${hyprshot} -m output -m active -c -o /tmp/sswkjf" # -c for current output
         "S, togglespecialworkspace, magic"

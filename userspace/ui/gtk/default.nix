@@ -8,17 +8,25 @@
       size = 32;
       packages = [ pkgs.banana-cursor ];
     };
-    theme.packages = [
-      pkgs.local.rose-pine-gtk-theme
-      pkgs.kanagawa-gtk-theme
-    ];
-    theme.name = "Rose-Pine-Dark";
-    gtk4.settings = {
-      gtk-application-prefer-dark-theme = true;
+    theme = {
+      name = "Rose-Pine-Dark";
+      packages = [
+        pkgs.local.rose-pine-gtk-theme
+        pkgs.kanagawa-gtk-theme
+      ];
     };
-    gtk3.settings = {
-      gtk-application-prefer-dark-theme = true;
+    iconTheme = {
+      name = "Reversal-dark";
+      packages = [
+        pkgs.reversal-icon-theme
+      ];
     };
+    # gtk4.settings = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
+    # gtk3.settings = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
 
   };
 

@@ -13,8 +13,8 @@ let
     str
     lines
     ;
-  inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.lists) forEach;
+  inherit (lib.modules) mkIf;
+  inherit (lib.attrsets) genAttrs;
   cfg = config.programs.wezterm;
 in
 {
@@ -23,7 +23,7 @@ in
     package = mkPackageOption pkgs "wezterm" { };
     users = mkOption {
       type = listOf str;
-      default = config.shitfest.users;
+      default = config.userspace.hjemUsers;
     };
     settings = mkOption {
       type = nullOr lines;
@@ -32,12 +32,10 @@ in
   };
   config = mkIf cfg.enable {
     environment.systemPackages = [ cfg.package ];
-    hjem.users = mkMerge (
-      forEach cfg.users (user: {
-        ${user}.files.".config/wezterm/wezterm.lua" = mkIf (cfg.settings != null) {
-          text = cfg.settings;
-        };
-      })
-    );
+    hjem.users = genAttrs cfg.users (user: {
+      files.".config/wezterm/wezterm.lua" = mkIf (cfg.settings != null) {
+        text = cfg.settings;
+      };
+    });
   };
 }

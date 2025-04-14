@@ -1,4 +1,3 @@
-{ inputs, pkgs, ... }:
 {
   qt = {
     style = "kvantum";

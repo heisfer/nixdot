@@ -49,6 +49,13 @@ in
           "--enable-emoji"
         ];
       };
+      mdpls = {
+        command = getExe pkgs.local.mdpls;
+        config = {
+          markdown.preview.auto = true;
+          markdown.preview.browser = "firefox-devedition";
+        };
+      };
       go-grip = {
         command = getExe pkgs.local.go-grip;
       };
