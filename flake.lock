@@ -841,11 +841,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1744625322,
-        "narHash": "sha256-C5HyF/5uNNf3W1s6qdXFq3NQ+7MMUL6Qdvosuz8ReVA=",
+        "lastModified": 1744628889,
+        "narHash": "sha256-N4xDmPk2WEju94H3uhGD5s7X1L1mh9am+Tt/PgAlVag=",
         "owner": "heisfer",
         "repo": "nixdot-modules",
-        "rev": "ba665225c79471700344138143504e6b999d8263",
+        "rev": "dcf1e4a9184517d17ffdd4ae9324a1185e4844fb",
         "type": "github"
       },
       "original": {
