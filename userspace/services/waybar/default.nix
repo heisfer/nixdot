@@ -1,12 +1,10 @@
 {
-  inputs,
   lib,
   config,
   pkgs,
   ...
 }:
 let
-  inherit (lib.dotmod.extra) uwsmGetExe uwsmGetExe';
   inherit (lib.meta) getExe getExe';
 in
 {
@@ -19,10 +17,13 @@ in
     modules-left = [
       "clock"
       "hyprland/language"
+      "niri/language"
       "hyprland/workspaces"
+      "niri/workspaces"
     ];
     modules-center = [
       "mpris"
+      "cloc"
     ];
     modules-right = [
       "custom/notification"
@@ -48,6 +49,12 @@ in
       on-click = "activate";
     };
     "hyprland/language" = {
+      format = " {}";
+      format-en = "US";
+      format-et = "EE";
+      format-no = "NO";
+    };
+    "niri/language" = {
       format = " {}";
       format-en = "US";
       format-et = "EE";

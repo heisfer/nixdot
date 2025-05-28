@@ -11,7 +11,7 @@ let
   #uwsm wrapper function
 
   browser = uwsmGetExe config.programs.firefox.package;
-  terminal = uwsmGetExe pkgs.wezterm;
+  terminal = uwsmGetExe config.programs.ghostty.package;
   launcher = uwsmGetExe pkgs.rofi-wayland + " -show drun -run-command \"uwsm-app -- {cmd}\"";
   rofi-rbw = uwsmGetExe pkgs.rofi-rbw-wayland;
   hyprshot = uwsmGetExe pkgs.hyprshot;
@@ -22,7 +22,7 @@ in
 {
 
   imports = [
-    inputs.hyprland.nixosModules.default
+    # inputs.hyprland.nixosModules.default
     ./xdg.nix
   ];
 
@@ -111,6 +111,7 @@ in
         "Q, exit,"
         "L, exec, ${uwsmGetExe config.programs.hyprlock.package}"
         "S, movetoworkspace, special:magic"
+        "N, exec, ${uwsmGetExe pkgs.rofi-network-manager}"
         "P, exec, ${hyprpicker}"
         "PRINT, exec, ${hyprshot} -m window -m active -c -o /tmp/sswkjf"
       ]

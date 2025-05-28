@@ -5,5 +5,15 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
+    # hjem for all users
+    config = {
+      whitelist = {
+        prefix = [
+          "~/Projects/php"
+
+        ];
+      };
+
+    };
   };
 }

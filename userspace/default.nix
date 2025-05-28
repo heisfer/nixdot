@@ -1,0 +1,34 @@
+{
+  imports = [
+    ./compositors/hyprland/default.nix
+    ./compositors/niri/default.nix
+    ./compositors/river/default.nix
+    ./compositors/sway/default.nix
+    ./games/itch/default.nix
+    ./games/minecraft/default.nix
+    ./games/steam/default.nix
+    ./programs/firefox/default.nix
+    ./programs/hyprlock/default.nix
+    ./programs/rofi/default.nix
+    ./services/arrpc/default.nix
+    ./services/hypridle/default.nix
+    ./services/hyprpaper/default.nix
+    ./services/swaync/default.nix
+    ./services/swayosd/default.nix
+    ./services/waybar/default.nix
+    ./terminal/emulators/wezterm/default.nix
+    ./terminal/programs/bat/default.nix
+    ./terminal/programs/direnv/default.nix
+    ./terminal/programs/git/default.nix
+    ./terminal/programs/helix/default.nix
+    ./terminal/programs/nix-index/default.nix
+    ./terminal/programs/nix-init/default.nix
+    ./terminal/programs/zoxide/default.nix
+    ./terminal/shell/common/default.nix
+    ./terminal/shell/fish/default.nix
+    ./terminal/shell/xonsh/default.nix
+    ./terminal/shell/zsh/default.nix
+    ./ui/gtk/default.nix
+    ./ui/qt/default.nix
+  ];
+}

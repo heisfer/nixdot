@@ -4,7 +4,9 @@
   programs.firefox = {
     enable = true;
     package = pkgs.firefox-devedition-bin;
-    euwebid = true;
+    nativeMessagingHosts.packages = with pkgs; [
+      web-eid-app
+    ];
     # preferences = {
     #   "browser.aboutConfig.showWarning" = false;
     #   "browser.tabs.firefox-view" = false;

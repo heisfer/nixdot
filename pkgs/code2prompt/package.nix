@@ -46,6 +46,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
   meta = {
     description = "A CLI tool to convert your codebase into a single LLM prompt with source tree, prompt templating, and token counting";
     homepage = "https://github.com/mufeedvh/code2prompt";
+    changelog = "https://github.com/mufeedvh/code2prompt/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ heisfer ];
     mainProgram = "code2prompt";

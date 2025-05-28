@@ -52,11 +52,15 @@ in
                 type = bool;
                 default = false;
               };
+              isTrusted = mkOption {
+                type = bool;
+                default = false;
+                description = "Add user to trusted users list";
+              };
               groups = mkOption {
                 type = listOf str;
                 default = [ ];
               };
-
               enableHjem = mkEnableOption "hjem";
             };
           }
@@ -103,6 +107,8 @@ in
         initialPassword = value.initialPassword;
         extraGroups = value.groups;
       }) cfg.users;
+
+      nix.settings.trusted-users = attrNames (filterAttrs (username: users: users.isTrusted) cfg.users);
 
       hjem.users = genAttrs cfg.hjemUsers (user: {
         enable = true;

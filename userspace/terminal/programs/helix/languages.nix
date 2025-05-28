@@ -2,23 +2,25 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 let
   inherit (lib.meta) getExe;
   home = config.users.users.heisfer.home;
   hostname = config.networking.hostName;
+
 in
 {
   # Addidng ref to upstream languages.toml so i don't have to search it manually
   # https://github.com/helix-editor/helix/blob/master/languages.toml
   # Preconfigured lsp's
   programs.helix.extraPackages = with pkgs; [
-    nil
     taplo
     yaml-language-server
     bash-language-server
     lua-language-server
+    vscode-langservers-extracted
     # Pre configured rust
     rust-analyzer
     clippy
@@ -49,6 +51,10 @@ in
           "--enable-emoji"
         ];
       };
+
+      nil = {
+        command = getExe inputs.nil.packages.${pkgs.system}.default;
+      };
       mdpls = {
         command = getExe pkgs.local.mdpls;
         config = {
@@ -63,6 +69,10 @@ in
         command = getExe pkgs.nushell;
         args = [ "--lsp" ];
       };
+      phpactor = {
+        command = getExe pkgs.phpactor;
+        args = [ "language-server" ];
+      };
       rust-analyzer.config = {
         check.command = "clippy";
       };
@@ -70,7 +80,10 @@ in
     language = [
       {
         name = "nix";
-        language-servers = [ "nixd" ];
+        language-servers = [
+          "nixd"
+          "nil"
+        ];
         auto-format = true;
       }
       {
@@ -78,6 +91,12 @@ in
         language-servers = [
           "marksman"
           "go-grip"
+        ];
+      }
+      {
+        name = "php";
+        language-servers = [
+          "phpactor"
         ];
       }
       {

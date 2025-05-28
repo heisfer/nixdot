@@ -24,6 +24,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelPackages = pkgs.linuxPackages_6_14;
 
   fileSystems."/" = {
     device = "vault/root";

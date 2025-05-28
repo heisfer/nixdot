@@ -21,14 +21,16 @@
   '';
 
   # Broken experimental code
-  # nix.distributedBuilds = true;
-  # nix.buildMachines = [
-  #   {
-  #     hostname = "azazel";
-  #     system = "x86_64-darwin";
-  #     protocol = "ssh-ng";
-  #   }
-  # ];
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "azazel";
+      sshUser = "admin";
+      sshKey = "/home/heisfer/.ssh/darwin";
+      system = "x86_64-darwin";
+      protocol = "ssh-ng";
+    }
+  ];
 
   # For VNC
   environment.systemPackages = [ pkgs.remmina ];

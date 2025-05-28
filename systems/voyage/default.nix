@@ -20,25 +20,31 @@ in
       ./hardware-configuration.nix
       ./tpm2.nix
       ./fonts.nix
-      ./silentboot.nix
       ../../nixos/services/polkit.nix
+      # ../../userspace/default.nix
     ]
     ++ lib.filesystem.listFilesRecursive ../../modules
     ++ loadNixFiles ../../userspace;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.silent.enable = true;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
   nix = {
     channel.enable = false;
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      warn-dirty = false;
+      accept-flake-config = true;
+    };
   };
 
+  services.fwupd.enable = true;
   nixpkgs.flake.setFlakeRegistry = true;
   nixpkgs.config.allowUnfree = true;
 
@@ -88,7 +94,7 @@ in
     let
       start = {
         command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop > /dev/null"; # dev/null for no messages on the screen
-        user = "heisfer";
+        user = config.userspace.defaultUser;
       };
     in
     {
@@ -107,19 +113,9 @@ in
   services.fprintd.package = pkgs.fprintd-tod;
   # services.fprintd.package = pr389711.fprintd-tod;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.heisfer = {
-  #   isNormalUser = true;
-  #   initialPassword = "password";
-  #   extraGroups = [
-  #     "wheel"
-  #     "tss"
-  #     "networkmanager"
-  #   ]; # Enable ‘sudo’ for the user.
-  # };
-
   userspace.users.heisfer = {
     isDefault = true;
+    isTrusted = true;
     enableHjem = true;
     groups = [
       "wheel"
@@ -129,13 +125,17 @@ in
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.TERMINAL = config.programs.ghostty.package.pname;
   environment.systemPackages = with pkgs; [
     wget
     tree
+    ghostty
     kitty
+    bitwarden-desktop
     unzip
     rar
     unrar
+    brave
     legcord
     (discord.override {
       withOpenASAR = true;
@@ -158,11 +158,14 @@ in
     kdiskmark
     imv
     mpv
+    htop
+    termusic
+    zellij
     # just desiding
     nautilus
     kdePackages.ark
     kdePackages.dolphin
-    local.code2prompt
+    # local.code2prompt
 
     # inputs.nvf.packages.${pkgs.system}.default
     nix-fast-build
@@ -191,26 +194,26 @@ in
     )
   ];
 
+  services.xserver = {
+    enable = true;
+    autorun = false;
+    windowManager.i3 = {
+      enable = true;
+      package = pkgs.i3-gaps;
+    };
+    displayManager = {
+      startx.enable = true;
+    };
+  };
+
+  services.gnome.gnome-keyring.enable = true;
+
   services.flatpak.enable = true;
 
   services.auto-cpufreq.enable = true;
 
-  environment.shellInit = ''
-    function __zoxide_zih() {
-      \builtin local result
-      result="$(\command zoxide query -i -- "$@")" && __zoxide_cd "$result"
-      _direnv_hook
-      hx .
-    }
-    function __zoxide_zh() {
-      __zoxide_z "$@"
-      _direnv_hook
-      hx .
-    }
+  services.wordpress.sites."localhost" = { };
 
-    alias zh=__zoxide_zh
-    alias zih=__zoxide_zih
-  '';
   services.dbus.packages = [ pkgs.kdiskmark ];
   security = {
     sudo.enable = false;
