@@ -16,6 +16,6 @@ buildNpmPackage (finalAttrs: {
     hash = "sha256-30VpgnEbcXIQkNzJo76LpP3eKImZfribfI5mHW/xLyQ=";
   };
 
-  npmDepsHash = "";
+  npmDepsHash = "sha256-dRIOTB3y7h0MTuKWQlJoCNlatohg7nn3OOMvee5V/yg=";
 
 })
