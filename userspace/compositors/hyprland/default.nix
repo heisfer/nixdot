@@ -6,18 +6,18 @@
   ...
 }:
 let
-  inherit (lib.dotmod.extra) uwsmGetExe uwsmGetExe';
+  inherit (lib.dotmod.extra) appRunExe appRunExe';
 
   #uwsm wrapper function
 
-  browser = uwsmGetExe config.programs.firefox.package;
-  terminal = uwsmGetExe config.programs.ghostty.package;
-  launcher = uwsmGetExe pkgs.rofi-wayland + " -show drun -run-command \"uwsm-app -- {cmd}\"";
-  rofi-rbw = uwsmGetExe pkgs.rofi-rbw-wayland;
-  hyprshot = uwsmGetExe pkgs.hyprshot;
-  hyprpicker = uwsmGetExe pkgs.hyprpicker;
-  swayosd = uwsmGetExe' pkgs.swayosd "swayosd-client";
-  swaync-client = uwsmGetExe' config.services.swaync.package "swaync-client";
+  browser = appRunExe config.programs.firefox.package;
+  terminal = appRunExe config.programs.wezterm.package;
+  launcher = appRunExe pkgs.rofi-wayland + " -show drun -run-command \"app2unit -- {cmd}\"";
+  rofi-rbw = appRunExe pkgs.rofi-rbw-wayland;
+  hyprshot = appRunExe pkgs.hyprshot;
+  hyprpicker = appRunExe pkgs.hyprpicker;
+  swayosd = appRunExe' pkgs.swayosd "swayosd-client";
+  swaync-client = appRunExe' config.services.swaync.package "swaync-client";
 in
 {
 
@@ -26,7 +26,14 @@ in
     ./xdg.nix
   ];
 
-  # programs.hyprnotify.enable = true;
+  environment.systemPackages = [ pkgs.app2unit ];
+
+  environment.sessionVariables = {
+    UWSM_SILENT_START = 1;
+    # uwsm integration
+    APP2UNIT_SLICES = "a=app-graphical.slice b=background-graphical.slice s=session-graphical.slice";
+    APP2UNIT_TYPE = "scope"; # programs.hyprnotify.enable = true;
+  };
 
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
@@ -67,7 +74,7 @@ in
     ];
     exec-once = [
       "uwsm finalize"
-      "${uwsmGetExe pkgs.local.hl-tricky-floaty}"
+      "${appRunExe pkgs.local.hl-tricky-floaty}"
     ];
     general = {
       "col.active_border" = "$rose";
@@ -90,7 +97,7 @@ in
         "RETURN, exec, ${terminal}"
         "M, exec, ${launcher}"
         "P, exec, ${rofi-rbw}"
-        "B, exec, ${uwsmGetExe pkgs.rofi-bluetooth}"
+        "B, exec, ${appRunExe pkgs.rofi-bluetooth}"
         "N, exec, ${swaync-client} --toggle-panel"
         "F, fullscreen,"
         "PRINT, exec, ${hyprshot} -m output -m active -c -o /tmp/sswkjf" # -c for current output
@@ -109,9 +116,9 @@ in
       # Super + Shift keybinds
       ++ map (x: "$mod SHIFT, " + x) [
         "Q, exit,"
-        "L, exec, ${uwsmGetExe config.programs.hyprlock.package}"
+        "L, exec, ${appRunExe config.programs.hyprlock.package}"
         "S, movetoworkspace, special:magic"
-        "N, exec, ${uwsmGetExe pkgs.rofi-network-manager}"
+        "N, exec, ${appRunExe pkgs.rofi-network-manager}"
         "P, exec, ${hyprpicker}"
         "PRINT, exec, ${hyprshot} -m window -m active -c -o /tmp/sswkjf"
       ]

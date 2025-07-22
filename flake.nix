@@ -1,13 +1,4 @@
 {
-  nixConfig = {
-    extra-substituters = [
-      "https://helix.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "helix.cachix.org-1:ejp9KQpR1FBI2onstMQ34yogDm4OgU2ru6lIwPvuCVs="
-    ];
-  };
-
   outputs =
     inputs@{ self, ... }:
     let
@@ -22,17 +13,23 @@
           ./servers/minecraft
           ./servers/darwin
           inputs.hjem.nixosModules.default
-          inputs.lix-module.nixosModules.default
+          # inputs.lix-module.nixosModules.default
           inputs.nixdot-modules.nixosModules.hjem
           inputs.nixdot-modules.nixosModules.default
+          inputs.lanzaboote.nixosModules.lanzaboote
+          inputs.determinate.nixosModules.default
+          # inputs.nixos-cli.nixosModules.nixos-cli
         ];
         specialArgs = { inherit inputs; };
         overlays = [
           self.overlays.local-packages
-          self.overlays.small
+          # self.overlays.small
         ];
 
       })
+      # ({
+      #   hostname = "vintage";
+      # })
       # (mkSystem {
       #   hostname = "zenith";
       #   extraModules = [
@@ -77,7 +74,6 @@
     };
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -87,6 +83,10 @@
 
     hjem = {
       url = "github:feel-co/hjem";
+    };
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -109,12 +109,11 @@
     };
 
     # Remove this on next relase.
-    helix-master.url = "github:helix-editor/helix";
+    helix-master.url = "helix";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixos-cli.url = "github:nix-community/nixos-cli";
+
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     nix-minecraft.url = "github:heisfer/nix-minecraft/geyser";
 
@@ -123,6 +122,15 @@
     nil = {
       url = "github:oxalica/nil";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixd = {
+      url = "github:nix-community/nixd";
     };
   };
 }

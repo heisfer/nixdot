@@ -14,6 +14,7 @@
     nerd-fonts.symbols-only
     inter
     ibm-plex
+    dm-mono
   ];
   # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.maple-mono);
   fonts.fontconfig = {

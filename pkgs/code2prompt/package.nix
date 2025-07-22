@@ -6,8 +6,6 @@
   libgit2,
   openssl,
   zlib,
-  stdenv,
-  darwin,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -28,16 +26,11 @@ rustPlatform.buildRustPackage (finalAttrs: {
     rustPlatform.bindgenHook
   ];
 
-  buildInputs =
-    [
-      libgit2
-      openssl
-      zlib
-    ]
-    ++ lib.optionals stdenv.isDarwin [
-      darwin.apple_sdk.frameworks.AppKit
-      darwin.apple_sdk.frameworks.Security
-    ];
+  buildInputs = [
+    libgit2
+    openssl
+    zlib
+  ];
 
   env = {
     OPENSSL_NO_VENDOR = true;
@@ -46,7 +39,6 @@ rustPlatform.buildRustPackage (finalAttrs: {
   meta = {
     description = "A CLI tool to convert your codebase into a single LLM prompt with source tree, prompt templating, and token counting";
     homepage = "https://github.com/mufeedvh/code2prompt";
-    changelog = "https://github.com/mufeedvh/code2prompt/releases/tag/v${finalAttrs.version}";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ heisfer ];
     mainProgram = "code2prompt";

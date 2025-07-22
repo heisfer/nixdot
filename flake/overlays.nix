@@ -5,11 +5,11 @@
     local = import ./../pkgs final.pkgs;
   };
 
-  # nixpkgs-unstable-small
-  small = final: _prev: {
-    small = import inputs.nixpkgs-small {
-      system = final.system;
-      config.allowUnfree = true;
-    };
-  };
+  # # nixpkgs-unstable-small
+  # small = final: _prev: {
+  #   small = import inputs.nixpkgs-small {
+  #     system = final.system;
+  #     config.allowUnfree = true;
+  #   };
+  # };
 }

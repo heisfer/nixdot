@@ -7,6 +7,7 @@
     };
     extraPackages = with pkgs; [
       gamescope
+      nss
     ];
     protontricks = {
       enable = true;
@@ -20,4 +21,8 @@
     enable = true;
     capSysNice = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    wineWow64Packages.waylandFull
+  ];
 }

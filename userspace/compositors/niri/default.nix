@@ -1,3 +1,4 @@
+{ config, ... }:
 {
   programs.niri = {
     enable = true;
@@ -5,7 +6,7 @@
   programs.uwsm.waylandCompositors.niri = {
     prettyName = "Niri";
     comment = "Niri";
-    binPath = "/run/current-system/sw/bin/niri-session";
+    binPath = "${config.programs.niri.package}/bin/niri-session";
   };
 
   xdg.portal.config.niri = {

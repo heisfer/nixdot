@@ -23,7 +23,6 @@ in
     ];
     modules-center = [
       "mpris"
-      "cloc"
     ];
     modules-right = [
       "custom/notification"
@@ -109,11 +108,12 @@ in
     };
     clock = {
       format = " {:%H:%M  %d/%m}";
+      tooltip-format = "{calendar}";
     };
     "pulseaudio" = {
       format = "{icon} {volume}%";
       format-muted = "";
-      on-click = "${getExe pkgs.small.pwvucontrol}";
+      on-click = "${getExe pkgs.pwvucontrol}";
       on-scroll-up = "${getExe' config.services.swayosd.package "swayosd-client"} --output-volume 1";
       on-scroll-down = "${getExe' config.services.swayosd.package "swayosd-client"} --output-volume -1";
       format-icons = {

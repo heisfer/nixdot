@@ -3,6 +3,7 @@
   programs.wezterm = {
     enable = true;
     # package = inputs.wezterm-master.packages.${pkgs.system}.default;
+    default = true;
     settings = # lua
       ''
         local wezterm = require 'wezterm'

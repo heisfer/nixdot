@@ -3,7 +3,8 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-devedition-bin;
+    # default = true;
+    package = pkgs.firefox-devedition;
     nativeMessagingHosts.packages = with pkgs; [
       web-eid-app
     ];

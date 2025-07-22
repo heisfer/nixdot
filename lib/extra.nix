@@ -18,5 +18,7 @@ in
 {
   uwsmGetExe = package: "uwsm-app -- " + getExe package;
   uwsmGetExe' = package: bin: "uwsm-app -- " + getExe' package bin;
+  appRunExe = package: "app2unit -- " + getExe package;
+  appRunExe' = package: bin: "app2unit -- " + getExe' package bin;
   loadNixFiles = dir: loadNixFiles dir;
 }

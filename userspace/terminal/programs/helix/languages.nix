@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib.meta) getExe;
+  inherit (lib.meta) getExe getExe';
   home = config.users.users.heisfer.home;
   hostname = config.networking.hostName;
 
@@ -25,16 +25,18 @@ in
     rust-analyzer
     clippy
     rustc
+    vala-language-server
+    typescript-language-server
   ];
   programs.helix.languages = {
     language-server = {
       nixd = {
-        command = getExe pkgs.nixd;
+        command = getExe inputs.nixd.packages.${pkgs.system}.default;
         config.nixd = {
           formatting.command = [ "${getExe pkgs.nixfmt-rfc-style}" ];
           options = {
             nixpkgs.expr = "import <nixpkgs> {}";
-            nixos.expr = "(builtins.getFlake \"${home}/Projects/system/dots\").nixosConfigurations.${hostname}.options";
+            # nixos.expr = "(builtins.getFlake \"${home}/Projects/system/dots\").nixosConfigurations.${hostname}.options";
           };
         };
       };
@@ -76,13 +78,17 @@ in
       rust-analyzer.config = {
         check.command = "clippy";
       };
+      qmlls = {
+        command = getExe' pkgs.qt6.qtdeclarative "qmlls";
+        args = [ "-E" ];
+      };
     };
     language = [
       {
         name = "nix";
         language-servers = [
           "nixd"
-          "nil"
+          # "nil"
         ];
         auto-format = true;
       }
@@ -102,6 +108,10 @@ in
       {
         name = "nu";
         language-servers = [ "nu-lsp" ];
+      }
+      {
+        name = "qml";
+        language-servers = [ "qmlls" ];
       }
     ];
   };

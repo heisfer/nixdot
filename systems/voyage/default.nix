@@ -14,23 +14,30 @@ let
 in
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./tpm2.nix
-      ./fonts.nix
-      ../../nixos/services/polkit.nix
-      # ../../userspace/default.nix
-    ]
-    ++ lib.filesystem.listFilesRecursive ../../modules
-    ++ loadNixFiles ../../userspace;
+  imports = [
+    # Include the results of the hardware scan.
+    ./android.nix
+    ./hardware-configuration.nix
+    ./tpm2.nix
+    ./fonts.nix
+    ../../nixos/services/polkit.nix
+    # ../../userspace/default.nix
+  ]
+  ++ lib.filesystem.listFilesRecursive ../../modules
+  ++ loadNixFiles ../../userspace;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.silent.enable = true;
 
+  boot.secureboot.enable = true;
+
   boot.initrd.kernelModules = [ "amdgpu" ];
+  boot = {
+    extraModulePackages = [ config.boot.kernelPackages.hid-tmff2 ];
+    kernelModules = [ "hid-tmff-new" ];
+  };
+  services.udev.packages = [ pkgs.oversteer ];
   nix = {
     channel.enable = false;
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
@@ -38,6 +45,9 @@ in
       experimental-features = [
         "nix-command"
         "flakes"
+      ];
+      extra-experimental-features = [
+        "pipe-operators"
       ];
       warn-dirty = false;
       accept-flake-config = true;
@@ -50,14 +60,8 @@ in
 
   services.playerctld.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    settings = {
-      General = {
-        ControllerMode = "bredr";
-      };
-    };
-  };
+  hardware.bluetooth.enable = true;
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -80,7 +84,7 @@ in
     "2620:fe::fe"
     "2620:fe::9"
   ];
-
+  services.gvfs.enable = true;
   # Set your time zone.
   time.timeZone = "Europe/Tallinn";
 
@@ -89,19 +93,33 @@ in
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.greetd.enable = true;
-  services.greetd.settings =
-    let
-      start = {
-        command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop > /dev/null"; # dev/null for no messages on the screen
-        user = config.userspace.defaultUser;
-      };
-    in
-    {
-      initial_session = start;
-      default_session = start;
-    };
+  # services.nixos-cli = {
+  #   enable = true;
+  # config = {
 
+  # };
+  # };
+
+  # services.greetd.enable = true;
+  # services.greetd.settings =
+  #   let
+  #     start = {
+  #       command = "${lib.getExe config.programs.uwsm.package} start hyprland-uwsm.desktop > /dev/null"; # dev/null for no messages on the screen
+  #       user = config.userspace.defaultUser;
+  #     };
+  #   in
+  #   {
+  #     initial_session = start;
+  #     default_session = start;
+  #   };
+
+  userspace.loginmanager = {
+    enable = true;
+    default = {
+      hyprland.enable = true;
+      niri.enable = true;
+    };
+  };
   services.printing.enable = true;
   services.pipewire = {
     enable = true;
@@ -127,15 +145,16 @@ in
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.TERMINAL = config.programs.ghostty.package.pname;
   environment.systemPackages = with pkgs; [
+    asciinema
     wget
+    amdgpu_top
+    lm_sensors
     tree
-    ghostty
-    kitty
     bitwarden-desktop
     unzip
     rar
+    nwjs
     unrar
-    brave
     legcord
     (discord.override {
       withOpenASAR = true;
@@ -149,6 +168,7 @@ in
     gh
     gitify
     nixpkgs-review
+    oversteer
     tutanota-desktop
     # rbw
     rbw
@@ -170,6 +190,8 @@ in
     # inputs.nvf.packages.${pkgs.system}.default
     nix-fast-build
     nix-output-monitor
+
+    # local.floorp
 
     (pkgs.writers.writePython3Bin "krisp-patcher"
       {
@@ -206,10 +228,20 @@ in
     };
   };
 
+  programs.nh = {
+    enable = true;
+    flake = "/etc/nixos";
+  };
+
   services.gnome.gnome-keyring.enable = true;
 
   services.flatpak.enable = true;
 
+  services.clamav = {
+    daemon.enable = true;
+    scanner.enable = true;
+    updater.enable = true;
+  };
   services.auto-cpufreq.enable = true;
 
   services.wordpress.sites."localhost" = { };
