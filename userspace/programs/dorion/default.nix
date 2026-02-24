@@ -1,3 +1,0 @@
-{
-  programs.dorion.enable = true;
-}

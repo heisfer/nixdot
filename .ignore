@@ -1,1 +1,3 @@
 flake.lock
+nixos-efi-vars.fd
+nixos.qcow2

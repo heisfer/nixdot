@@ -1,2 +1,4 @@
 result
 result-*
+nixos-efi-vars.fd
+nixos.qcow2
