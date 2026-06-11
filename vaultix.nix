@@ -1,7 +1,0 @@
-{
-  vaultix = {
-    settings = {
-      hostPubkey = "";
-    };
-  };
-}

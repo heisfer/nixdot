@@ -33,14 +33,29 @@
       owner = "cachix";
       repo = "git-hooks.nix";
     };
+    # probably will have secrets lated things on here
+    # nixdot-private = {
+    #   type = "github";
+    #   owner = "heisfer";
+    #   repo = "nixdot-private";
+    #   flake = false;
+    # };
+    import-tree = {
+      type = "github";
+      owner = "vic";
+      repo = "import-tree";
+    };
+
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
+    inputs@{ flake-parts, self, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       # test is a hostname for our machine
       imports = [
         inputs.git-hooks-nix.flakeModule
+        inputs.vaultix.flakeModules.default
+        (inputs.import-tree ./modules)
       ];
       systems = [
         "x86_64-linux"
@@ -63,14 +78,11 @@
           };
 
           devShells.default = pkgs.mkShell {
-            shellHook = ''
-              nu
-            ''
-            + config.pre-commit.installationScript;
+            shellHook = config.pre-commit.installationScript;
 
             buildInputs = with pkgs; [
               just
-              nushell
+              rage
             ];
           };
 
@@ -79,22 +91,7 @@
         };
       flake = {
         vaultix = {
-          cache = "./secrets/cache";
-          identity = "~/.ssh/id_ed25519";
-        };
-        nixosConfigurations.voyage = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./configurations.nix
-            ./disko.nix
-            ./impermanence.nix
-            ./vm.nix
-            ./perless.nix
-            ./vaultix.nix
-            inputs.vaultix.nixosModules.default
-          ];
-          specialArgs = { inherit inputs; };
-
+          identity = "./secrets/key.txt";
         };
       };
     };
